@@ -1,0 +1,38 @@
+.question {
+  text-align: center;
+  font-size: 36pt!important;
+  padding-left:17%;
+  padding-right:10%;
+  padding-top: 40px;
+  background-color:#0066cc;
+  background-image: url("../images/question.png");
+  background-position: 5% 90%;
+  background-size: 150px;
+  color: white;
+}
+
+.info {
+  text-align: left;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  border-radius: 25px;
+  background-color: #e5ccd0;
+  color: #3f3032;
+  border: solid 2px #3f3032;
+  width: 800px;
+}
+
+.challenge {
+  text-align: left;
+  padding-left:20%;
+  padding-top: 40px;
+  font-size: 40pt!important;
+  background-color:#ffa500;
+  background-image: url("../images/coding.png");
+  background-position: 5% 90%;
+  background-size: 150px;
+  color: white;
+}

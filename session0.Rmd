@@ -1,0 +1,131 @@
+---
+title: "Title"
+author: "Emi Tanaka"
+email: "dr.emi.tanaka@gmail.com"
+date: "DD MM YYYY | Event | City, Country"
+params: 
+  wifi: FILL
+  wifi_password: FILL
+  cloud_link: bit.ly/xxx
+output:
+  xaringan::moon_reader:
+    css: 
+      - ninjutsu, 
+      - "assets/animate.css"
+      - "assets/cssgrid.css"
+      - "assets/custom.css"
+    self_contained: false
+    seal: false 
+    chakra: 'libs/remark-latest.min.js'
+    beforeInit: "assets/custom.js"
+    lib_dir: libs
+    includes:
+      in_header: "assets/custom.html"
+      # before_body: 
+      after_body: 
+       - "assets/remarkjs_extended.html"
+       - "assets/loop.html"
+      # includes
+    mathjax: "assets/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    nature:
+      highlightStyle: github 
+      highlightLanguage: r 
+      highlightLines: true
+      highlightSpans: false 
+      countIncrementalSlides: false
+      slideNumberFormat: '%current%/%total%'
+      navigation:
+        scroll: false 
+        touch: true
+        click: false
+      ratio: '16:9' 
+---
+
+
+layout: true
+background-size: cover
+class: hide-slide-number
+
+
+:::::::::: { .grid grid: 68% 32% / 1fr;} 
+::: item center
+
+<br>
+
+{{content}}
+
+
+:::
+
+::: item center shade_black
+
+`r rmarkdown::metadata$author` `r anicon::faa("twitter", animate="float", speed="fast")`  @statsgen
+
+<i class="fas fa-link"></i> 
+`r params$cloud_link`
+
+WIFI <i class="fas fa-wifi"></i> `r params$wifi` <i class="fas fa-key"></i> `r params$wifi_password`
+
+`r rmarkdown::metadata$date`
+
+
+:::
+
+:::::::::: 
+
+---
+
+background-image: url("images/bg1.jpg")
+
+# <span style="text-shadow: 2px 2px 3px black;color:yellow;">Welcome to</span>
+# <span style="text-shadow: 2px 2px 30px white;">`r rmarkdown::metadata$title`</span>
+
+
+
+---
+
+class: center middle
+
+# Wireless Internet
+
+::: grid 
+
+::: item 
+
+<i class="fas fa-wifi"></i>
+
+Wifi username
+
+``r params::wifi``
+
+:::
+
+::: item
+
+<i class="fas fa-key"></i>
+
+Wifi password
+
+``r params$wifi_password``
+
+:::
+
+:::
+
+
+---
+
+background-image: url("images/bg2.jpg")
+
+# <span style="text-shadow: 2px 2px 3px black;color:yellow;">Welcome to</span>
+# <span style="text-shadow: 2px 2px 30px white;">`r rmarkdown::metadata$title`</span>
+
+
+---
+
+
+background-image: url("images/bg3.jpg")
+
+# <span style="text-shadow: 2px 2px 3px black;color:yellow;">Welcome to</span>
+# <span style="text-shadow: 2px 2px 30px white;">`r rmarkdown::metadata$title`</span>
+[Background photo by Adam H. Sparks]{.pos .font_small top:5px;left:5px;}

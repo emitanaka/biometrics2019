@@ -1,0 +1,29 @@
+---
+title: "Title"
+author: "Emi Tanaka"
+date: "XXth MMM YYYY"
+output:
+  prettydoc::html_pretty:
+    theme: tactile
+---
+
+```{css, echo = FALSE}
+/* This doesn't work for include = FALSE */
+code, pre {
+  color: #d5000d!important;
+}
+```
+
+## Getting started
+
+Find the instructions that was sent in email [here](instructions.pdf).
+
+
+## Slides 
+
+* [Session 1: XX](session1.html)
+* [Session 2: XX](session2.html)
+* [Session 3: XX](session3.html)
+
+All materials can be found at https://github.com/emitanaka/XXX.
+
