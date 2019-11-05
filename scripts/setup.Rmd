@@ -29,6 +29,12 @@ knitr::opts_chunk$set(
 # this is necessary so that the code doesn't wrap
 options(width = 1000)
 
+
+largefontthm <- theme_get() + theme(
+    axis.title        = element_text(size = 18),
+    axis.text         = element_text(size = 16),
+    strip.text        = element_text(size = 20))
+
 invthm <- theme_minimal() +
   theme(
     panel.background  = element_rect(fill = 'transparent', colour = NA),
@@ -51,5 +57,6 @@ voidthm <- theme_void() +
   )
 
 #theme_set(invthm)
-
+#theme_get()
+theme_set(largefontthm)
 ```

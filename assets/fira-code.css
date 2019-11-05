@@ -46,4 +46,6 @@
 
 .remark-code, code {
   font-family: 'Fira Code', sans-serif;
+  font-variant-ligatures: none;
+  line-height: 1.5;
 }

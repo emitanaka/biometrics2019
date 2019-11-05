@@ -33,8 +33,7 @@ emitanaka.org/slides/XXX
 
 ---
 
-
-class: bg-black white
+background-color: #e5e5e5
 
 # Session Information
 

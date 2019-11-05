@@ -48,12 +48,43 @@ output:
 
 ---
 
-# Basic structure of ggplot
+class: font_smaller
+
+# Aim: draw beautiful plots like this using (layered) grammar of graphics
+
+
+::: grid 
+
+::: item 
+
+```{r aim, eval = FALSE}
+library(ggplot2)
+ggplot(mpg, aes(year, displ)) + 
+  geom_point()
+```
+
+
+:::
+
+::: item 
+
+```{r aim, echo = FALSE}
+```
+
+
+:::
+
+
+
+:::
+
+
+
+---
+
+# Basic structure of ggplot: 3 keys components
 
 <center>
-
-.font_large[3 keys components]
-
 <br>
 
 <img src="images/ggplot1.png" width="80%"/>
@@ -73,6 +104,78 @@ Reference: Wickham (2015) ggplot2 Elegant Graphics for Data Analysis
 :::
 
 ---
+
+class: font_smaller
+
+# Data:  .blue[Classic iris dataset (for ggplot demo)]
+
+`iris` is a built-in dataset in R - type `iris` to your console and press <kbd>Enter</kbd>. 
+
+```{r}
+skimr::skim(iris)
+```
+
+<img src="images/iris.png" width = "650px" style = "position:absolute;top:20%;right:10%;"/>
+<div class = "font_small" style = "position:absolute;top:340px;right:8%;width:650px;">Image source: <a href="http://suruchifialoke.com/2016-10-13-machine-learning-tutorial-iris-classification/">suruchifialoke.com</a>
+</div>
+
+---
+
+
+# Aesthestic mappings: `aethestic = column`
+
+
+<center>
+<img src="images/ggplot5.png" width="80%"/>
+</center>
+
+* `Sepal.Length` is mapped to the `x` coordinate
+* `Sepal.Width` is mapped to the `y` coordinate
+* `Species` is mapped to the `color`
+
+
+---
+
+# Layer 
+
+<br>
+
+::: { .info }
+
+
+Each layer has a 
+* `geom` - the geometric object to use display the data,
+* `stat` - statisitcal transformations to use on the data, 
+* `data` and `mapping` which is usually inherited from `ggplot` object,
+
+:::
+
+Further specifications are provided by `position` adjustment, `show_legend` and so on. 
+
+---
+
+# Example layer: geom_point()
+
+The `<layer>` is usually coded by a function preceded by `geom_` in its name.
+
+```{r, eval = FALSE}
+ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
+  geom_point() #<<
+```
+
+is a shorthand for 
+
+```{r, eval = FALSE}
+ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
+  layer(geom = "point", #<<
+        stat = "identity", position = "identity",  #<<
+        params = list(na.rm = FALSE)) #<<
+```
+
+
+---
+
+
 
 # Different geometric objects
 
@@ -124,7 +227,7 @@ p + geom_point()
 
 ::: item 
 
-Each layer inherits mapping and data from `ggplot`.  
+Each layer inherits mapping and data from `ggplot` by default.  
 
 
 ```{r plot1, eval=FALSE}
@@ -160,14 +263,7 @@ ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
 
 ::: item 
 
-::: { .info width: 300px; margin: 0px 50px; }
 
-Each layer has a 
-* geom (or stat), 
-* data, 
-* mapping.
-
-:::
 
 :::
 
@@ -197,6 +293,8 @@ For each layer, aesthestic and/or data can be overwritten.
 ggplot(iris, aes(Species, Sepal.Length))
 ```
 
+
+
 :::
 
 ::: item 
@@ -207,7 +305,6 @@ ggplot(iris, aes(Species, Sepal.Length))
 :::
 
 :::
-
 
 
 
