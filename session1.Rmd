@@ -1,6 +1,6 @@
 ---
-title: "Tidyverse & R Markdown"
-subtitle: "Data visualisation with `ggplot2`"
+title: "Tidyverse Workshop"
+subtitle: "Data visualisation with `ggplot2` <img src='images/ggplot2hex.png' height = '50px'>"
 author: "Emi Tanaka"
 email: "dr.emi.tanaka@gmail.com"
 date: "1st Dec 2019 @ Biometrics by the Botanic Gardens | Adelaide, Australia"
@@ -153,19 +153,60 @@ Further specifications are provided by `position` adjustment, `show_legend` and 
 
 ---
 
+# Hidden argument names in ggplot
+
+<center>
+<img src="images/ggplot4.png" width="95%"/>
+</center>
+
+--- 
+
+::: grid font_smaller
+
+::: item 
+
+```{r, fig.height = 2.5, fig.width = 4}
+ggplot(iris, aes(Species))
+```
+
+
+```{r, fig.height = 2.5, fig.width = 4}
+ggplot(iris, aes(Species, Sepal.Length))
+```
+
+
+
+:::
+
+::: item 
+
+* No need to write explicitly write out `data = `, `mapping = `, `x = `, and `y = ` each time in `ggplot`.
+* `ggplot` code in the wild often omit these argument names.
+* But position needs to be correct if argument name not specified!
+* If no layer is specified, then plot is `geom_blank()`.
+
+:::
+
+:::
+
+---
+
 # Example layer: geom_point()
 
-The `<layer>` is usually coded by a function preceded by `geom_` in its name.
+The `<layer>` is usually created by a function preceded by `geom_` in its name.
 
 ```{r, eval = FALSE}
-ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
+ggplot(iris, aes(Species, Sepal.Length)) +
   geom_point() #<<
 ```
 
+<br>
 is a shorthand for 
+<br>
+
 
 ```{r, eval = FALSE}
-ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
+ggplot(iris, aes(Species, Sepal.Length)) +
   layer(geom = "point", #<<
         stat = "identity", position = "identity",  #<<
         params = list(na.rm = FALSE)) #<<
@@ -179,7 +220,7 @@ ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
 # Different geometric objects
 
 ```{r}
-p <- ggplot(data = iris, aes(Species, Sepal.Length))
+p <- ggplot(iris, aes(Species, Sepal.Length))
 ```
 
 
@@ -196,7 +237,7 @@ p + geom_violin()
 
 ::: item 
 
-```{r, fig.height = 4, fig.width = 4}
+```{r boxplot, fig.height = 4, fig.width = 4}
 p + geom_boxplot()
 ```
 
@@ -212,6 +253,172 @@ p + geom_point()
 
 
 :::
+
+---
+
+name: geom
+class: hide-slide-number
+
+# (Most) geom objects
+
+
+```{r geom, echo=FALSE}
+geoms <- help.search("^geom_", package = "ggplot2")
+geoms$matches[, 1:2] %>% 
+  distinct() %>% 
+  filter(Topic!="ggsf") %>% 
+  DT::datatable(colnames = c("geom", "Description"),
+                rownames = FALSE,
+                options = list(dom = 'tp'))
+```
+
+---
+
+class: font_smaller
+
+# Statistical transformation
+
+```{r}
+g <- ggplot(iris, aes(Species, Sepal.Length)) + geom_boxplot()
+```
+
+::: { .grid grid: 1fr / 300px 900px; } 
+
+::: item 
+
+```{r boxplot, echo = FALSE, fig.height = 4, fig.width = 4}
+```
+
+<p></p>
+
+:::
+
+::: item 
+
+* The `y`-axis is not the raw data!
+* It is plotting a statistical transformation of the `y`-values. 
+* Under the hood, data is transformed (including `x` factor input to numerical values).
+
+```{r}
+layer_data(g, 1)
+```
+<p></p>
+
+:::
+
+:::
+
+---
+
+class: font_smaller
+
+# Statistical transformation: stat_bin
+
+
+* For `geom_histogram`, default is `stat = "bin"`.
+* For `stat_bin`, default is `geom = "bar"`.
+* .pink[Every `geom` has a `stat` and vice versa].
+
+```{r}
+p <- ggplot(iris, aes(Sepal.Length)) 
+```
+
+
+
+::: { .grid  grid: 1fr / 1fr 1fr 1fr; }
+
+::: item 
+
+
+```{r, fig.height = 3, fig.width = 4}
+p + geom_histogram()
+```
+
+
+::: 
+
+::: item 
+
+
+```{r, fig.height = 3, fig.width = 4}
+p + stat_bin(geom = "bar")
+```
+
+
+::: 
+
+::: item 
+
+
+
+```{r, fig.height = 3, fig.width = 4}
+p + stat_bin(geom = "line")
+```
+<p></p>
+
+:::
+
+
+
+:::
+
+
+---
+
+class: font_smaller
+
+# Using statistical transformations
+
+To map an aesthestic to computed statistical variable (say called .pink[`stat`]), you can refer to it by surrounded its name with "`..`" (say .pink[`..stat..`]).
+
+--- 
+
+::: grid 
+
+::: item 
+
+`stat = "bin"`
+
+```{r, echo = FALSE}
+g <- p + stat_bin(geom = "line")
+layer_data(g, 1) %>% select(x, count, density) 
+```
+<p></p>
+
+:::
+
+
+::: item 
+
+```{r, fig.width = 5, fig.height = 5}
+p + geom_histogram(aes(y = ..density.. ))
+```
+
+
+:::
+
+:::
+
+
+---
+
+name: stat
+class: hide-slide-number
+
+# (Most) stat objects
+
+
+```{r stat, echo=FALSE}
+stats <- help.search("stat_", package = "ggplot2")
+stats$matches[, c("Entry", "Title")]  %>% 
+  distinct(Title, .keep_all = TRUE) %>%
+  filter(Entry!="update_stat_defaults") %>% 
+  DT::datatable(colnames = c("stat", "Description"),
+                rownames = FALSE,
+                options = list(dom = 'tp'))
+
+```
+
 
 ---
 
@@ -231,11 +438,9 @@ Each layer inherits mapping and data from `ggplot` by default.
 
 ```{r plot1, eval=FALSE}
 ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
-  geom_violin() +
-  geom_boxplot() +
+  geom_violin() + 
+  geom_boxplot() + 
   geom_point()
-  
-
 ```
 <p></p>
 
@@ -252,23 +457,87 @@ ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
 
 ---
 
-# Layer
+# Order of the layers matters!
+
+Boxplot and violin plot order are switched around. 
+
+::: { .grid .font_smaller grid: 250px 250px / 1fr 1fr; }
+
+::: item 
+
+```{r plot1a, eval=FALSE}
+ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
+  geom_violin() + #<<
+  geom_boxplot() + #<<
+  geom_point()
+```
+
+::: 
+
+::: item 
+
+```{r plot1a, echo = FALSE, fig.height = 3, fig.width = 4}
+```
+
+::: 
+
+::: item 
+
+```{r plot1b, eval=FALSE}
+ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
+  geom_boxplot() + #<<
+  geom_violin() + #<<
+  geom_point()
+```
+
+
+::: 
+
+::: item 
+
+```{r plot1b, echo = FALSE, fig.height = 3, fig.width = 4}
+```
+
+::: 
+
+:::
+
+
+
+---
+
+class: font_smaller
+
+# Layer-specific data and aesthestic mappings
 
 <center>
-<img src="images/ggplot3.png" width="80%"/>
+<img src="images/ggplot3.png" width="60%"/>
 </center>
 
 ::: grid
 
 ::: item 
 
+For each layer, aesthestic and/or data can be overwritten.
+
+
+```{r plot2, eval=FALSE}
+ggplot(iris, aes(Species, Sepal.Length)) +
+  geom_violin(aes(fill = Species)) +
+  geom_boxplot(data = filter(iris, Species=="setosa")) +
+  geom_point(data = filter(iris, Species=="setosa"),
+             aes(y = Sepal.Width))
+```
 
 
 :::
 
 ::: item
 
-For each layer, aesthestic and/or data can be overwritten.
+
+```{r plot2, echo = FALSE, fig.width = 5, fig.height = 4.5}
+```
+
 
 :::
 
@@ -276,35 +545,14 @@ For each layer, aesthestic and/or data can be overwritten.
 
 ---
 
-# Invisible elements in ggplot
+# Activity
 
-<center>
-<img src="images/ggplot4.png" width="80%"/>
-</center>
+---
 
---- 
+# Scales 
 
-::: grid font_smaller
-
-::: item 
-
-```{r, fig.height = 3, fig.width = 3}
-ggplot(iris, aes(Species, Sepal.Length))
-```
-
-
-
-:::
-
-::: item 
-
-* No need to write explicitely write out `data = `, `x = `, and `y = ` each time.
-* The default layer is `geom_blank()`.
-
-:::
-
-:::
-
+* Scales control the mapping from data to aesthetics. 
+* Formally, each scale is a function from a region in data space to a region in aesthetic space.
 
 
 ---

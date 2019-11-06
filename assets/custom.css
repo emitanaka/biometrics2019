@@ -166,4 +166,25 @@ kbd {
     padding: 2px 4px;
     white-space: nowrap;
    }
+   
+.display {
+  font-size: 18pt;
+}
 
+.paginate_button {
+  font-size: 16pt;
+}
+
+pre {
+  margin: 0;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 30px;
+    margin-inline-end: 10px;
+    padding-inline-start: 40px;
+}

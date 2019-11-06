@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
-    <title>Tidyverse &amp; R Markdown</title>
+    <title>Tidyverse Workshop</title>
     <meta charset="utf-8" />
     <meta name="author" content="Emi Tanaka" />
     <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
     <link href="libs/font-awesome-animation-1.0/font-awesome-animation-emi.css" rel="stylesheet" />
     <script src="libs/fontawesome-5.0.13/js/fontawesome-all.min.js"></script>
+    <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+    <script src="libs/jquery-1.12.4/jquery.min.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.6/datatables.js"></script>
+    <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+    <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
     
     <link rel="stylesheet" href="assets/animate.css" type="text/css" />
     <link rel="stylesheet" href="assets/cssgrid.css" type="text/css" />
@@ -31,10 +40,10 @@ class: hide-slide-number title-slide
 :::::::::: { .grid grid: 50% 50% / 1fr;} 
 ::: item center
 
-# &lt;span style="text-shadow: 2px 2px 30px white;"&gt;Communicating with Data &lt;br&gt; via R Markdown&lt;/span&gt;
+# &lt;span style="text-shadow: 2px 2px 30px white;"&gt;Tidyverse Workshop&lt;/span&gt;
 
 &lt;br&gt;&lt;br&gt;
-## &lt;span style="color:yellow;text-shadow: 2px 2px 30px black;"&gt;Data visualisation with `ggplot2`&lt;/span&gt;
+## &lt;span style="color:yellow;text-shadow: 2px 2px 30px black;"&gt;Data visualisation with `ggplot2` &lt;img src='images/ggplot2hex.png' height = '50px'&gt;&lt;/span&gt;
 
 :::
 
@@ -147,11 +156,11 @@ skimr::skim(iris)
    n obs: 150 
    n variables: 5 
   
-  ── Variable type:factor ────────────────────────────────────────────────────
+  ── Variable type:factor ───────────────────────────────────────────────────────────────
    variable missing complete   n n_unique                       top_counts ordered
     Species       0      150 150        3 set: 50, ver: 50, vir: 50, NA: 0   FALSE
   
-  ── Variable type:numeric ───────────────────────────────────────────────────
+  ── Variable type:numeric ──────────────────────────────────────────────────────────────
        variable missing complete   n mean   sd  p0 p25  p50 p75 p100     hist
    Petal.Length       0      150 150 3.76 1.77 1   1.6 4.35 5.1  6.9 ▇▁▁▂▅▅▃▁
     Petal.Width       0      150 150 1.2  0.76 0.1 0.3 1.3  1.8  2.5 ▇▁▁▅▃▃▂▂
@@ -198,21 +207,68 @@ Further specifications are provided by `position` adjustment, `show_legend` and 
 
 ---
 
-# Example layer: geom_point()
+# Hidden argument names in ggplot
 
-The `&lt;layer&gt;` is usually coded by a function preceded by `geom_` in its name.
+&lt;center&gt;
+&lt;img src="images/ggplot4.png" width="95%"/&gt;
+&lt;/center&gt;
+
+--- 
+
+::: grid font_smaller
+
+::: item 
 
 
 ```r
-ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
+ggplot(iris, aes(Species))
+```
+
+&lt;img src="figure/unnamed-chunk-2-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+
+
+
+```r
+ggplot(iris, aes(Species, Sepal.Length))
+```
+
+&lt;img src="figure/unnamed-chunk-3-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+
+
+
+:::
+
+::: item 
+
+* No need to write explicitly write out `data = `, `mapping = `, `x = `, and `y = ` each time in `ggplot`.
+* `ggplot` code in the wild often omit these argument names.
+* But position needs to be correct if argument name not specified!
+* If no layer is specified, then plot is `geom_blank()`.
+
+:::
+
+:::
+
+---
+
+# Example layer: geom_point()
+
+The `&lt;layer&gt;` is usually created by a function preceded by `geom_` in its name.
+
+
+```r
+ggplot(iris, aes(Species, Sepal.Length)) +
 * geom_point()
 ```
 
+&lt;br&gt;
 is a shorthand for 
+&lt;br&gt;
+
 
 
 ```r
-ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
+ggplot(iris, aes(Species, Sepal.Length)) +
 * layer(geom = "point",
 *       stat = "identity", position = "identity",
 *       params = list(na.rm = FALSE))
@@ -227,7 +283,7 @@ ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
 
 
 ```r
-p &lt;- ggplot(data = iris, aes(Species, Sepal.Length))
+p &lt;- ggplot(iris, aes(Species, Sepal.Length))
 ```
 
 
@@ -241,7 +297,7 @@ p &lt;- ggplot(data = iris, aes(Species, Sepal.Length))
 p + geom_violin()
 ```
 
-&lt;img src="figure/unnamed-chunk-5-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/unnamed-chunk-7-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 :::
 
@@ -252,7 +308,7 @@ p + geom_violin()
 p + geom_boxplot()
 ```
 
-&lt;img src="figure/unnamed-chunk-6-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/boxplot-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 :::
 
@@ -263,12 +319,214 @@ p + geom_boxplot()
 p + geom_point()
 ```
 
-&lt;img src="figure/unnamed-chunk-7-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/unnamed-chunk-8-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 :::
 
 
 :::
+
+---
+
+name: geom
+class: hide-slide-number
+
+# (Most) geom objects
+
+
+<div id="htmlwidget-7def37fb15624139946d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7def37fb15624139946d">{"x":{"filter":"none","data":[["geom_abline","geom_bar","geom_bin2d","geom_blank","geom_boxplot","geom_contour","geom_count","geom_density","geom_density_2d","geom_dotplot","geom_errorbarh","geom_hex","geom_freqpoly","geom_jitter","geom_crossbar","geom_map","geom_path","geom_point","geom_polygon","geom_qq_line","geom_quantile","geom_ribbon","geom_rug","geom_segment","geom_smooth","geom_spoke","geom_label","geom_raster","geom_violin","CoordSf"],["Reference lines: horizontal, vertical, and diagonal","Bar charts","Heatmap of 2d bin counts","Draw nothing","A box and whiskers plot (in the style of Tukey)","2d contours of a 3d surface","Count overlapping points","Smoothed density estimates","Contours of a 2d density estimate","Dot plot","Horizontal error bars","Hexagonal heatmap of 2d bin counts","Histograms and frequency polygons","Jittered points","Vertical intervals: lines, crossbars &amp; errorbars","Polygons from a reference map","Connect observations","Points","Polygons","A quantile-quantile plot","Quantile regression","Ribbons and area plots","Rug plots in the margins","Line segments and curves","Smoothed conditional means","Line segments parameterised by location, direction and distance","Text","Rectangles","Violin plot","Visualise sf objects"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>geom<\/th>\n      <th>Description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
+---
+
+class: font_smaller
+
+# Statistical transformation
+
+
+```r
+g &lt;- ggplot(iris, aes(Species, Sepal.Length)) + geom_boxplot()
+```
+
+::: { .grid grid: 1fr / 300px 900px; } 
+
+::: item 
+
+&lt;img src="figure/boxplot-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+:::
+
+::: item 
+
+* The `y`-axis is not the raw data!
+* It is plotting a statistical transformation of the `y`-values. 
+* Under the hood, data is transformed (including `x` factor input to numerical values).
+
+
+```r
+layer_data(g, 1)
+```
+
+```
+    ymin lower middle upper ymax outliers notchupper notchlower x PANEL group ymin_final ymax_final  xmin  xmax xid newx new_width weight colour  fill size alpha shape linetype
+  1  4.3 4.800    5.0   5.2  5.8            5.089378   4.910622 1     1     1        4.3        5.8 0.625 1.375   1    1      0.75      1 grey20 white  0.5    NA    19    solid
+  2  4.9 5.600    5.9   6.3  7.0            6.056412   5.743588 2     1     2        4.9        7.0 1.625 2.375   2    2      0.75      1 grey20 white  0.5    NA    19    solid
+  3  5.6 6.225    6.5   6.9  7.9      4.9   6.650826   6.349174 3     1     3        4.9        7.9 2.625 3.375   3    3      0.75      1 grey20 white  0.5    NA    19    solid
+```
+&lt;p&gt;&lt;/p&gt;
+
+:::
+
+:::
+
+---
+
+class: font_smaller
+
+# Statistical transformation: stat_bin
+
+
+* For `geom_histogram`, default is `stat = "bin"`.
+* For `stat_bin`, default is `geom = "bar"`.
+* .pink[Every `geom` has a `stat` and vice versa].
+
+
+```r
+p &lt;- ggplot(iris, aes(Sepal.Length)) 
+```
+
+
+
+::: { .grid  grid: 1fr / 1fr 1fr 1fr; }
+
+::: item 
+
+
+
+```r
+p + geom_histogram()
+```
+
+&lt;img src="figure/unnamed-chunk-12-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+
+
+::: 
+
+::: item 
+
+
+
+```r
+p + stat_bin(geom = "bar")
+```
+
+&lt;img src="figure/unnamed-chunk-13-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+
+
+::: 
+
+::: item 
+
+
+
+
+```r
+p + stat_bin(geom = "line")
+```
+
+&lt;img src="figure/unnamed-chunk-14-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;p&gt;&lt;/p&gt;
+
+:::
+
+
+
+:::
+
+
+---
+
+class: font_smaller
+
+# Using statistical transformations
+
+To map an aesthestic to computed statistical variable (say called .pink[`stat`]), you can refer to it by surrounded its name with "`..`" (say .pink[`..stat..`]).
+
+--- 
+
+::: grid 
+
+::: item 
+
+`stat = "bin"`
+
+
+```
+            x count   density
+  1  4.344828     4 0.2148148
+  2  4.468966     1 0.0537037
+  3  4.593103     4 0.2148148
+  4  4.717241     2 0.1074074
+  5  4.841379    11 0.5907407
+  6  4.965517    10 0.5370370
+  7  5.089655     9 0.4833333
+  8  5.213793     4 0.2148148
+  9  5.337931     7 0.3759259
+  10 5.462069     7 0.3759259
+  11 5.586207     6 0.3222222
+  12 5.710345     8 0.4296296
+  13 5.834483     7 0.3759259
+  14 5.958621     9 0.4833333
+  15 6.082759     6 0.3222222
+  16 6.206897     4 0.2148148
+  17 6.331034     9 0.4833333
+  18 6.455172    12 0.6444444
+  19 6.579310     2 0.1074074
+  20 6.703448     8 0.4296296
+  21 6.827586     3 0.1611111
+  22 6.951724     5 0.2685185
+  23 7.075862     1 0.0537037
+  24 7.200000     3 0.1611111
+  25 7.324138     1 0.0537037
+  26 7.448276     1 0.0537037
+  27 7.572414     1 0.0537037
+  28 7.696552     4 0.2148148
+  29 7.820690     0 0.0000000
+  30 7.944828     1 0.0537037
+```
+&lt;p&gt;&lt;/p&gt;
+
+:::
+
+
+::: item 
+
+
+```r
+p + geom_histogram(aes(y = ..density.. ))
+```
+
+&lt;img src="figure/unnamed-chunk-16-1.svg" width="360" style="display: block; margin: auto;" /&gt;
+
+
+:::
+
+:::
+
+
+---
+
+name: stat
+class: hide-slide-number
+
+# (Most) stat objects
+
+
+<div id="htmlwidget-c9b7120c3e1bec3bf581" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c9b7120c3e1bec3bf581">{"x":{"filter":"none","data":[["stat_count","stat_bin_2d","stat_boxplot","stat_contour","stat_sum","stat_density","stat_density_2d","stat_bin_hex","stat_bin","stat_qq_line","stat_quantile","stat_smooth","stat_spoke","stat_ydensity","stat_sf","stat_ecdf","stat_ellipse","stat_function","stat_identity","stat_sf_coordinates","stat_summary_bin","stat_summary_2d","stat_unique"],["Bar charts","Heatmap of 2d bin counts","A box and whiskers plot (in the style of Tukey)","2d contours of a 3d surface","Count overlapping points","Smoothed density estimates","Contours of a 2d density estimate","Hexagonal heatmap of 2d bin counts","Histograms and frequency polygons","A quantile-quantile plot","Quantile regression","Smoothed conditional means","Line segments parameterised by location, direction and distance","Violin plot","Visualise sf objects","Compute empirical cumulative distribution","Compute normal confidence ellipses","Compute function for each x value","Leave data as is","Extract coordinates from 'sf' objects","Summarise y values at unique/binned x","Bin and summarise in 2d (rectangle &amp; hexagons)","Remove duplicates"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>stat<\/th>\n      <th>Description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
 
 ---
 
@@ -289,8 +547,8 @@ Each layer inherits mapping and data from `ggplot` by default.
 
 ```r
 ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
-  geom_violin() +
-  geom_boxplot() +
+  geom_violin() + 
+  geom_boxplot() + 
   geom_point()
 ```
 &lt;p&gt;&lt;/p&gt;
@@ -307,23 +565,87 @@ ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
 
 ---
 
-# Layer
+# Order of the layers matters!
+
+Boxplot and violin plot order are switched around. 
+
+::: { .grid .font_smaller grid: 250px 250px / 1fr 1fr; }
+
+::: item 
+
+
+```r
+ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
+* geom_violin() +
+* geom_boxplot() +
+  geom_point()
+```
+
+::: 
+
+::: item 
+
+&lt;img src="figure/plot1a-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+
+::: 
+
+::: item 
+
+
+```r
+ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
+* geom_boxplot() +
+* geom_violin() +
+  geom_point()
+```
+
+
+::: 
+
+::: item 
+
+&lt;img src="figure/plot1b-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+
+::: 
+
+:::
+
+
+
+---
+
+class: font_smaller
+
+# Layer-specific data and aesthestic mappings
 
 &lt;center&gt;
-&lt;img src="images/ggplot3.png" width="80%"/&gt;
+&lt;img src="images/ggplot3.png" width="60%"/&gt;
 &lt;/center&gt;
 
 ::: grid
 
 ::: item 
 
+For each layer, aesthestic and/or data can be overwritten.
+
+
+
+```r
+ggplot(iris, aes(Species, Sepal.Length)) +
+  geom_violin(aes(fill = Species)) +
+  geom_boxplot(data = filter(iris, Species=="setosa")) +
+  geom_point(data = filter(iris, Species=="setosa"),
+             aes(y = Sepal.Width))
+```
 
 
 :::
 
 ::: item
 
-For each layer, aesthestic and/or data can be overwritten.
+
+&lt;img src="figure/plot2-1.svg" width="360" style="display: block; margin: auto;" /&gt;
+
 
 :::
 
@@ -331,44 +653,20 @@ For each layer, aesthestic and/or data can be overwritten.
 
 ---
 
-# Invisible elements in ggplot
+# Activity
 
-&lt;center&gt;
-&lt;img src="images/ggplot4.png" width="80%"/&gt;
-&lt;/center&gt;
+---
 
---- 
+# Scales 
 
-::: grid font_smaller
-
-::: item 
-
-
-```r
-ggplot(iris, aes(Species, Sepal.Length))
-```
-
-&lt;img src="figure/unnamed-chunk-8-1.svg" width="216" style="display: block; margin: auto;" /&gt;
-
-
-
-:::
-
-::: item 
-
-* No need to write explicitely write out `data = `, `x = `, and `y = ` each time.
-* The default layer is `geom_blank()`.
-
-:::
-
-:::
-
+* Scales control the mapping from data to aesthetics. 
+* Formally, each scale is a function from a region in data space to a region in aesthetic space.
 
 
 ---
 
 
-background-color: yellow
+background-color: #abdff7
 background-size: cover
 class: hide-slide-number
 
@@ -421,12 +719,12 @@ devtools::session_info()
    version  R version 3.6.0 (2019-04-26)
    os       macOS Mojave 10.14.6        
    system   x86_64, darwin15.6.0        
-   ui       X11                         
+   ui       RStudio                     
    language (EN)                        
    collate  en_AU.UTF-8                 
    ctype    en_AU.UTF-8                 
    tz       Australia/Sydney            
-   date     2019-11-06                  
+   date     2019-11-07                  
   
   ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
    package     * version    date       lib source                            
@@ -439,12 +737,13 @@ devtools::session_info()
    cli           1.1.0      2019-03-19 [1] CRAN (R 3.6.0)                    
    colorspace    1.4-1      2019-03-18 [1] CRAN (R 3.6.0)                    
    crayon        1.3.4      2017-09-16 [1] CRAN (R 3.6.0)                    
+   crosstalk     1.0.0      2016-12-21 [1] CRAN (R 3.6.0)                    
    curl          4.2        2019-09-24 [1] CRAN (R 3.6.0)                    
-   dadjoke       0.1.2      2019-07-07 [1] Github (jhollist/dadjoke@21ec24c) 
    desc          1.2.0      2018-05-01 [1] CRAN (R 3.6.0)                    
    devtools      2.0.2      2019-04-08 [1] CRAN (R 3.6.0)                    
    digest        0.6.22     2019-10-21 [1] CRAN (R 3.6.0)                    
    dplyr       * 0.8.3      2019-07-04 [1] CRAN (R 3.6.0)                    
+   DT          * 0.6        2019-05-09 [1] CRAN (R 3.6.0)                    
    ellipsis      0.2.0.9000 2019-08-03 [1] Github (r-lib/ellipsis@27e0846)   
    evaluate      0.14       2019-05-28 [1] CRAN (R 3.6.0)                    
    forcats     * 0.4.0      2019-02-17 [1] CRAN (R 3.6.0)                    
@@ -452,25 +751,35 @@ devtools::session_info()
    generics      0.0.2      2018-11-29 [1] CRAN (R 3.6.0)                    
    ggplot2     * 3.2.1      2019-08-10 [1] CRAN (R 3.6.0)                    
    glue          1.3.1.9000 2019-10-24 [1] Github (tidyverse/glue@71eeddf)   
+   gridExtra     2.3        2017-09-09 [1] CRAN (R 3.6.0)                    
    gtable        0.3.0      2019-03-25 [1] CRAN (R 3.6.0)                    
    haven         2.1.0      2019-02-19 [1] CRAN (R 3.6.0)                    
    here          0.1        2017-05-28 [1] CRAN (R 3.6.0)                    
+   highr         0.8        2019-03-20 [1] CRAN (R 3.6.0)                    
    hms           0.5.1      2019-08-23 [1] CRAN (R 3.6.0)                    
    htmltools     0.4.0      2019-10-04 [1] CRAN (R 3.6.0)                    
+   htmlwidgets   1.3        2018-09-30 [1] CRAN (R 3.6.0)                    
+   httpuv        1.5.2      2019-09-11 [1] CRAN (R 3.6.0)                    
    httr          1.4.1      2019-08-05 [1] CRAN (R 3.6.0)                    
    icon          0.1.0      2019-05-28 [1] Github (ropenscilabs/icon@a510f88)
+   inline        0.3.15     2018-05-18 [1] CRAN (R 3.6.0)                    
    jsonlite      1.6        2018-12-07 [1] CRAN (R 3.6.0)                    
    knitr         1.25       2019-09-18 [1] CRAN (R 3.6.0)                    
    labeling      0.3        2014-08-23 [1] CRAN (R 3.6.0)                    
+   later         1.0.0      2019-10-04 [1] CRAN (R 3.6.0)                    
    lattice       0.20-38    2018-11-04 [1] CRAN (R 3.6.0)                    
    lazyeval      0.2.2      2019-03-15 [1] CRAN (R 3.6.0)                    
    lifecycle     0.1.0      2019-08-01 [1] CRAN (R 3.6.0)                    
+   loo           2.1.0      2019-03-13 [1] CRAN (R 3.6.0)                    
    lubridate     1.7.4      2018-04-11 [1] CRAN (R 3.6.0)                    
    magrittr      1.5        2014-11-22 [1] CRAN (R 3.6.0)                    
+   matrixStats   0.55.0     2019-09-07 [1] CRAN (R 3.6.0)                    
    memoise       1.1.0      2017-04-21 [1] CRAN (R 3.6.0)                    
+   mime          0.7        2019-06-11 [1] CRAN (R 3.6.0)                    
    modelr        0.1.4      2019-02-18 [1] CRAN (R 3.6.0)                    
    munsell       0.5.0      2018-06-12 [1] CRAN (R 3.6.0)                    
    nlme          3.1-140    2019-05-12 [1] CRAN (R 3.6.0)                    
+   packrat       0.5.0      2018-11-14 [1] CRAN (R 3.6.0)                    
    pillar        1.4.2      2019-06-29 [1] CRAN (R 3.6.0)                    
    pkgbuild      1.0.3      2019-03-20 [1] CRAN (R 3.6.0)                    
    pkgconfig     2.0.3      2019-09-22 [1] CRAN (R 3.6.0)                    
@@ -478,6 +787,7 @@ devtools::session_info()
    png         * 0.1-7      2013-12-03 [1] CRAN (R 3.6.0)                    
    prettyunits   1.0.2      2015-07-13 [1] CRAN (R 3.6.0)                    
    processx      3.4.1      2019-07-18 [1] CRAN (R 3.6.0)                    
+   promises      1.1.0      2019-10-04 [1] CRAN (R 3.6.0)                    
    ps            1.3.0      2018-12-21 [1] CRAN (R 3.6.0)                    
    purrr       * 0.3.2      2019-03-15 [1] CRAN (R 3.6.0)                    
    quoter        0.1.0      2019-07-28 [1] local                             
@@ -489,11 +799,16 @@ devtools::session_info()
    rlang         0.4.0.9000 2019-08-03 [1] Github (r-lib/rlang@b0905db)      
    rmarkdown     1.16       2019-10-01 [1] CRAN (R 3.6.0)                    
    rprojroot     1.3-2      2018-01-03 [1] CRAN (R 3.6.0)                    
+   rstan         2.19.2     2019-07-09 [1] CRAN (R 3.6.0)                    
    rstudioapi    0.10       2019-03-19 [1] CRAN (R 3.6.0)                    
    rvest         0.3.4      2019-05-15 [1] CRAN (R 3.6.0)                    
    scales        1.0.0      2018-08-09 [1] CRAN (R 3.6.0)                    
+   selectr       0.4-1      2018-04-06 [1] CRAN (R 3.6.0)                    
+   servr         0.15       2019-08-07 [1] CRAN (R 3.6.0)                    
    sessioninfo   1.1.1      2018-11-05 [1] CRAN (R 3.6.0)                    
+   shiny         1.3.2      2019-04-22 [1] CRAN (R 3.6.0)                    
    skimr         1.0.6      2019-05-27 [1] CRAN (R 3.6.0)                    
+   StanHeaders   2.19.0     2019-09-07 [1] CRAN (R 3.6.0)                    
    stringi       1.4.3      2019-03-12 [1] CRAN (R 3.6.0)                    
    stringr     * 1.4.0      2019-02-10 [1] CRAN (R 3.6.0)                    
    testthat      2.2.1      2019-07-25 [1] CRAN (R 3.6.0)                    
@@ -507,6 +822,7 @@ devtools::session_info()
    xaringan      0.9        2019-03-06 [1] CRAN (R 3.6.0)                    
    xfun          0.10       2019-10-01 [1] CRAN (R 3.6.0)                    
    xml2          1.2.0      2018-01-24 [1] CRAN (R 3.6.0)                    
+   xtable        1.8-4      2019-04-21 [1] CRAN (R 3.6.0)                    
    yaml          2.2.0      2018-07-25 [1] CRAN (R 3.6.0)                    
    zeallot       0.1.0      2018-01-28 [1] CRAN (R 3.6.0)                    
   

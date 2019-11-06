@@ -1,4 +1,4 @@
-background-color: `r rmarkdown::metadata$color_theme`
+background-color: #abdff7
 background-size: cover
 class: hide-slide-number
 

@@ -7,7 +7,7 @@ class: hide-slide-number title-slide
 :::::::::: { .grid grid: 50% 50% / 1fr;} 
 ::: item center
 
-# <span style="text-shadow: 2px 2px 30px white;">Communicating with Data <br> via R Markdown</span>
+# <span style="text-shadow: 2px 2px 30px white;">`r rmarkdown::metadata$title`</span>
 
 <br><br>
 ## <span style="color:`r rmarkdown::metadata$color_theme`;text-shadow: 2px 2px 30px black;">`r knitr::asis_output(rmarkdown::metadata$subtitle)`</span>
