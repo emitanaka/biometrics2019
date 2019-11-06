@@ -30,10 +30,15 @@ knitr::opts_chunk$set(
 options(width = 1000)
 
 
+
 largefontthm <- theme_get() + theme(
     axis.title        = element_text(size = 18),
     axis.text         = element_text(size = 16),
-    strip.text        = element_text(size = 20))
+    strip.text        = element_text(size = 20),
+    plot.title = element_text(size = 22),
+    plot.subtitle = element_text(size = 18),
+    plot.caption = element_text(size = 14)
+    )
 
 invthm <- theme_minimal() +
   theme(

@@ -1,0 +1,94 @@
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(png)
+library(grid)
+
+thm_grey <- theme(
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm"),
+    plot.background = element_rect(fill = "grey60", colour = "black",
+                        linetype = 1, size = 4),
+    panel.background = element_rect(fill = NA, colour = NA),
+    panel.grid = element_blank(),
+    axis.text = element_text(color = "white"),
+    axis.title = element_text(color = "white"),
+    plot.caption = element_text(color = "white", face = "italic"),
+    plot.title = element_text(color = "white", face = "bold"),
+    plot.subtitle = element_text(color = "white", face = "italic"),
+    plot.tag = element_text(color = "white", size = 18),
+    axis.ticks = element_blank()
+  ) 
+```
+
+```{r data, cache = TRUE, echo = FALSE}
+df_aust <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-28/winemag-data-130k-v2.csv") %>% 
+  select(-X1) %>% 
+  unique() %>% 
+  filter(country %in% c("Australia")) %>% 
+  mutate(province = forcats::fct_reorder(province, points, median),
+         province = forcats::fct_recode(province, 
+                                        Other = "Australia Other",
+                                        NSW = "New South Wales",
+                                        SA = "South Australia",
+                                        WA = "Western Australia",
+                                        Tas = "Tasmania",
+                                        Vic = "Victoria",)) 
+```
+
+```{r state-wine, echo = FALSE, eval = FALSE}
+img_wine <- readPNG(here::here("images", "wine.png"))
+g_wine <- rasterGrob(img_wine, interpolate=TRUE)
+
+df_aust %>% 
+  ggplot(aes(province, points)) + 
+  geom_violin(fill = "#6b0000", color = "black") + 
+  annotate("text", x = c("Other", "NSW", "SA", "WA", "Tas", "Vic"), 
+           y = c(85, 87, 90, 90, 90, 90), 
+           color = "white",
+           label = c("Other", "NSW", "SA", "WA", "Tas", "Vic")) +
+  annotate("text", x = "WA", y = 88, label = "Mean Rating",
+           color = "white", size = 5, hjust = 0.8) +
+  geom_hline(yintercept = mean(df_aust$points), color = "white", linetype = 2) + 
+  thm_grey + 
+  theme(axis.text.x = element_blank()) + 
+  labs(x = "State", y = "Ratings (out of 100)",
+       caption = "Emi Tanaka @statsgen, #TidyTuesday, Data Source: Kaggle",
+       title = "Which state has the best tasting wines?",
+       subtitle = "Should we have the Biometrics conference at WA?", 
+       tag = "(A)") + 
+  annotation_custom(g_wine, xmin= .5, xmax=1.5, ymin=95, ymax=Inf)
+  
+```
+
+
+```{r variety-wine, echo = FALSE, eval = FALSE}
+img_grape <- readPNG(here::here("images", "grapes.png"))
+g_grape <- rasterGrob(img_grape, interpolate=TRUE)
+
+df_aust %>% 
+  filter(province == "SA") %>% 
+  group_by(variety) %>% 
+  summarise(rating = mean(points, na.rm = T),
+            avg_price = mean(price, na.rm = T),
+            n = n(), 
+            sd = sd(price, na.rm = T)) %>% 
+  filter(n > 20) %>% 
+  top_n(10, rating) %>% 
+  arrange(desc(rating)) %>% 
+  rownames_to_column("Rank") %>% 
+  mutate(Rank = fct_reorder(Rank, as.numeric(Rank), mean)) %>% 
+  ggplot(aes(Rank, avg_price)) + 
+  annotation_custom(g_grape, xmin=7, xmax=10, ymin=75, ymax=Inf) +
+  geom_col(fill = "#6b0000", color = "black") + 
+  scale_y_continuous(labels = scales::dollar_format()) + 
+  geom_errorbar(aes(ymin = avg_price - qt(0.975, n - 1) * sd / sqrt(n - 1), ymax = avg_price + qt(0.975, n - 1) * sd / sqrt(n - 1)), width = 0.2, position = position_dodge(0.9), color = "black") +
+    geom_text(aes(label = variety), angle = 40, hjust = 0.2, color = "white", size = 5, vjust = -1) +
+  thm_grey + 
+  labs(tag = "(B)", y = "Average price of a bottle",
+       caption = "*With at least 20 ratings, Emi Tanaka @statsgen, Data Source: Kaggle, #TidyTuesday",
+       title = "Average price of top 10 rated wines in SA*",
+       subtitle = "") + 
+  geom_point(y = 10, size = 12, fill = "white", color="black", pch=21) +
+  geom_text(aes(label = round(rating, 1)), y = 10, size = 4) 
+```
+

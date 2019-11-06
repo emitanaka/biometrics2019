@@ -45,6 +45,8 @@ output:
 ```
 ```{r titleslide, child="scripts/titleslide.Rmd"}
 ```
+```{r wine-graph, child="scripts/wine-graph.Rmd"}
+```
 
 ---
 
@@ -57,10 +59,7 @@ class: font_smaller
 
 ::: item 
 
-```{r aim, eval = FALSE}
-library(ggplot2)
-ggplot(mpg, aes(year, displ)) + 
-  geom_point()
+```{r state-wine, echo = FALSE, fig.width = 7.8}
 ```
 
 
@@ -68,7 +67,7 @@ ggplot(mpg, aes(year, displ)) +
 
 ::: item 
 
-```{r aim, echo = FALSE}
+```{r variety-wine, echo = FALSE, fig.width = 7.8}
 ```
 
 
