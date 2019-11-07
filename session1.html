@@ -122,7 +122,7 @@ class: font_smaller
 &lt;center&gt;
 &lt;br&gt;
 
-&lt;img src="images/ggplot1.png" width="80%"/&gt;
+&lt;img src="images/ggplot-basic-str.png" width="80%"/&gt;
 &lt;/center&gt;
 
 
@@ -168,7 +168,7 @@ skimr::skim(iris)
     Sepal.Width       0      150 150 3.06 0.44 2   2.8 3    3.3  4.4 ▁▂▅▇▃▂▁▁
 ```
 
-&lt;img src="images/iris.png" width = "650px" style = "position:absolute;top:20%;right:10%;"/&gt;
+&lt;img src="images/iris.png" width = "580px" style = "position:absolute;top:20%;right:10%;"/&gt;
 &lt;div class = "font_small" style = "position:absolute;top:340px;right:8%;width:650px;"&gt;Image source: &lt;a href="http://suruchifialoke.com/2016-10-13-machine-learning-tutorial-iris-classification/"&gt;suruchifialoke.com&lt;/a&gt;
 &lt;/div&gt;
 
@@ -179,7 +179,7 @@ skimr::skim(iris)
 
 
 &lt;center&gt;
-&lt;img src="images/ggplot5.png" width="80%"/&gt;
+&lt;img src="images/aes-mapping.png" width="80%"/&gt;
 &lt;/center&gt;
 
 * `Sepal.Length` is mapped to the `x` coordinate
@@ -210,7 +210,7 @@ Further specifications are provided by `position` adjustment, `show_legend` and 
 # Hidden argument names in ggplot
 
 &lt;center&gt;
-&lt;img src="images/ggplot4.png" width="95%"/&gt;
+&lt;img src="images/hidden-ggplot-argument-names.png" width="95%" style="padding-top:20px;"/&gt;
 &lt;/center&gt;
 
 --- 
@@ -334,8 +334,8 @@ class: hide-slide-number
 # (Most) geom objects
 
 
-<div id="htmlwidget-7def37fb15624139946d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7def37fb15624139946d">{"x":{"filter":"none","data":[["geom_abline","geom_bar","geom_bin2d","geom_blank","geom_boxplot","geom_contour","geom_count","geom_density","geom_density_2d","geom_dotplot","geom_errorbarh","geom_hex","geom_freqpoly","geom_jitter","geom_crossbar","geom_map","geom_path","geom_point","geom_polygon","geom_qq_line","geom_quantile","geom_ribbon","geom_rug","geom_segment","geom_smooth","geom_spoke","geom_label","geom_raster","geom_violin","CoordSf"],["Reference lines: horizontal, vertical, and diagonal","Bar charts","Heatmap of 2d bin counts","Draw nothing","A box and whiskers plot (in the style of Tukey)","2d contours of a 3d surface","Count overlapping points","Smoothed density estimates","Contours of a 2d density estimate","Dot plot","Horizontal error bars","Hexagonal heatmap of 2d bin counts","Histograms and frequency polygons","Jittered points","Vertical intervals: lines, crossbars &amp; errorbars","Polygons from a reference map","Connect observations","Points","Polygons","A quantile-quantile plot","Quantile regression","Ribbons and area plots","Rug plots in the margins","Line segments and curves","Smoothed conditional means","Line segments parameterised by location, direction and distance","Text","Rectangles","Violin plot","Visualise sf objects"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>geom<\/th>\n      <th>Description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7abd32f6eb7ad744bd87" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7abd32f6eb7ad744bd87">{"x":{"filter":"none","data":[["geom_abline","geom_bar","geom_bin2d","geom_blank","geom_boxplot","geom_contour","geom_count","geom_density","geom_density_2d","geom_dotplot","geom_errorbarh","geom_hex","geom_freqpoly","geom_jitter","geom_crossbar","geom_map","geom_path","geom_point","geom_polygon","geom_qq_line","geom_quantile","geom_ribbon","geom_rug","geom_segment","geom_smooth","geom_spoke","geom_label","geom_raster","geom_violin","CoordSf"],["Reference lines: horizontal, vertical, and diagonal","Bar charts","Heatmap of 2d bin counts","Draw nothing","A box and whiskers plot (in the style of Tukey)","2d contours of a 3d surface","Count overlapping points","Smoothed density estimates","Contours of a 2d density estimate","Dot plot","Horizontal error bars","Hexagonal heatmap of 2d bin counts","Histograms and frequency polygons","Jittered points","Vertical intervals: lines, crossbars &amp; errorbars","Polygons from a reference map","Connect observations","Points","Polygons","A quantile-quantile plot","Quantile regression","Ribbons and area plots","Rug plots in the margins","Line segments and curves","Smoothed conditional means","Line segments parameterised by location, direction and distance","Text","Rectangles","Violin plot","Visualise sf objects"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>geom<\/th>\n      <th>Description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -524,8 +524,8 @@ class: hide-slide-number
 # (Most) stat objects
 
 
-<div id="htmlwidget-c9b7120c3e1bec3bf581" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c9b7120c3e1bec3bf581">{"x":{"filter":"none","data":[["stat_count","stat_bin_2d","stat_boxplot","stat_contour","stat_sum","stat_density","stat_density_2d","stat_bin_hex","stat_bin","stat_qq_line","stat_quantile","stat_smooth","stat_spoke","stat_ydensity","stat_sf","stat_ecdf","stat_ellipse","stat_function","stat_identity","stat_sf_coordinates","stat_summary_bin","stat_summary_2d","stat_unique"],["Bar charts","Heatmap of 2d bin counts","A box and whiskers plot (in the style of Tukey)","2d contours of a 3d surface","Count overlapping points","Smoothed density estimates","Contours of a 2d density estimate","Hexagonal heatmap of 2d bin counts","Histograms and frequency polygons","A quantile-quantile plot","Quantile regression","Smoothed conditional means","Line segments parameterised by location, direction and distance","Violin plot","Visualise sf objects","Compute empirical cumulative distribution","Compute normal confidence ellipses","Compute function for each x value","Leave data as is","Extract coordinates from 'sf' objects","Summarise y values at unique/binned x","Bin and summarise in 2d (rectangle &amp; hexagons)","Remove duplicates"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>stat<\/th>\n      <th>Description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9223bd1467e49eda71cc" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9223bd1467e49eda71cc">{"x":{"filter":"none","data":[["stat_count","stat_bin_2d","stat_boxplot","stat_contour","stat_sum","stat_density","stat_density_2d","stat_bin_hex","stat_bin","stat_qq_line","stat_quantile","stat_smooth","stat_spoke","stat_ydensity","stat_sf","stat_ecdf","stat_ellipse","stat_function","stat_identity","stat_sf_coordinates","stat_summary_bin","stat_summary_2d","stat_unique"],["Bar charts","Heatmap of 2d bin counts","A box and whiskers plot (in the style of Tukey)","2d contours of a 3d surface","Count overlapping points","Smoothed density estimates","Contours of a 2d density estimate","Hexagonal heatmap of 2d bin counts","Histograms and frequency polygons","A quantile-quantile plot","Quantile regression","Smoothed conditional means","Line segments parameterised by location, direction and distance","Violin plot","Visualise sf objects","Compute empirical cumulative distribution","Compute normal confidence ellipses","Compute function for each x value","Leave data as is","Extract coordinates from 'sf' objects","Summarise y values at unique/binned x","Bin and summarise in 2d (rectangle &amp; hexagons)","Remove duplicates"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>stat<\/th>\n      <th>Description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 
 ---
@@ -533,7 +533,7 @@ class: hide-slide-number
 # Add multiple layers
 
 &lt;center&gt;
-&lt;img src="images/ggplot2.png" width="80%"/&gt;
+&lt;img src="images/ggplot-multiple-layers.png" width="68%"/&gt;
 &lt;/center&gt;
 
 
@@ -619,7 +619,7 @@ class: font_smaller
 # Layer-specific data and aesthestic mappings
 
 &lt;center&gt;
-&lt;img src="images/ggplot3.png" width="60%"/&gt;
+&lt;img src="images/ggplot-multiple-layers-data-mapping.png" width="60%"/&gt;
 &lt;/center&gt;
 
 ::: grid
@@ -653,14 +653,172 @@ ggplot(iris, aes(Species, Sepal.Length)) +
 
 ---
 
-# Activity
+background-color: #e5e5e5
+
+::: { .grid grid: 1fr / 3fr 1fr;}
+
+::: item 
+
+&lt;a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf"&gt;&lt;img src="images/ggplot-cheatsheet.png" width = "100%" style = "border: solid 3px black;"/&gt;&lt;/a&gt;
+
+:::
+
+::: item 
+
+HELP!
+
+* RStudio &gt; Help &gt; Cheatsheets
+* Google 
+* stackoverflow 
+* RStudio community
+* R4DS Slack
+* twitter with #rstats
+
+
+:::
+
+:::
 
 ---
 
+class: font_small
+
+# Recreate-the-plot Game
+
+
+```r
+colnames(iris)
+```
+
+```
+  [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"
+```
+&lt;p&gt;&lt;/p&gt;
+
+::: { .grid grid: 1fr / 1fr 2fr;}
+
+::: item 
+
+&lt;img src="figure/unnamed-chunk-18-1.svg" width="432" style="display: block; margin: auto;" /&gt;
+
+::: 
+
+::: item 
+
+What are the `mapping`s and `geom`s?
+
+* `x = ?`
+* `y = ?`
+* `color = ?`
+* `fill = ?`
+* `geom_???`
+* other ?
+
+
+::: 
+
+:::
+
+---
+
+class: font_smaller2
+
+# Diamonds data
+
+
+```r
+skimr::skim(diamonds)
+```
+
+```
+  Skim summary statistics
+   n obs: 53940 
+   n variables: 10 
+  
+  ── Variable type:factor ───────────────────────────────────────────────────────────────
+   variable missing complete     n n_unique                                    top_counts ordered
+    clarity       0    53940 53940        8  SI1: 13065, VS2: 12258, SI2: 9194, VS1: 8171    TRUE
+      color       0    53940 53940        7           G: 11292, E: 9797, F: 9542, H: 8304    TRUE
+        cut       0    53940 53940        5 Ide: 21551, Pre: 13791, Ver: 12082, Goo: 4906    TRUE
+  
+  ── Variable type:integer ──────────────────────────────────────────────────────────────
+   variable missing complete     n   mean      sd  p0 p25  p50     p75  p100     hist
+      price       0    53940 53940 3932.8 3989.44 326 950 2401 5324.25 18823 ▇▃▂▁▁▁▁▁
+  
+  ── Variable type:numeric ──────────────────────────────────────────────────────────────
+   variable missing complete     n  mean   sd   p0   p25   p50   p75  p100     hist
+      carat       0    53940 53940  0.8  0.47  0.2  0.4   0.7   1.04  5.01 ▇▅▁▁▁▁▁▁
+      depth       0    53940 53940 61.75 1.43 43   61    61.8  62.5  79    ▁▁▁▃▇▁▁▁
+      table       0    53940 53940 57.46 2.23 43   56    57    59    95    ▁▅▇▁▁▁▁▁
+          x       0    53940 53940  5.73 1.12  0    4.71  5.7   6.54 10.74 ▁▁▁▇▇▃▁▁
+          y       0    53940 53940  5.73 1.14  0    4.72  5.71  6.54 58.9  ▇▁▁▁▁▁▁▁
+          z       0    53940 53940  3.54 0.71  0    2.91  3.53  4.04 31.8  ▇▃▁▁▁▁▁▁
+```
+
+
+---
+
+class: font_smaller
+
 # Scales 
 
-* Scales control the mapping from data to aesthetics. 
-* Formally, each scale is a function from a region in data space to a region in aesthetic space.
+* Scales control the mapping from .blue[data] to .blue[aesthetics]. 
+
+&lt;center&gt;
+&lt;img src="images/ggplot-scale.png" width = "60%"/&gt;
+&lt;/center&gt;
+
+
+```r
+g &lt;- ggplot(iris, aes(Sepal.Width, Sepal.Length)) + geom_point()
+```
+
+
+::: grid 
+
+::: item 
+
+```r
+g + scale_y_continuous()
+```
+
+&lt;img src="figure/unnamed-chunk-21-1.svg" width="252" style="display: block; margin: auto;" /&gt;
+
+
+::: 
+
+::: item 
+
+
+```r
+g + scale_y_discrete()
+```
+
+&lt;img src="figure/unnamed-chunk-22-1.svg" width="252" style="display: block; margin: auto;" /&gt;
+
+::: 
+
+::: item 
+
+
+```r
+g + scale_x_log10()
+```
+
+&lt;img src="figure/unnamed-chunk-23-1.svg" width="252" style="display: block; margin: auto;" /&gt;
+
+
+::: 
+
+:::
+
+
+---
+
+# Guide: an axis or a legend 
+
+* The scale creates a .blue[guide] (an .blue[axis] or .blue[legend]).
+
 
 
 ---
@@ -727,104 +885,104 @@ devtools::session_info()
    date     2019-11-07                  
   
   ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   package     * version    date       lib source                            
-   anicon        0.1.0      2019-05-28 [1] Github (emitanaka/anicon@377aece) 
-   assertthat    0.2.1      2019-03-21 [1] CRAN (R 3.6.0)                    
-   backports     1.1.4      2019-04-10 [1] CRAN (R 3.6.0)                    
-   broom         0.5.2      2019-04-07 [1] CRAN (R 3.6.0)                    
-   callr         3.3.1      2019-07-18 [1] CRAN (R 3.6.0)                    
-   cellranger    1.1.0      2016-07-27 [1] CRAN (R 3.6.0)                    
-   cli           1.1.0      2019-03-19 [1] CRAN (R 3.6.0)                    
-   colorspace    1.4-1      2019-03-18 [1] CRAN (R 3.6.0)                    
-   crayon        1.3.4      2017-09-16 [1] CRAN (R 3.6.0)                    
-   crosstalk     1.0.0      2016-12-21 [1] CRAN (R 3.6.0)                    
-   curl          4.2        2019-09-24 [1] CRAN (R 3.6.0)                    
-   desc          1.2.0      2018-05-01 [1] CRAN (R 3.6.0)                    
-   devtools      2.0.2      2019-04-08 [1] CRAN (R 3.6.0)                    
-   digest        0.6.22     2019-10-21 [1] CRAN (R 3.6.0)                    
-   dplyr       * 0.8.3      2019-07-04 [1] CRAN (R 3.6.0)                    
-   DT          * 0.6        2019-05-09 [1] CRAN (R 3.6.0)                    
-   ellipsis      0.2.0.9000 2019-08-03 [1] Github (r-lib/ellipsis@27e0846)   
-   evaluate      0.14       2019-05-28 [1] CRAN (R 3.6.0)                    
-   forcats     * 0.4.0      2019-02-17 [1] CRAN (R 3.6.0)                    
-   fs            1.3.1      2019-05-06 [1] CRAN (R 3.6.0)                    
-   generics      0.0.2      2018-11-29 [1] CRAN (R 3.6.0)                    
-   ggplot2     * 3.2.1      2019-08-10 [1] CRAN (R 3.6.0)                    
-   glue          1.3.1.9000 2019-10-24 [1] Github (tidyverse/glue@71eeddf)   
-   gridExtra     2.3        2017-09-09 [1] CRAN (R 3.6.0)                    
-   gtable        0.3.0      2019-03-25 [1] CRAN (R 3.6.0)                    
-   haven         2.1.0      2019-02-19 [1] CRAN (R 3.6.0)                    
-   here          0.1        2017-05-28 [1] CRAN (R 3.6.0)                    
-   highr         0.8        2019-03-20 [1] CRAN (R 3.6.0)                    
-   hms           0.5.1      2019-08-23 [1] CRAN (R 3.6.0)                    
-   htmltools     0.4.0      2019-10-04 [1] CRAN (R 3.6.0)                    
-   htmlwidgets   1.3        2018-09-30 [1] CRAN (R 3.6.0)                    
-   httpuv        1.5.2      2019-09-11 [1] CRAN (R 3.6.0)                    
-   httr          1.4.1      2019-08-05 [1] CRAN (R 3.6.0)                    
-   icon          0.1.0      2019-05-28 [1] Github (ropenscilabs/icon@a510f88)
-   inline        0.3.15     2018-05-18 [1] CRAN (R 3.6.0)                    
-   jsonlite      1.6        2018-12-07 [1] CRAN (R 3.6.0)                    
-   knitr         1.25       2019-09-18 [1] CRAN (R 3.6.0)                    
-   labeling      0.3        2014-08-23 [1] CRAN (R 3.6.0)                    
-   later         1.0.0      2019-10-04 [1] CRAN (R 3.6.0)                    
-   lattice       0.20-38    2018-11-04 [1] CRAN (R 3.6.0)                    
-   lazyeval      0.2.2      2019-03-15 [1] CRAN (R 3.6.0)                    
-   lifecycle     0.1.0      2019-08-01 [1] CRAN (R 3.6.0)                    
-   loo           2.1.0      2019-03-13 [1] CRAN (R 3.6.0)                    
-   lubridate     1.7.4      2018-04-11 [1] CRAN (R 3.6.0)                    
-   magrittr      1.5        2014-11-22 [1] CRAN (R 3.6.0)                    
-   matrixStats   0.55.0     2019-09-07 [1] CRAN (R 3.6.0)                    
-   memoise       1.1.0      2017-04-21 [1] CRAN (R 3.6.0)                    
-   mime          0.7        2019-06-11 [1] CRAN (R 3.6.0)                    
-   modelr        0.1.4      2019-02-18 [1] CRAN (R 3.6.0)                    
-   munsell       0.5.0      2018-06-12 [1] CRAN (R 3.6.0)                    
-   nlme          3.1-140    2019-05-12 [1] CRAN (R 3.6.0)                    
-   packrat       0.5.0      2018-11-14 [1] CRAN (R 3.6.0)                    
-   pillar        1.4.2      2019-06-29 [1] CRAN (R 3.6.0)                    
-   pkgbuild      1.0.3      2019-03-20 [1] CRAN (R 3.6.0)                    
-   pkgconfig     2.0.3      2019-09-22 [1] CRAN (R 3.6.0)                    
-   pkgload       1.0.2      2018-10-29 [1] CRAN (R 3.6.0)                    
-   png         * 0.1-7      2013-12-03 [1] CRAN (R 3.6.0)                    
-   prettyunits   1.0.2      2015-07-13 [1] CRAN (R 3.6.0)                    
-   processx      3.4.1      2019-07-18 [1] CRAN (R 3.6.0)                    
-   promises      1.1.0      2019-10-04 [1] CRAN (R 3.6.0)                    
-   ps            1.3.0      2018-12-21 [1] CRAN (R 3.6.0)                    
-   purrr       * 0.3.2      2019-03-15 [1] CRAN (R 3.6.0)                    
-   quoter        0.1.0      2019-07-28 [1] local                             
-   R6            2.4.0      2019-02-14 [1] CRAN (R 3.6.0)                    
-   Rcpp          1.0.2      2019-07-25 [1] CRAN (R 3.6.0)                    
-   readr       * 1.3.1      2018-12-21 [1] CRAN (R 3.6.0)                    
-   readxl        1.3.1      2019-03-13 [1] CRAN (R 3.6.0)                    
-   remotes       2.0.4      2019-04-10 [1] CRAN (R 3.6.0)                    
-   rlang         0.4.0.9000 2019-08-03 [1] Github (r-lib/rlang@b0905db)      
-   rmarkdown     1.16       2019-10-01 [1] CRAN (R 3.6.0)                    
-   rprojroot     1.3-2      2018-01-03 [1] CRAN (R 3.6.0)                    
-   rstan         2.19.2     2019-07-09 [1] CRAN (R 3.6.0)                    
-   rstudioapi    0.10       2019-03-19 [1] CRAN (R 3.6.0)                    
-   rvest         0.3.4      2019-05-15 [1] CRAN (R 3.6.0)                    
-   scales        1.0.0      2018-08-09 [1] CRAN (R 3.6.0)                    
-   selectr       0.4-1      2018-04-06 [1] CRAN (R 3.6.0)                    
-   servr         0.15       2019-08-07 [1] CRAN (R 3.6.0)                    
-   sessioninfo   1.1.1      2018-11-05 [1] CRAN (R 3.6.0)                    
-   shiny         1.3.2      2019-04-22 [1] CRAN (R 3.6.0)                    
-   skimr         1.0.6      2019-05-27 [1] CRAN (R 3.6.0)                    
-   StanHeaders   2.19.0     2019-09-07 [1] CRAN (R 3.6.0)                    
-   stringi       1.4.3      2019-03-12 [1] CRAN (R 3.6.0)                    
-   stringr     * 1.4.0      2019-02-10 [1] CRAN (R 3.6.0)                    
-   testthat      2.2.1      2019-07-25 [1] CRAN (R 3.6.0)                    
-   tibble      * 2.1.3      2019-06-06 [1] CRAN (R 3.6.0)                    
-   tidyr       * 1.0.0      2019-09-11 [1] CRAN (R 3.6.0)                    
-   tidyselect    0.2.5      2018-10-11 [1] CRAN (R 3.6.0)                    
-   tidyverse   * 1.2.1      2017-11-14 [1] CRAN (R 3.6.0)                    
-   usethis       1.5.0      2019-04-07 [1] CRAN (R 3.6.0)                    
-   vctrs         0.2.0.9000 2019-08-03 [1] Github (r-lib/vctrs@11c34ae)      
-   withr         2.1.2      2018-03-15 [1] CRAN (R 3.6.0)                    
-   xaringan      0.9        2019-03-06 [1] CRAN (R 3.6.0)                    
-   xfun          0.10       2019-10-01 [1] CRAN (R 3.6.0)                    
-   xml2          1.2.0      2018-01-24 [1] CRAN (R 3.6.0)                    
-   xtable        1.8-4      2019-04-21 [1] CRAN (R 3.6.0)                    
-   yaml          2.2.0      2018-07-25 [1] CRAN (R 3.6.0)                    
-   zeallot       0.1.0      2018-01-28 [1] CRAN (R 3.6.0)                    
+   package      * version    date       lib source                            
+   anicon         0.1.0      2019-05-28 [1] Github (emitanaka/anicon@377aece) 
+   assertthat     0.2.1      2019-03-21 [1] CRAN (R 3.6.0)                    
+   backports      1.1.4      2019-04-10 [1] CRAN (R 3.6.0)                    
+   broom          0.5.2      2019-04-07 [1] CRAN (R 3.6.0)                    
+   callr          3.3.1      2019-07-18 [1] CRAN (R 3.6.0)                    
+   cellranger     1.1.0      2016-07-27 [1] CRAN (R 3.6.0)                    
+   cli            1.1.0      2019-03-19 [1] CRAN (R 3.6.0)                    
+   clisymbols     1.2.0      2017-05-21 [1] CRAN (R 3.6.0)                    
+   colorspace     1.4-1      2019-03-18 [1] CRAN (R 3.6.0)                    
+   crayon         1.3.4      2017-09-16 [1] CRAN (R 3.6.0)                    
+   crosstalk      1.0.0      2016-12-21 [1] CRAN (R 3.6.0)                    
+   desc           1.2.0      2018-05-01 [1] CRAN (R 3.6.0)                    
+   devtools       2.0.2      2019-04-08 [1] CRAN (R 3.6.0)                    
+   digest         0.6.22     2019-10-21 [1] CRAN (R 3.6.0)                    
+   dplyr        * 0.8.3      2019-07-04 [1] CRAN (R 3.6.0)                    
+   DT             0.6        2019-05-09 [1] CRAN (R 3.6.0)                    
+   ellipsis       0.2.0.9000 2019-08-03 [1] Github (r-lib/ellipsis@27e0846)   
+   evaluate       0.14       2019-05-28 [1] CRAN (R 3.6.0)                    
+   forcats      * 0.4.0      2019-02-17 [1] CRAN (R 3.6.0)                    
+   fs             1.3.1      2019-05-06 [1] CRAN (R 3.6.0)                    
+   generics       0.0.2      2018-11-29 [1] CRAN (R 3.6.0)                    
+   ggplot2      * 3.2.1      2019-08-10 [1] CRAN (R 3.6.0)                    
+   glue           1.3.1.9000 2019-10-24 [1] Github (tidyverse/glue@71eeddf)   
+   gtable         0.3.0      2019-03-25 [1] CRAN (R 3.6.0)                    
+   haven          2.1.0      2019-02-19 [1] CRAN (R 3.6.0)                    
+   here           0.1        2017-05-28 [1] CRAN (R 3.6.0)                    
+   hms            0.5.1      2019-08-23 [1] CRAN (R 3.6.0)                    
+   htmltools      0.4.0      2019-10-04 [1] CRAN (R 3.6.0)                    
+   htmlwidgets    1.3        2018-09-30 [1] CRAN (R 3.6.0)                    
+   httpuv         1.5.2      2019-09-11 [1] CRAN (R 3.6.0)                    
+   httr           1.4.1      2019-08-05 [1] CRAN (R 3.6.0)                    
+   icon           0.1.0      2019-05-28 [1] Github (ropenscilabs/icon@a510f88)
+   janeaustenr    0.1.5      2017-06-10 [1] CRAN (R 3.6.0)                    
+   jsonlite       1.6        2018-12-07 [1] CRAN (R 3.6.0)                    
+   knitr          1.25       2019-09-18 [1] CRAN (R 3.6.0)                    
+   labeling       0.3        2014-08-23 [1] CRAN (R 3.6.0)                    
+   later          1.0.0      2019-10-04 [1] CRAN (R 3.6.0)                    
+   lattice        0.20-38    2018-11-04 [1] CRAN (R 3.6.0)                    
+   lazyeval       0.2.2      2019-03-15 [1] CRAN (R 3.6.0)                    
+   lifecycle      0.1.0      2019-08-01 [1] CRAN (R 3.6.0)                    
+   lubridate      1.7.4      2018-04-11 [1] CRAN (R 3.6.0)                    
+   magrittr       1.5        2014-11-22 [1] CRAN (R 3.6.0)                    
+   Matrix         1.2-17     2019-03-22 [1] CRAN (R 3.6.0)                    
+   memoise        1.1.0      2017-04-21 [1] CRAN (R 3.6.0)                    
+   mime           0.7        2019-06-11 [1] CRAN (R 3.6.0)                    
+   modelr         0.1.4      2019-02-18 [1] CRAN (R 3.6.0)                    
+   munsell        0.5.0      2018-06-12 [1] CRAN (R 3.6.0)                    
+   nlme           3.1-140    2019-05-12 [1] CRAN (R 3.6.0)                    
+   packrat        0.5.0      2018-11-14 [1] CRAN (R 3.6.0)                    
+   pillar         1.4.2      2019-06-29 [1] CRAN (R 3.6.0)                    
+   pkgbuild       1.0.3      2019-03-20 [1] CRAN (R 3.6.0)                    
+   pkgconfig      2.0.3      2019-09-22 [1] CRAN (R 3.6.0)                    
+   pkgload        1.0.2      2018-10-29 [1] CRAN (R 3.6.0)                    
+   png          * 0.1-7      2013-12-03 [1] CRAN (R 3.6.0)                    
+   prettyunits    1.0.2      2015-07-13 [1] CRAN (R 3.6.0)                    
+   processx       3.4.1      2019-07-18 [1] CRAN (R 3.6.0)                    
+   promises       1.1.0      2019-10-04 [1] CRAN (R 3.6.0)                    
+   ps             1.3.0      2018-12-21 [1] CRAN (R 3.6.0)                    
+   purrr        * 0.3.2      2019-03-15 [1] CRAN (R 3.6.0)                    
+   quoter         0.1.0      2019-07-28 [1] local                             
+   R6             2.4.0      2019-02-14 [1] CRAN (R 3.6.0)                    
+   RColorBrewer   1.1-2      2014-12-07 [1] CRAN (R 3.6.0)                    
+   Rcpp           1.0.2      2019-07-25 [1] CRAN (R 3.6.0)                    
+   readr        * 1.3.1      2018-12-21 [1] CRAN (R 3.6.0)                    
+   readxl         1.3.1      2019-03-13 [1] CRAN (R 3.6.0)                    
+   remotes        2.0.4      2019-04-10 [1] CRAN (R 3.6.0)                    
+   rlang          0.4.0.9000 2019-08-03 [1] Github (r-lib/rlang@b0905db)      
+   rmarkdown      1.16       2019-10-01 [1] CRAN (R 3.6.0)                    
+   rprojroot      1.3-2      2018-01-03 [1] CRAN (R 3.6.0)                    
+   rstudioapi     0.10       2019-03-19 [1] CRAN (R 3.6.0)                    
+   rvest          0.3.4      2019-05-15 [1] CRAN (R 3.6.0)                    
+   scales         1.0.0      2018-08-09 [1] CRAN (R 3.6.0)                    
+   servr          0.15       2019-08-07 [1] CRAN (R 3.6.0)                    
+   sessioninfo    1.1.1      2018-11-05 [1] CRAN (R 3.6.0)                    
+   shiny          1.3.2      2019-04-22 [1] CRAN (R 3.6.0)                    
+   skimr          1.0.6      2019-05-27 [1] CRAN (R 3.6.0)                    
+   SnowballC      0.6.0      2019-01-15 [1] CRAN (R 3.6.0)                    
+   statquotes     0.2.2      2017-08-29 [1] CRAN (R 3.6.0)                    
+   stringi        1.4.3      2019-03-12 [1] CRAN (R 3.6.0)                    
+   stringr      * 1.4.0      2019-02-10 [1] CRAN (R 3.6.0)                    
+   testthat       2.2.1      2019-07-25 [1] CRAN (R 3.6.0)                    
+   tibble       * 2.1.3      2019-06-06 [1] CRAN (R 3.6.0)                    
+   tidyr        * 1.0.0      2019-09-11 [1] CRAN (R 3.6.0)                    
+   tidyselect     0.2.5      2018-10-11 [1] CRAN (R 3.6.0)                    
+   tidytext       0.2.2      2019-07-29 [1] CRAN (R 3.6.0)                    
+   tidyverse    * 1.2.1      2017-11-14 [1] CRAN (R 3.6.0)                    
+   tokenizers     0.2.1      2018-03-29 [1] CRAN (R 3.6.0)                    
+   usethis        1.5.0      2019-04-07 [1] CRAN (R 3.6.0)                    
+   vctrs          0.2.0.9000 2019-08-03 [1] Github (r-lib/vctrs@11c34ae)      
+   withr          2.1.2      2018-03-15 [1] CRAN (R 3.6.0)                    
+   wordcloud      2.6        2018-08-24 [1] CRAN (R 3.6.0)                    
+   xaringan       0.9        2019-03-06 [1] CRAN (R 3.6.0)                    
+   xfun           0.10       2019-10-01 [1] CRAN (R 3.6.0)                    
+   xml2           1.2.0      2018-01-24 [1] CRAN (R 3.6.0)                    
+   xtable         1.8-4      2019-04-21 [1] CRAN (R 3.6.0)                    
+   yaml           2.2.0      2018-07-25 [1] CRAN (R 3.6.0)                    
+   zeallot        0.1.0      2018-01-28 [1] CRAN (R 3.6.0)                    
   
   [1] /Library/Frameworks/R.framework/Versions/3.6/Resources/library
 ```

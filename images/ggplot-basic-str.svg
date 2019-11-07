@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" viewBox="-1187 -711.5 1450.144 289" width="1450.144" height="289">
+  <defs>
+    <font-face font-family="Fira Code" font-size="48" panose-1="2 11 5 9 5 0 0 2 0 4" units-per-em="1000" underline-position="-75" underline-thickness="50" slope="0" x-height="527" cap-height="689" ascent="935.0019" descent="-265.00054" font-weight="400">
+      <font-face-src>
+        <font-face-name name="FiraCode-Regular"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Fira Code" font-size="48" panose-1="2 11 8 9 5 0 0 2 0 4" units-per-em="1000" underline-position="-75" underline-thickness="50" slope="0" x-height="531" cap-height="693" ascent="935.0019" descent="-265.00054" font-weight="700">
+      <font-face-src>
+        <font-face-name name="FiraCode-Bold"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.12 
+    <dc:date>2019-11-07 10:10:25 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_1" fill-opacity="1" fill="none" stroke="none" stroke-dasharray="none" stroke-opacity="1">
+    <title>Canvas 1</title>
+    <g id="Canvas_1: Layer 1">
+      <title>Layer 1</title>
+      <g id="Group_8">
+        <g id="Graphic_3">
+          <text transform="translate(-1182 -706.5)" fill="black">
+            <tspan font-family="Fira Code" font-size="48" font-weight="400" fill="black" x="0" y="92">ggplot(</tspan>
+            <tspan font-family="Fira Code" font-size="48" font-weight="700" fill="#011893" y="92">data</tspan>
+            <tspan font-family="Fira Code" font-size="48" font-weight="400" fill="black" y="92"> = &lt;data&gt;</tspan>
+            <tspan font-family="Fira Code" font-size="48" font-weight="400" fill="black" y="92">, </tspan>
+            <tspan font-family="Fira Code" font-size="48" font-weight="700" fill="#011893" y="92">mapping</tspan>
+            <tspan font-family="Fira Code" font-size="48" font-weight="400" fill="black" y="92"> = </tspan>
+            <tspan font-family="Fira Code" font-size="48" font-weight="700" fill="#011893" y="92">aes</tspan>
+            <tspan font-family="Fira Code" font-size="48" font-weight="400" fill="black" y="92">(&lt;mappings&gt;)) +</tspan>
+            <tspan font-family="Fira Code" font-size="48" font-weight="400" fill="black" x="0" y="179">    &lt;layer&gt;()</tspan>
+          </text>
+        </g>
+        <g id="Graphic_5">
+          <rect x="-785" y="-657" width="181" height="56" fill="#ff914d" fill-opacity=".5"/>
+          <rect x="-785" y="-657" width="181" height="56" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_6">
+          <rect x="-147" y="-657" width="291" height="56" fill="#ff914d" fill-opacity=".5"/>
+          <rect x="-147" y="-657" width="291" height="56" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_7">
+          <rect x="-1068" y="-571" width="203" height="56" fill="#ff914d" fill-opacity=".5"/>
+          <rect x="-1068" y="-571" width="203" height="56" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

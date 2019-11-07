@@ -37,7 +37,9 @@ largefontthm <- theme_get() + theme(
     strip.text        = element_text(size = 20),
     plot.title = element_text(size = 22),
     plot.subtitle = element_text(size = 18),
-    plot.caption = element_text(size = 14)
+    plot.caption = element_text(size = 14),
+    legend.text = element_text(size = 14),
+    legend.title = element_text(size = 16)
     )
 
 invthm <- theme_minimal() +

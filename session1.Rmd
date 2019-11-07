@@ -86,7 +86,7 @@ class: font_smaller
 <center>
 <br>
 
-<img src="images/ggplot1.png" width="80%"/>
+<img src="images/ggplot-basic-str.png" width="80%"/>
 </center>
 
 
@@ -114,7 +114,7 @@ class: font_smaller
 skimr::skim(iris)
 ```
 
-<img src="images/iris.png" width = "650px" style = "position:absolute;top:20%;right:10%;"/>
+<img src="images/iris.png" width = "580px" style = "position:absolute;top:20%;right:10%;"/>
 <div class = "font_small" style = "position:absolute;top:340px;right:8%;width:650px;">Image source: <a href="http://suruchifialoke.com/2016-10-13-machine-learning-tutorial-iris-classification/">suruchifialoke.com</a>
 </div>
 
@@ -125,7 +125,7 @@ skimr::skim(iris)
 
 
 <center>
-<img src="images/ggplot5.png" width="80%"/>
+<img src="images/aes-mapping.png" width="80%"/>
 </center>
 
 * `Sepal.Length` is mapped to the `x` coordinate
@@ -156,7 +156,7 @@ Further specifications are provided by `position` adjustment, `show_legend` and 
 # Hidden argument names in ggplot
 
 <center>
-<img src="images/ggplot4.png" width="95%"/>
+<img src="images/hidden-ggplot-argument-names.png" width="95%" style="padding-top:20px;"/>
 </center>
 
 --- 
@@ -425,7 +425,7 @@ stats$matches[, c("Entry", "Title")]  %>%
 # Add multiple layers
 
 <center>
-<img src="images/ggplot2.png" width="80%"/>
+<img src="images/ggplot-multiple-layers.png" width="68%"/>
 </center>
 
 
@@ -511,7 +511,7 @@ class: font_smaller
 # Layer-specific data and aesthestic mappings
 
 <center>
-<img src="images/ggplot3.png" width="60%"/>
+<img src="images/ggplot-multiple-layers-data-mapping.png" width="60%"/>
 </center>
 
 ::: grid
@@ -545,14 +545,135 @@ ggplot(iris, aes(Species, Sepal.Length)) +
 
 ---
 
-# Activity
+background-color: #e5e5e5
+
+::: { .grid grid: 1fr / 3fr 1fr;}
+
+::: item 
+
+<a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf"><img src="images/ggplot-cheatsheet.png" width = "100%" style = "border: solid 3px black;"/></a>
+
+:::
+
+::: item 
+
+HELP!
+
+* RStudio > Help > Cheatsheets
+* Google 
+* stackoverflow 
+* RStudio community
+* R4DS Slack
+* twitter with #rstats
+
+
+:::
+
+:::
 
 ---
 
+class: font_small
+
+# Recreate-the-plot Game
+
+```{r}
+colnames(iris)
+```
+<p></p>
+
+::: { .grid grid: 1fr / 1fr 2fr;}
+
+::: item 
+
+```{r, echo = FALSE, fig.width = 6, fig.height = 5}
+ggplot(iris, aes(Species, Sepal.Width)) + 
+  geom_violin(aes(fill = Species)) + 
+  geom_boxplot(width = 0.1) 
+```
+
+::: 
+
+::: item 
+
+What are the `mapping`s and `geom`s?
+
+* `x = ?`
+* `y = ?`
+* `color = ?`
+* `fill = ?`
+* `geom_???`
+* other ?
+
+
+::: 
+
+:::
+
+---
+
+class: font_smaller2
+
+# Diamonds data
+
+```{r}
+skimr::skim(diamonds)
+```
+
+
+---
+
+class: font_smaller
+
 # Scales 
 
-* Scales control the mapping from data to aesthetics. 
-* Formally, each scale is a function from a region in data space to a region in aesthetic space.
+* Scales control the mapping from .blue[data] to .blue[aesthetics]. 
+
+<center>
+<img src="images/ggplot-scale.png" width = "60%"/>
+</center>
+
+```{r}
+g <- ggplot(iris, aes(Sepal.Width, Sepal.Length)) + geom_point()
+```
+
+
+::: grid 
+
+::: item 
+```{r, fig.height = 3.5, fig.width = 3.5}
+g + scale_y_continuous()
+```
+
+
+::: 
+
+::: item 
+
+```{r, fig.height = 3.5, fig.width = 3.5}
+g + scale_y_discrete()
+```
+
+::: 
+
+::: item 
+
+```{r, fig.height = 3.5, fig.width = 3.5}
+g + scale_x_log10()
+```
+
+
+::: 
+
+:::
+
+
+---
+
+# Guide: an axis or a legend 
+
+* The scale creates a .blue[guide] (an .blue[axis] or .blue[legend]).
+
 
 
 ---
