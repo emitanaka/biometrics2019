@@ -52,7 +52,7 @@ output:
 
 class: font_smaller
 
-# Aim: draw beautiful plots like this using (layered) grammar of graphics
+# `r emo::ji("target")` Aim: draw beautiful plots like this using (layered) grammar of graphics
 
 
 ::: grid 
@@ -81,7 +81,7 @@ class: font_smaller
 
 ---
 
-# Basic structure of ggplot: 3 keys components
+#  Basic structure of ggplot: 3 `r emo::ji("key")` components
 
 <center>
 <br>
@@ -106,7 +106,7 @@ Reference: Wickham (2015) ggplot2 Elegant Graphics for Data Analysis
 
 class: font_smaller
 
-# Data:  .blue[Classic iris dataset (for ggplot demo)]
+# `r emo::ji("card_file_box")` Data:  .blue[Classic iris dataset]
 
 `iris` is a built-in dataset in R - type `iris` to your console and press <kbd>Enter</kbd>. 
 
@@ -114,8 +114,8 @@ class: font_smaller
 skimr::skim(iris)
 ```
 
-<img src="images/iris.png" width = "580px" style = "position:absolute;top:20%;right:10%;"/>
-<div class = "font_small" style = "position:absolute;top:340px;right:8%;width:650px;">Image source: <a href="http://suruchifialoke.com/2016-10-13-machine-learning-tutorial-iris-classification/">suruchifialoke.com</a>
+<img src="images/iris.png" width = "530px" style = "position:absolute;top:20%;right:10%;"/>
+<div class = "font_small" style = "position:absolute;top:300px;right:8%;width:530px;">Image source: <a href="http://suruchifialoke.com/2016-10-13-machine-learning-tutorial-iris-classification/">suruchifialoke.com</a>
 </div>
 
 ---
@@ -259,17 +259,23 @@ p + geom_point()
 name: geom
 class: hide-slide-number
 
-# (Most) geom objects
+# `geom`
 
 
 ```{r geom, echo=FALSE}
 geoms <- help.search("^geom_", package = "ggplot2")
-geoms$matches[, 1:2] %>% 
-  distinct() %>% 
-  filter(Topic!="ggsf") %>% 
+geoms$matches %>% 
+  select(Entry, Title) %>% 
+  group_by(Title) %>% 
+  mutate(col = paste0("C", 1:n())) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = col, values_from = Entry) %>% 
+  mutate(geom = paste(C1, C2, C3, C4, sep = ", "),
+         geom = gsub(", NA", "", geom)) %>% 
+  select(geom, Title) %>% 
   DT::datatable(colnames = c("geom", "Description"),
                 rownames = FALSE,
-                options = list(dom = 'tp'))
+                options = list(dom = 'tp', ordering=F))
 ```
 
 ---
@@ -405,17 +411,23 @@ p + geom_histogram(aes(y = ..density.. ))
 name: stat
 class: hide-slide-number
 
-# (Most) stat objects
+# `stat`
 
 
 ```{r stat, echo=FALSE}
 stats <- help.search("stat_", package = "ggplot2")
-stats$matches[, c("Entry", "Title")]  %>% 
-  distinct(Title, .keep_all = TRUE) %>%
-  filter(Entry!="update_stat_defaults") %>% 
+stats$matches %>% 
+  select(Entry, Title) %>% 
+  group_by(Title) %>% 
+  mutate(col = paste0("C", 1:n())) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = col, values_from = Entry) %>% 
+  mutate(stats = paste(C1, C2, C3, sep = ", "),
+         stats = gsub(", NA", "", stats)) %>% 
+  select(stats, Title) %>% 
   DT::datatable(colnames = c("stat", "Description"),
                 rownames = FALSE,
-                options = list(dom = 'tp'))
+                options = list(dom = 'tp', ordering=F))
 
 ```
 
@@ -619,6 +631,14 @@ class: font_smaller2
 ```{r}
 skimr::skim(diamonds)
 ```
+<p></p>
+
+::: {.pos font-size:80pt; top: 14%; right: 14%;}
+
+`r emo::ji("gem")`
+
+:::
+
 
 
 ---
@@ -634,15 +654,16 @@ class: font_smaller
 </center>
 
 ```{r}
-g <- ggplot(iris, aes(Sepal.Width, Sepal.Length)) + geom_point()
+g <- ggplot(diamonds, aes(carat, price) ) + geom_hex()
 ```
 
 
 ::: grid 
 
 ::: item 
-```{r, fig.height = 3.5, fig.width = 3.5}
-g + scale_y_continuous()
+```{r diamond1, fig.height = 3.5, fig.width = 4}
+g + scale_y_continuous() +
+  scale_x_continuous()
 ```
 
 
@@ -650,22 +671,52 @@ g + scale_y_continuous()
 
 ::: item 
 
-```{r, fig.height = 3.5, fig.width = 3.5}
-g + scale_y_discrete()
+```{r diamond2, fig.height = 3.5, fig.width = 4}
+g + scale_x_reverse() +
+  scale_y_continuous(trans="log10")
 ```
 
 ::: 
 
 ::: item 
 
-```{r, fig.height = 3.5, fig.width = 3.5}
-g + scale_x_log10()
+```{r diamond3, fig.height = 3.5, fig.width = 4}
+g + scale_y_log10() + 
+  scale_x_sqrt()
 ```
 
 
 ::: 
 
 :::
+
+---
+
+name: scale
+class: hide-slide-number
+
+# `scale`
+
+
+```{r scale, echo=FALSE}
+scales <- help.search("^scale_", package = "ggplot2")
+scales$matches %>% 
+  select(Entry, Title) %>% 
+  group_by(Title) %>% 
+  mutate(col = paste0("C", 1:n())) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = col, values_from = Entry) %>% 
+  mutate(scales = paste(C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, sep = ", "),
+         scales = gsub(", NA", "", scales)) %>% 
+  select(scales, Title) %>% 
+  DT::datatable(colnames = c("scales", "Description"),
+                rownames = FALSE,
+                options = list(dom = 'tp', ordering=F, pageLength = 4,
+                               autoWidth = TRUE, columnDefs = list(list(width = '400px', targets = c(0)))),
+                )
+
+```
+
 
 
 ---
@@ -674,6 +725,9 @@ g + scale_x_log10()
 
 * The scale creates a .blue[guide] (an .blue[axis] or .blue[legend]).
 
+<center>
+<img src="images/guides-dissection.png" width = "60%"/>
+</center>
 
 
 ---
