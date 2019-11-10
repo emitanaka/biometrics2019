@@ -665,7 +665,8 @@ g <- ggplot(diamonds, aes(carat, price) ) + geom_hex()
 g + scale_y_continuous() +
   scale_x_continuous()
 ```
-
+```{r diamond1, fig.height = 3.5, fig.width = 4, fig.show='hide', dev = 'pdf', echo = FALSE}
+```
 
 ::: 
 
@@ -723,12 +724,120 @@ scales$matches %>%
 
 # Guide: an axis or a legend 
 
-* The scale creates a .blue[guide] (an .blue[axis] or .blue[legend]).
+* The scale creates a .blue[guide]: an .blue[axis] or .blue[legend].
+* So to modify these you generally use .blue[`scale_*`] or other handy functions (`guides`, `labs`, `xlab`, `ylab` and so on).
 
 <center>
 <img src="images/guides-dissection.png" width = "60%"/>
 </center>
 
+
+---
+
+# Modify axis 
+
+
+
+```{r, fig.height = 4, fig.width = 6}
+g + 
+  scale_y_continuous(name = "Price", 
+                     breaks = c(0, 10000),
+                     labels = c("0", "More\n than\n 10K")) + 
+  geom_hline(yintercept = 10000, color = "red", size = 2)
+```
+
+---
+
+# Nicer formatting functions in `scales` `r emo::ji("package")`
+
+```{r, fig.height = 4, fig.width = 6}
+g + 
+  scale_y_continuous(
+    label = scales::dollar_format()  #<<
+  )
+```
+
+---
+
+# Modifying legend
+
+
+```{r, fig.height = 4, fig.width = 6}
+g + 
+  scale_fill_continuous(
+    breaks = c(0, 10, 100, 1000, 4000),
+    trans = "log10"
+  )
+```
+
+---
+
+# Removing legend 
+
+```{r, fig.height = 4, fig.width = 6}
+g + 
+  scale_fill_continuous(
+    guide = "none"
+  )
+```
+
+---
+
+# Alternative control of guides
+
+```{r, fig.height = 4, fig.height = 4}
+g + 
+  ylab("Price") + # Changes the y axis label
+  labs(x = "Carat", # Changes the x axis label
+       fill = "Count") # Changes the legend name 
+```
+
+```{r, eval = FALSE}
+g + guides(fill = "none") # remove the legend
+```
+
+---
+
+class: transition middle animated slideInLeft
+
+# Theme
+
+---
+
+# How to change the look?
+
+::: grid 
+
+::: item 
+
+```{r state-wine, echo = FALSE, fig.width = 7.8}
+```
+
+
+:::
+
+::: item 
+
+```{r variety-wine, echo = FALSE, fig.width = 7.8}
+```
+
+
+:::
+
+
+:::
+
+
+---
+
+class: font_smaller
+
+# `theme`: modify texts
+
+
+<center>
+<img src="images/ggplot-theme-text-annotation.png" width = "80%"/>
+</center>
 
 ---
 

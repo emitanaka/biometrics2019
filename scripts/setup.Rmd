@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
   fig.path   ='figure/',
   fig.align  ='center',
   fig.show   ='hold',
-  fig.retina = 2
+  fig.retina = 3
 )
 # options(crayon.enabled = TRUE)
 # this is necessary so that the code doesn't wrap

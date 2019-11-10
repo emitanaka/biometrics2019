@@ -148,7 +148,7 @@ p {
   padding-left: 10px;
 }
 
-.remark-slide-content > h1:first-of-type {
+.remark-slide-content:not(.transition)  > h1:first-of-type{
   background-color: #abdff7;
   color: #0081c7;
   border-bottom: dashed 5px #0081c7;
@@ -189,4 +189,18 @@ ul {
     margin-inline-start: 30px;
     margin-inline-end: 10px;
     padding-inline-start: 40px;
+}
+
+.transition {
+  background-color: #abdff7;
+  color: #0081c7;
+  text-align: center;
+}
+
+.transition > h1 {
+  font-size: 80pt!important;
+}
+
+.transition .remark-slide-number { 
+  visibility: hidden; 
 }
