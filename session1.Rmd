@@ -1,11 +1,12 @@
 ---
 title: "Tidyverse Workshop"
-subtitle: "Data visualisation with `ggplot2` <img src='images/ggplot2hex.png' height = '50px'>"
+subtitle: "Data visualisation with `ggplot2` <img src='images/ggplot2.png' height = '50px'>"
 author: "Emi Tanaka"
 email: "dr.emi.tanaka@gmail.com"
 date: "1st Dec 2019 @ Biometrics by the Botanic Gardens | Adelaide, Australia"
-length: "XX minutes"
+length: "90 minutes"
 color_theme: "yellow"
+pdflink: "session1.pdf"
 titleslide_bgimg: "images/bg1.jpg"
 output:
   xaringan::moon_reader:

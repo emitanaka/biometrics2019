@@ -1,0 +1,534 @@
+---
+title: "R Markdown Workshop"
+subtitle: "Pretty Presentations with `xaringan` <img src='images/xaringan.png' height = '50px'>"
+author: "Emi Tanaka"
+email: "dr.emi.tanaka@gmail.com"
+date: "1st Dec 2019 @ Biometrics by the Botanic Gardens | Adelaide, Australia"
+length: "40 minutes"
+color_theme: "yellow"
+pdflink: "session7.pdf"
+titleslide_bgimg: "images/bg1.jpg"
+output:
+  xaringan::moon_reader:
+    css:
+      - ninjutsu 
+      - "assets/animate.css"
+      - "assets/cssgrid.css"
+      - "assets/custom.css"
+      - "assets/fira-code.css"
+      - "assets/boxes.css"
+    self_contained: false 
+    seal: false 
+    chakra: 'libs/remark-latest.min.js'
+    beforeInit: "assets/custom.js"
+    lib_dir: libs
+    includes:
+      in_header: "assets/custom.html"
+      # before_body: 
+      after_body: "assets/remarkjs_extended.html"
+      # includes
+    mathjax: "assets/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    nature:
+      highlightStyle: googlecode
+      highlightLanguage: r 
+      highlightLines: true
+      highlightSpans: false 
+      countIncrementalSlides: false
+      slideNumberFormat: '%current%/%total%'
+      navigation:
+        scroll: false 
+        touch: true
+        click: false
+      ratio: '16:9'
+---
+
+```{r external, child="scripts/setup.Rmd", include=FALSE}
+```
+```{r titleslide, child="scripts/titleslide.Rmd"}
+```
+
+---
+
+# HTML Slides from Rmd
+
+::: grid
+
+::: item 
+
+* There are a number of ways to make html slides in Rmd including `ioslides` and `slidy`. 
+* My favorite one is `xaringan` `r emo::ji("package")`!
+* It's highly customisable.
+* These slides are made by `xaringan`!
+* `xaringan` uses `remark.js` to render the final html instead of `pandoc` (which means some `pandoc` features don't work)
+
+:::: 
+
+::: item 
+
+<iframe src="https://slides.yihui.name/xaringan/" height = "450px" width = "600px"></iframe>
+
+https://slides.yihui.name/xaringan
+
+:::
+
+:::
+
+---
+
+
+class: center middle
+
+
+.font_large[`r emo::ji("search")` Open and inspect the file]
+
+.font_large[`first-xaringan.Rmd`]
+
+---
+
+class: font_smaller
+
+# `xaringan` slides
+
+::: grid 
+
+::: item 
+
+```markdown
+---
+title: "My first xaringan slide"
+subtitle: "Not!"
+author: "Emi Tanaka"
+date: "4th October 2019"
+output: 
+  xaringan::moon_reader
+---
+
+# Slide after title slide
+
+*---
+
+# Next slide
+
+We can use **markdown**!
+
+*--- 
+
+
+```
+:::
+
+::: item
+
+<iframe src="exercises/first-xaringan.html"  height = "450px" width = "600px"></iframe>
+
+:::
+
+:::
+
+::: { .info-box .pos width:200px;left:31%;top:35%;}
+
+YAML information used for title slide
+
+:::
+
+::: { .info-box .pos width:250px;left:31%;bottom:11%;}
+
+No spaces after `---`!
+
+:::
+
+---
+
+class: middle center
+
+To fully customise `xaringan` slides, <br>you need to know some HTML/CSS
+
+--
+
+<br>
+
+We'll have a short intro `r emo::ji("computer")`
+
+
+
+---
+
+# HTML/CSS
+
+<br>
+
+::: grid 
+
+::: item
+
+.html-box[
+```html
+<div class="bg-red">
+This creates a box 
+with red background.
+</div>
+```
+]
+
+
+
+:::
+
+::: item 
+
+
+.css-box[
+```css
+.bg-red {
+  background-color: red;
+}
+
+```
+]
+
+::: {.output background-color:red!important; }
+
+This creates a box 
+with red background.
+
+:::
+
+:::
+
+
+
+
+:::
+
+
+
+
+---
+
+# HTML/CSS II
+
+But the box and text look too squished.
+
+I increase the padding here.
+
+<br>
+
+::: grid 
+
+::: item
+
+.html-box[
+```html
+<div class="bg-red">
+This creates a box 
+with red background.
+</div>
+```
+]
+
+
+
+:::
+
+::: item 
+
+
+.css-box[
+```css
+.bg-red {
+  background-color: red;
+* padding: 20px; 
+}
+
+```
+]
+
+::: {.output background-color:red!important;padding:20px; }
+
+This creates a box 
+with red background.
+
+:::
+
+:::
+
+
+
+
+:::
+
+---
+
+# HTML/CSS III
+
+But a white text suits better.
+
+::: grid 
+
+::: item
+
+.html-box[
+```html
+<div class="bg-red">
+This creates a box 
+with red background.
+</div>
+```
+]
+
+
+
+:::
+
+::: item 
+
+
+.css-box[
+```css
+.bg-red {
+  background-color: red;
+  padding: 20px; 
+* color: white;
+}
+
+```
+]
+
+::: {.output background-color:red!important;padding:20px; color: white; }
+
+This creates a box 
+with red background.
+
+:::
+
+:::
+
+:::
+
+---
+
+# HTML/CSS IV
+
+In contrast to `div`, `span` is "inline".
+
+::: grid 
+
+::: item
+
+.html-box[
+```html
+*<span class="bg-red">
+This creates a box 
+with red background.
+*</span>
+```
+]
+
+
+
+:::
+
+::: item 
+
+
+.css-box[
+```css
+.bg-red {
+  background-color: red;
+  padding: 20px; 
+  color: white;
+}
+
+```
+]
+
+::: { .output padding-bottom: 20px;}
+
+<span style="background-color:red!important;padding:20px; color: white;"> This creates a box with red background.</span>
+
+:::
+
+:::
+
+:::
+
+---
+
+# `remark.js`: div and span classes
+
+`remark.js` makes it easier to write `div` and `span` elements.
+
+
+::: grid 
+
+::: { .item border-right: dashed 3px black; } 
+
+Text in new line
+
+```markdown
+.bg-red[
+Some text
+]
+```
+
+is converted to
+
+```markdown
+<div class="bg-red">
+Some text
+</div>
+```
+
+
+::: 
+
+::: item  
+
+Placing `[` `]` in the same line
+
+```markdown
+.bg-red[Some text]
+```
+
+results in 
+
+```markdown
+<span class="bg-red">
+Some text
+</span>
+```
+
+
+:::
+
+:::
+
+---
+
+class: font_small
+
+# Specifying CSS 
+
+::: paddings
+
+
+You can specify the css file in the YAML:
+
+```
+output: 
+  xaringan::moon_reader: 
+    css: 
+      - "default" # in-built theme
+      - "default_fonts" # in built theme
+      - "custom.css" # your own 
+```
+
+then define all custom classes in `custom.css`, e.g.
+
+```css
+
+.bg-red {
+  background-color: red;
+}
+
+```
+
+
+:::
+
+---
+
+# Apply class to the whole slide
+
+::: paddings
+
+```markdown
+
+# Slide 1
+
+---
+
+*class: bg-red
+
+# Slide 2
+
+This slide will have a red background
+
+---
+
+# Slide 3
+
+```
+
+:::
+
+
+---
+
+class: middle center
+
+::: paddings
+
+Alternatively, you can use `xaringanthemer` to customise the look of a `xaringan`.
+
+<br>
+
+.font_large[`r emo::ji("computer")` Open and knit<br> `demo-xaringan.Rmd`]
+
+<br>
+
+.font_large[Customise the slide to your liking `r emo::ji("shiny")` ]
+
+<br>
+
+By the way, can you figure out what `xaringan::inf_mr()` does?
+
+
+:::
+
+---
+
+# Resources 
+
+
+
+::: grid 
+
+::: { .item  border-right: dashed 3px black; }
+
+* There are more features to R Markdown than can be taught in a 3 hour workshop.
+* Please do let SSA know if you would be interested in having certain types of workshop!
+* Thanks for coming!
+
+<br>
+
+::: { .info-box .pos width: 500px;}
+
+All source files to this workshop <br>can be found at 
+
+https://github.com/emitanaka/ssavic2019
+
+:::
+
+
+::: 
+
+::: item 
+
+## Learn with the *community*
+
+* Your local R-Ladies Meetup: [Melbourne](https://www.meetup.com/en-AU/rladies-melbourne/), [Sydney](https://www.meetup.com/rladies-sydney/), [Canberra](https://www.meetup.com/rladies-canberra/), [Perth](https://www.meetup.com/en-AU/rladies-perth/), [Adelaide](https://www.meetup.com/en-AU/rladies-adelaide/), [Brisbane](https://www.meetup.com/en-AU/rladies-brisbane/)
+* [R4DS Community Slack](https://www.rfordatasci.com/)
+* [Twitter with hastag #rstats](https://twitter.com/search?q=%23rstats)
+* [RStudio Community](https://community.rstudio.com/)
+* [Stackoverflow](https://stackoverflow.com/questions/tagged/r) (I answer questions tagged with `xaringan` often)
+
+:::
+
+:::
+
+
+---
+
+```{r endslide, child="scripts/endslide.Rmd"}
+```

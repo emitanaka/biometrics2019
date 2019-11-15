@@ -1,37 +1,4 @@
-background-color: #abdff7
-background-size: cover
-class: hide-slide-number
 
-
-:::::::::: grid
-
-::: {.item .shade_black border-right-style: solid; border-right-color: white;}
-
-<h1>Thanks!</h1>
-
-These slides are made using `xaringan` R-package and can be found at.
-
-.center[
-emitanaka.org/slides/XXX
-]
-
-<br><br>
-
-`r rmarkdown::metadata$author`
-
-`r anicon::faa("envelope", animate="float")`  `r rmarkdown::metadata$email`<br>
-`r anicon::faa("twitter", animate="float", speed="fast")`  @statsgen
-
-:::
-
-::: item 
-
-
-:::
-
-:::::::::: 
-
----
 
 background-color: #e5e5e5
 

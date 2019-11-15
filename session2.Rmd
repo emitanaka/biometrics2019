@@ -1,0 +1,54 @@
+---
+title: "Tidyverse Workshop"
+subtitle: "Data wrangling with `dplyr` <img src='images/dplyr.png' height = '50px'> & `tidyr` <img src='images/tidyr.png' height = '50px'>"
+author: "Emi Tanaka"
+email: "dr.emi.tanaka@gmail.com"
+date: "1st Dec 2019 @ Biometrics by the Botanic Gardens | Adelaide, Australia"
+length: "60 minutes"
+color_theme: "yellow"
+pdflink: "session2.pdf"
+titleslide_bgimg: "images/bg1.jpg"
+output:
+  xaringan::moon_reader:
+    css:
+      - ninjutsu 
+      - "assets/animate.css"
+      - "assets/cssgrid.css"
+      - "assets/custom.css"
+      - "assets/fira-code.css"
+      - "assets/boxes.css"
+    self_contained: false 
+    seal: false 
+    chakra: 'libs/remark-latest.min.js'
+    beforeInit: "assets/custom.js"
+    lib_dir: libs
+    includes:
+      in_header: "assets/custom.html"
+      # before_body: 
+      after_body: "assets/remarkjs_extended.html"
+      # includes
+    mathjax: "assets/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    nature:
+      highlightStyle: googlecode
+      highlightLanguage: r 
+      highlightLines: true
+      highlightSpans: false 
+      countIncrementalSlides: false
+      slideNumberFormat: '%current%/%total%'
+      navigation:
+        scroll: false 
+        touch: true
+        click: false
+      ratio: '16:9'
+---
+
+```{r external, child="scripts/setup.Rmd", include=FALSE}
+```
+```{r titleslide, child="scripts/titleslide.Rmd"}
+```
+
+
+---
+
+```{r endslide, child="scripts/endslide.Rmd"}
+```
