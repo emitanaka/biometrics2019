@@ -117,7 +117,7 @@ h6 { font-size:28pt!important; }
 .font_smaller2 .remark-code { font-size: 13pt }
 
 
-li{ margin: 10px 0; }
+li { margin: 10px 0; }
 
 .pad20 { padding: 20px; }
 
@@ -181,13 +181,23 @@ pre {
   margin: 0;
 }
 
+ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
 ul {
     display: block;
     list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 30px;
-    margin-inline-end: 10px;
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
     padding-inline-start: 40px;
 }
 
@@ -204,3 +214,65 @@ ul {
 .transition .remark-slide-number { 
   visibility: hidden; 
 }
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tag {
+  background-color: black;
+  color: white;
+  font-size: 18pt;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.paddings {
+ padding-left: 15%;
+ padding-right: 15%;
+}
+
+
+.footnote {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding:10px;
+  background-color: #abdff7;
+  color: #0081c7;]
+  font-size: 18pt;
+  /* border-top: solid 3px #0081c7;*/
+}
+
+
+h2, h3 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.bg-pro {
+  background-color: #abdff7;
+}
+  
+.circle-image {
+  background: #eee;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: solid 3px black;
+  height: 6em;
+  width: 6em; 
+  margin: auto;
+}
+
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee }

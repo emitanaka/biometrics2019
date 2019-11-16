@@ -7,12 +7,13 @@
     <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
     <link href="libs/font-awesome-animation-1.0/font-awesome-animation-emi.css" rel="stylesheet" />
     <script src="libs/fontawesome-5.0.13/js/fontawesome-all.min.js"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/animate.css" type="text/css" />
     <link rel="stylesheet" href="assets/cssgrid.css" type="text/css" />
-    <link rel="stylesheet" href="assets/custom.css" type="text/css" />
     <link rel="stylesheet" href="assets/fira-code.css" type="text/css" />
     <link rel="stylesheet" href="assets/boxes.css" type="text/css" />
+    <link rel="stylesheet" href="assets/image_modal.css" type="text/css" />
+    <link rel="stylesheet" href="assets/custom.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -65,33 +66,188 @@ School of Mathematics and Statistics
 :::
 
 
+
 ---
 
-# HTML Slides from Rmd
+# What you can do with R Markdown?
 
-::: grid
+--
+
+&lt;br&gt;
+&lt;center&gt;
+&lt;iframe src="session1.html" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+
+&lt;div class="color-box"&gt;
+These &lt;b&gt;slides&lt;/b&gt; are made using R Markdown.
+&lt;/div&gt;
+
+---
+
+# What you can do with R Markdown?
+
+&lt;br&gt;
+&lt;center&gt;
+&lt;iframe src="output/html/html_template_paper.html" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+
+&lt;div class="color-box"&gt;
+This &lt;b&gt;dynamic report&lt;/b&gt; is made using R Markdown.
+&lt;/div&gt;
+
+---
+
+# What you can do with R Markdown?
+
+&lt;br&gt;
+&lt;center&gt;
+&lt;object data="output/articles/article_template_pnas_article.pdf" type="application/pdf" width="80%" height="450px" style="border: solid 3px black;"&gt;
+&lt;embed src="output/articles/article_template_pnas_article.pdf" type="application/pdf" /&gt;
+&lt;/object&gt;
+&lt;/center&gt;
+
+
+&lt;div class="color-box"&gt;
+This &lt;b&gt;manuscript&lt;/b&gt; is made using R Markdown.
+&lt;/div&gt;
+
+
+---
+
+
+# What you can do with R Markdown?
+
+&lt;br&gt;
+&lt;center&gt;
+&lt;iframe src="https://otexts.com/fpp2/" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+
+
+&lt;div class="color-box"&gt;
+This &lt;b&gt;online book&lt;/b&gt; is made using R Markdown.&lt;br&gt;
+Available at https://otexts.com/fpp2/ &lt;br&gt;
+
+The &lt;b&gt;pdf book&lt;/b&gt; version is also made using R Markdown. 
+&lt;/div&gt;
+
+---
+
+# What you can do with R Markdown?
+
+&lt;br&gt;
+&lt;div class="grid" style="grid: 1fr / 1fr 1fr;"&gt;
+&lt;div class="item"&gt;
+&lt;center&gt;
+&lt;iframe src="https://thesis.earo.me/" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+
+&lt;div class="item"&gt;
+&lt;center&gt;
+&lt;a href="https://github.com/earowang/thesis/blob/master/_thesis/thesis.pdf"&gt;&lt;img src="images/earothesis.png" width="60%" style="border: solid 3px black;"/&gt;&lt;/a&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class="color-box"&gt;
+This &lt;b&gt;thesis&lt;/b&gt; (online and pdf) is made using R Markdown.&lt;br&gt;
+Available at https://thesis.earo.me/ &lt;br&gt;
+
+&lt;/div&gt;
+
+---
+
+# What you can do with R Markdown?
+
+&lt;br&gt;
+&lt;div class="grid" style="grid: 1fr / 1fr 1fr;"&gt;
+&lt;div class="item"&gt;
+&lt;center&gt;
+&lt;iframe src="https://emitanaka.org/r/posts/2018-12-12-scientific-and-technical-blogging-radix-vs-blogdown/" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+
+&lt;div class="item"&gt;
+&lt;center&gt;
+&lt;iframe src="https://emitanaka.rbind.io/post/scientific-and-technical-blogging-radix-vs-blogdown-remix/" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class="color-box"&gt;
+These &lt;b&gt;blog posts&lt;/b&gt; are made using R Markdown.
+
+&lt;/div&gt;
+
+---
+
+# What you can do with R Markdown?
+
+::: { .grid .grid: 1fr / 2.5fr 1fr; } 
 
 ::: item 
 
-* There are a number of ways to make html slides in Rmd including `ioslides` and `slidy`. 
-* My favorite one is `xaringan` 📦!
-* It's highly customisable.
-* These slides are made by `xaringan`!
-* `xaringan` uses `remark.js` to render the final html instead of `pandoc` (which means some `pandoc` features don't work)
+Possibilities are endless...
 
-:::: 
+* Microsoft Word document (.doc, .docx)
+* Open Document Text (.odt)
+* Rich text format (.rtf)
+* Power point slides (.ppt, .pptx)
+* Posters (as .html or .pdf)
+* Resume (as .html or .pdf)
+* Interactive R Notebooks (.html)
+* Markdown documents (.md)
+* Dashboard (.html)
+
+::: 
 
 ::: item 
 
-&lt;iframe src="https://slides.yihui.name/xaringan/" height = "450px" width = "600px"&gt;&lt;/iframe&gt;
+&lt;br&gt;
+&lt;center&gt;
+&lt;img src="images/rmarkdown-book-cover.png" width = "50%"&gt;
+&lt;/center&gt;
 
-https://slides.yihui.name/xaringan
+.font_small[Check out [Xie et al. (2018) R Markdown: The Definite Guide](https://bookdown.org/yihui/rmarkdown/).]
 
 :::
 
 :::
 
+
+
 ---
+
+# Before R Markdown (and Sweave)
+
+&lt;br&gt;
+&lt;center&gt;
+&lt;img src="images/rmd-motivation.png" width  = "90%"/&gt;
+&lt;/center&gt;
+
+---
+
+# R Markdown in a nutshell 🥜
+
+
+::: paddings
+
+
+R Markdown integrates .blue[**text**] + .blue[`code`] in one source document with ability to knit *to many output formats* (via Pandoc).
+
+&lt;img src="images/rmd-overview.png" width  = "100%"/&gt;
+
+
+:::
+
+
+
+---
+
 
 
 class: center middle
@@ -99,94 +255,111 @@ class: center middle
 
 .font_large[🔍 Open and inspect the file]
 
-.font_large[`first-xaringan.Rmd`]
+.font_large[`first-rmarkdown.Rmd`]
+
+
 
 ---
 
-class: font_smaller
+# R Markdown Basics
 
-# `xaringan` slides
 
+&lt;img src="images/demo-first-rmd.png" width="80%" /&gt;
+
+
+---
+
+# Knitting: &lt;code&gt;Rmd&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;&amp;nbsp; &lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt;&amp;nbsp;&lt;code&gt;md&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;&amp;nbsp;&lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt; &amp;nbsp;&lt;code&gt;html&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;
+
+&lt;img src="images/demo-knit-html.png" width="100%" /&gt;
+
+
+---
+
+
+# Knitting: &lt;code&gt;Rmd&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;&amp;nbsp; &lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt;&amp;nbsp;&lt;code&gt;md&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;&amp;nbsp;&lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt; &amp;nbsp;&lt;code&gt;pdf&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;
+
+&lt;img src="images/demo-knit-pdf.png" width="100%" /&gt;
+
+
+---
+
+
+# Themes: `html_document`  
+
+&lt;!-- The Modal --&gt;
+&lt;div id="myModal" class="modal"&gt;
+  &lt;div id="caption"&gt;&lt;/div&gt;
+  &lt;span class="close" onclick="document.getElementById('myModal').style.display='none'"&gt;&amp;times;&lt;/span&gt;
+  &lt;iframe class="modal-content" id="img01"&gt;&lt;/iframe&gt;&lt;br&gt;
+&lt;/div&gt;
+
+You can change the look of the html document by specifying themes:
 ::: grid 
 
 ::: item 
 
+* `default` &lt;img class="modalImg" alt="default"/&gt; 
+* `cerulean` &lt;img class="modalImg" alt="cerulean"/&gt; 
+* `journal`  &lt;img class="modalImg" alt="journal"/&gt; 
+* `flatly` &lt;img class="modalImg" alt="flatly"/&gt; 
+* `darkly` &lt;img class="modalImg" alt="darkly"/&gt; 
+* `readable` &lt;img class="modalImg" alt="readable"/&gt; 
+* `spacelab` &lt;img class="modalImg" alt="spacelab"/&gt; 
+* `united` &lt;img class="modalImg" alt="united"/&gt; 
+
+:::
+
+::: item 
+
+
+* `cosmo` &lt;img class="modalImg" alt="cosmo"/&gt; 
+* `lumen` &lt;img class="modalImg" alt="lumen"/&gt; 
+* `paper` &lt;img class="modalImg" alt="paper"/&gt; 
+* `sandstone` &lt;img class="modalImg" alt="sandstone"/&gt; 
+* `simplex` &lt;img class="modalImg" alt="simplex"/&gt; 
+* `yeti` &lt;img class="modalImg" alt="yeti"/&gt; 
+* `NULL`  &lt;img class="modalImg" alt="null"/&gt; 
+
+:::
+
+::: item 
+
+
 ```markdown
----
-title: "My first xaringan slide"
-subtitle: "Not!"
-author: "Emi Tanaka"
-date: "4th October 2019"
 output: 
-  xaringan::moon_reader
----
-
-# Slide after title slide
-
-*---
-
-# Next slide
-
-We can use **markdown**!
-
-*--- 
-
-
+  html_document:
+    theme: cerulean
 ```
-:::
 
-::: item
-
-&lt;iframe src="exercises/first-xaringan.html"  height = "450px" width = "600px"&gt;&lt;/iframe&gt;
+These [bootswatch](https://bootswatch.com/) themes attach the whole bootstrap library which makes your html file size larger.
 
 :::
-
-:::
-
-::: { .info-box .pos width:200px;left:31%;top:35%;}
-
-YAML information used for title slide
-
-:::
-
-::: { .info-box .pos width:250px;left:31%;bottom:11%;}
-
-No spaces after `---`!
 
 :::
 
 ---
 
-class: middle center
+# `prettydoc` 
 
-To fully customise `xaringan` slides, &lt;br&gt;you need to know some HTML/CSS
-
---
-
-&lt;br&gt;
-
-We'll have a short intro 💻
-
-
-
----
-
-# HTML/CSS
-
-&lt;br&gt;
+&lt;!-- The Modal --&gt;
+&lt;div id="myModal2" class="modal"&gt;
+  &lt;div id="caption2"&gt;&lt;/div&gt;
+  &lt;span class="close" onclick="document.getElementById('myModal2').style.display='none'"&gt;&amp;times;&lt;/span&gt;
+  &lt;iframe class="modal-content" id="img02"&gt;&lt;/iframe&gt;&lt;br&gt;
+&lt;/div&gt;
 
 ::: grid 
 
-::: item
+::: item 
 
-.html-box[
-```html
-&lt;div class="bg-red"&gt;
-This creates a box 
-with red background.
-&lt;/div&gt;
-```
-]
+`prettydoc` 📦 is a community contributed `theme` that is light-weight:
+
+* `cayman` &lt;img class="modalImg2" alt="cayman"/&gt; 
+* `tactile` &lt;img class="modalImg2" alt="tactile"/&gt; 
+* `architect` &lt;img class="modalImg2" alt="architect"/&gt; 
+* `leonids` &lt;img class="modalImg2" alt="leonids"/&gt; 
+* `hpstr` &lt;img class="modalImg2" alt="hpstr"/&gt; 
 
 
 
@@ -195,395 +368,75 @@ with red background.
 ::: item 
 
 
-.css-box[
-```css
-.bg-red {
-  background-color: red;
-}
-
-```
-]
-
-::: {.output background-color:red!important; }
-
-This creates a box 
-with red background.
-
-:::
-
-:::
-
-
-
-
-:::
-
-
-
-
----
-
-# HTML/CSS II
-
-But the box and text look too squished.
-
-I increase the padding here.
-
-&lt;br&gt;
-
-::: grid 
-
-::: item
-
-.html-box[
-```html
-&lt;div class="bg-red"&gt;
-This creates a box 
-with red background.
-&lt;/div&gt;
-```
-]
-
-
-
-:::
-
-::: item 
-
-
-.css-box[
-```css
-.bg-red {
-  background-color: red;
-* padding: 20px; 
-}
-
-```
-]
-
-::: {.output background-color:red!important;padding:20px; }
-
-This creates a box 
-with red background.
-
-:::
-
-:::
-
-
-
-
-:::
-
----
-
-# HTML/CSS III
-
-But a white text suits better.
-
-::: grid 
-
-::: item
-
-.html-box[
-```html
-&lt;div class="bg-red"&gt;
-This creates a box 
-with red background.
-&lt;/div&gt;
-```
-]
-
-
-
-:::
-
-::: item 
-
-
-.css-box[
-```css
-.bg-red {
-  background-color: red;
-  padding: 20px; 
-* color: white;
-}
-
-```
-]
-
-::: {.output background-color:red!important;padding:20px; color: white; }
-
-This creates a box 
-with red background.
-
-:::
-
-:::
-
-:::
-
----
-
-# HTML/CSS IV
-
-In contrast to `div`, `span` is "inline".
-
-::: grid 
-
-::: item
-
-.html-box[
-```html
-*&lt;span class="bg-red"&gt;
-This creates a box 
-with red background.
-*&lt;/span&gt;
-```
-]
-
-
-
-:::
-
-::: item 
-
-
-.css-box[
-```css
-.bg-red {
-  background-color: red;
-  padding: 20px; 
-  color: white;
-}
-
-```
-]
-
-::: { .output padding-bottom: 20px;}
-
-&lt;span style="background-color:red!important;padding:20px; color: white;"&gt; This creates a box with red background.&lt;/span&gt;
-
-:::
-
-:::
-
-:::
-
----
-
-# `remark.js`: div and span classes
-
-`remark.js` makes it easier to write `div` and `span` elements.
-
-
-::: grid 
-
-::: { .item border-right: dashed 3px black; } 
-
-Text in new line
 
 ```markdown
-.bg-red[
-Some text
-]
-```
-
-is converted to
-
-```markdown
-&lt;div class="bg-red"&gt;
-Some text
-&lt;/div&gt;
-```
-
-
-::: 
-
-::: item  
-
-Placing `[` `]` in the same line
-
-```markdown
-.bg-red[Some text]
-```
-
-results in 
-
-```markdown
-&lt;span class="bg-red"&gt;
-Some text
-&lt;/span&gt;
-```
-
-
-:::
-
-:::
-
----
-
-class: font_small
-
-# Specifying CSS 
-
-::: paddings
-
-
-You can specify the css file in the YAML:
-
-```
 output: 
-  xaringan::moon_reader: 
-    css: 
-      - "default" # in-built theme
-      - "default_fonts" # in built theme
-      - "custom.css" # your own 
+  prettydoc::html_pretty:
+    theme: cayman
 ```
 
-then define all custom classes in `custom.css`, e.g.
+See more about it below:
 
-```css
-
-.bg-red {
-  background-color: red;
-}
-
-```
-
+https://prettydoc.statr.me/
 
 :::
-
----
-
-# Apply class to the whole slide
-
-::: paddings
-
-```markdown
-
-# Slide 1
-
----
-
-*class: bg-red
-
-# Slide 2
-
-This slide will have a red background
-
----
-
-# Slide 3
-
-```
 
 :::
 
 
----
-
-class: middle center
-
-::: paddings
-
-Alternatively, you can use `xaringanthemer` to customise the look of a `xaringan`.
-
-&lt;br&gt;
-
-.font_large[💻 Open and knit&lt;br&gt; `demo-xaringan.Rmd`]
-
-&lt;br&gt;
-
-.font_large[Customise the slide to your liking ✨ ]
-
-&lt;br&gt;
-
-By the way, can you figure out what `xaringan::inf_mr()` does?
 
 
-:::
 
 ---
 
-# Resources 
+# `rmdformats`
 
+&lt;!-- The Modal --&gt;
+&lt;div id="myModal3" class="modal"&gt;
+  &lt;div id="caption3"&gt;&lt;/div&gt;
+  &lt;span class="close" onclick="document.getElementById('myModal3').style.display='none'"&gt;&amp;times;&lt;/span&gt;
+  &lt;iframe class="modal-content" id="img03"&gt;&lt;/iframe&gt;&lt;br&gt;
+&lt;/div&gt;
 
 
 ::: grid 
 
-::: { .item  border-right: dashed 3px black; }
-
-* There are more features to R Markdown than can be taught in a 3 hour workshop.
-* Please do let SSA know if you would be interested in having certain types of workshop!
-* Thanks for coming!
-
-&lt;br&gt;
-
-::: { .info-box .pos width: 500px;}
-
-All source files to this workshop &lt;br&gt;can be found at 
-
-https://github.com/emitanaka/ssavic2019
-
-:::
-
-
-::: 
-
 ::: item 
 
-## Learn with the *community*
-
-* Your local R-Ladies Meetup: [Melbourne](https://www.meetup.com/en-AU/rladies-melbourne/), [Sydney](https://www.meetup.com/rladies-sydney/), [Canberra](https://www.meetup.com/rladies-canberra/), [Perth](https://www.meetup.com/en-AU/rladies-perth/), [Adelaide](https://www.meetup.com/en-AU/rladies-adelaide/), [Brisbane](https://www.meetup.com/en-AU/rladies-brisbane/)
-* [R4DS Community Slack](https://www.rfordatasci.com/)
-* [Twitter with hastag #rstats](https://twitter.com/search?q=%23rstats)
-* [RStudio Community](https://community.rstudio.com/)
-* [Stackoverflow](https://stackoverflow.com/questions/tagged/r) (I answer questions tagged with `xaringan` often)
-
-:::
-
-:::
+`rmdformats` 📦 contains four built-in `html` formats: 
 
 
-
----
-
-
-background-color: #abdff7
-background-size: cover
-class: hide-slide-number
-
-
-:::::::::: grid
-
-::: {.item .shade_black border-right-style: solid; border-right-color: white;}
-
-&lt;h1&gt;Thanks!&lt;/h1&gt;
-
-These slides are made using `xaringan` R-package and can be found at.
-
-.center[
-emitanaka.org/slides/XXX
-]
-
-&lt;br&gt;&lt;br&gt;
-
-Emi Tanaka
-
-<span>&lt;i class="fas  fa-envelope faa-float animated "&gt;&lt;/i&gt;</span>  dr.emi.tanaka@gmail.com&lt;br&gt;
-<span>&lt;i class="fab  fa-twitter faa-float animated faa-fast "&gt;&lt;/i&gt;</span>  @statsgen
+* `readthedown` &lt;img class="modalImg3" alt="readthedown"/&gt; 
+* `html_clean` &lt;img class="modalImg3" alt="html_clean"/&gt; 
+* `html_docco` &lt;img class="modalImg3" alt="html_docco"/&gt; 
+* `material` &lt;img class="modalImg3" alt="material"/&gt; 
 
 :::
 
 ::: item 
 
+You can use these formats by simply specifying the output in YAML as below:
+
+
+```markdown
+output: rmdformats::readthedown
+```
+
+See more about it below:
+
+https://github.com/juba/rmdformats
 
 :::
 
-:::::::::: 
+:::
 
 ---
+
+
+
+
+
+
 
 background-color: #e5e5e5
 
@@ -622,7 +475,6 @@ devtools::session_info()
    colorspace    1.4-1      2019-03-18 [1] CRAN (R 3.6.0)                    
    crayon        1.3.4      2017-09-16 [1] CRAN (R 3.6.0)                    
    curl          4.2        2019-09-24 [1] CRAN (R 3.6.0)                    
-   dadjoke       0.1.2      2019-07-07 [1] Github (jhollist/dadjoke@21ec24c) 
    desc          1.2.0      2018-05-01 [1] CRAN (R 3.6.0)                    
    devtools      2.0.2      2019-04-08 [1] CRAN (R 3.6.0)                    
    digest        0.6.22     2019-10-21 [1] CRAN (R 3.6.0)                    
@@ -671,6 +523,7 @@ devtools::session_info()
    rstudioapi    0.10       2019-03-19 [1] CRAN (R 3.6.0)                    
    rvest         0.3.4      2019-05-15 [1] CRAN (R 3.6.0)                    
    scales        1.0.0      2018-08-09 [1] CRAN (R 3.6.0)                    
+   selectr       0.4-1      2018-04-06 [1] CRAN (R 3.6.0)                    
    sessioninfo   1.1.1      2018-11-05 [1] CRAN (R 3.6.0)                    
    stringi       1.4.3      2019-03-12 [1] CRAN (R 3.6.0)                    
    stringr     * 1.4.0      2019-02-10 [1] CRAN (R 3.6.0)                    
@@ -755,6 +608,71 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
 <script src="assets/pandoc.js"></script>
 <script src="assets/cssgrid.js"></script>
 <script src="libs/countdown-0.2.0/countdown.js"></script>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+var modal2 = document.getElementById('myModal2');
+var modal3 = document.getElementById('myModal3');
+var modal4 = document.getElementById('myModal4');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var modalImg = $("#img01");
+var modalImg2 = $("#img02");
+var modalImg3 = $("#img03");
+var modalPdf = $("#img04");
+var captionText = document.getElementById("caption");
+var captionText2 = document.getElementById("caption2");
+var captionText3 = document.getElementById("caption3");
+var captionText4 = document.getElementById("caption3");
+
+/* this adds the imag src from alt rather than having to add it manually*/
+$('.modalImg').attr("src", function() {
+  return "images/html_template_" + this.alt + ".png";
+  });
+$('.modalImg2').attr("src", function() {
+  return "images/html_template_" + this.alt + ".png";
+  });
+$('.modalImg3').attr("src", function() {
+  return "images/html_template_" + this.alt + ".png";
+  });
+$('.modalPdf').attr("src", function() {
+  return "output/articles/article_template_" + this.alt + ".png";
+  });
+
+/* this adds iframe */
+$('.modalImg').click(function(){
+    modal.style.display = "block";
+    var newSrc = "output/html/html_template_" + this.alt + ".html";
+    modalImg.attr('src', newSrc);
+    captionText.innerHTML = this.alt;
+});
+$('.modalImg2').click(function(){
+    modal2.style.display = "block";
+    var newSrc = "output/html/html_template_" + this.alt + ".html";
+    modalImg2.attr('src', newSrc);
+    captionText2.innerHTML = this.alt;
+});
+$('.modalImg3').click(function(){
+    modal3.style.display = "block";
+    var newSrc = "output/html/html_template_" + this.alt + ".html";
+    modalImg3.attr('src', newSrc);
+    captionText3.innerHTML = this.alt;
+});
+$('.modalPdf').click(function(){
+    modal4.style.display = "block";
+    var newSrc = "output/articles/article_template_" + this.alt + ".pdf";
+    modalPdf.attr('src', newSrc);
+    captionText4.innerHTML = this.alt;
+});
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
 
 <script>
 (function() {
