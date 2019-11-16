@@ -7,7 +7,7 @@ date: "1st Dec 2019 @ Biometrics by the Botanic Gardens | Adelaide, Australia"
 length: "30 minutes"
 color_theme: "yellow"
 pdflink: "session3.pdf"
-titleslide_bgimg: "images/bg1.jpg"
+titleslide_bgimg: "images/bg5.jpg"
 output:
   xaringan::moon_reader:
     css:

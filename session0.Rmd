@@ -1,20 +1,24 @@
 ---
-title: "Title"
+title: "Tidyverse + R Markdown Workshop"
+subtitle: "Introduction"
 author: "Emi Tanaka"
 email: "dr.emi.tanaka@gmail.com"
-date: "DD MM YYYY | Event | City, Country"
-params: 
-  wifi: FILL
-  wifi_password: FILL
-  cloud_link: bit.ly/xxx
+date: "1st Dec 2019 @ Biometrics by the Botanic Gardens | Adelaide, Australia"
+length: "60 minutes"
+color_theme: "yellow"
+pdflink: "session0.pdf"
+titleslide_bgimg: "images/bg4.jpg"
 output:
   xaringan::moon_reader:
-    css: 
-      - ninjutsu, 
+    css:
+      - ninjutsu 
       - "assets/animate.css"
       - "assets/cssgrid.css"
       - "assets/custom.css"
-    self_contained: false
+      - "assets/fira-code.css"
+      - "assets/boxes.css"
+      - "assets/table.css"
+    self_contained: false 
     seal: false 
     chakra: 'libs/remark-latest.min.js'
     beforeInit: "assets/custom.js"
@@ -22,13 +26,11 @@ output:
     includes:
       in_header: "assets/custom.html"
       # before_body: 
-      after_body: 
-       - "assets/remarkjs_extended.html"
-       - "assets/loop.html"
+      after_body: "assets/remarkjs_extended.html"
       # includes
     mathjax: "assets/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
     nature:
-      highlightStyle: github 
+      highlightStyle: googlecode
       highlightLanguage: r 
       highlightLines: true
       highlightSpans: false 
@@ -38,94 +40,203 @@ output:
         scroll: false 
         touch: true
         click: false
-      ratio: '16:9' 
+      ratio: '16:9'
 ---
 
+```{r external, child="scripts/setup.Rmd", include=FALSE}
+```
+```{r titleslide, child="scripts/titleslide.Rmd"}
+```
 
-layout: true
-background-size: cover
-class: hide-slide-number
+---
+
+::: {.grid grid: 1fr / 1.2fr 2fr;}
 
 
-:::::::::: { .grid grid: 68% 32% / 1fr;} 
-::: item center
+::: item bg-pro
 
 <br>
 
-{{content}}
+<div class="circle-image">
+<center>
+<img src="images/avatar.png" width = "150px"/>
+</center>
+</div>
+
+**Emi Tanaka** <br>
+*Lecturer in Statistics*<br>
+The University of Sydney
+
+<br>
+
+<i class="fas fa-globe"></i> https://emitanaka.org/
+
+<i class="fas fa-envelope"></i> dr.emi.tanaka@gmail.com
+
+<i class="fab fa-twitter"></i> @statsgen
+
+:::
+
+::: item 
+
+# About your instructor
+
+* I'm moving to Monash University starting January 2020
+* I teach R at university courses as well as use it daily for research and hobby
+* If you ever wonder who answers those stackoverflow questions, I'm one of those magic fairies
+
+<center>
+<a href="https://stackexchange/users/10113966/emi"><img src="https://stackoverflow.com/users/flair/10113966.png" width="208" height="58" alt="profile for Emi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Emi at Stack Overflow, Q&amp;A for professional and enthusiast programmers" style="border:solid 2px black;"></a>
+</center>
+* My main statistical application is agriculture and bioinformatics; these days I do more software
 
 
 :::
 
-::: item center shade_black
-
-`r rmarkdown::metadata$author` `r anicon::faa("twitter", animate="float", speed="fast")`  @statsgen
-
-<i class="fas fa-link"></i> 
-`r params$cloud_link`
-
-WIFI <i class="fas fa-wifi"></i> `r params$wifi` <i class="fas fa-key"></i> `r params$wifi_password`
-
-`r rmarkdown::metadata$date`
-
-
 :::
-
-:::::::::: 
 
 ---
 
-background-image: url("images/bg1.jpg")
-
-# <span style="text-shadow: 2px 2px 3px black;color:yellow;">Welcome to</span>
-# <span style="text-shadow: 2px 2px 30px white;">`r rmarkdown::metadata$title`</span>
+::: {.grid grid: 1fr / 2fr 2fr;}
 
 
+::: item bg-pro
+
+<br>
+
+<div class="circle-image">
+<center>
+<img src="images/" width = "150px"/>
+</center>
+</div>
+
+**Annie Conway**  
+*Biometrician*  
+  
+Biometry Hub  
+School of Agriculture, Food and Wine  
+The University of Adelaide
+
+  
+
+<i class="fas fa-envelope"></i> annie.conway@adelaide.edu.au
+
+
+:::
+
+::: item 
+
+# Meet Annie!
+
+[INSERT]
+
+:::
+
+:::
 
 ---
 
 class: center middle
 
-# Wireless Internet
 
-::: grid 
+.font_large[Introduce yourself to someone you don't know!]
 
-::: item 
+Find out their name.  
+What profession.  
+What they want to learn.  
+What's their hobbies.  
+Are they going to the conference?
 
-<i class="fas fa-wifi"></i>
 
-Wifi username
 
-``r params::wifi``
-
-:::
-
-::: item
-
-<i class="fas fa-key"></i>
-
-Wifi password
-
-``r params$wifi_password``
-
-:::
-
-:::
+`r countdown::countdown(3, font_size = "1em")`
 
 
 ---
 
-background-image: url("images/bg2.jpg")
+# Schedule: Tidyverse
 
-# <span style="text-shadow: 2px 2px 3px black;color:yellow;">Welcome to</span>
-# <span style="text-shadow: 2px 2px 30px white;">`r rmarkdown::metadata$title`</span>
+<br>
+
+Time | Activity 
+:----|:---
+8.30-8.50 | Registration
+8.50-9.00 | Welcome 
+9.00-10.30 | **Lesson 1**<Br> Introduction +<br>Data visualisation with `ggplot2` +<br>Interactive graphs with `plotly`
+10.30 - 11.00 | **Lesson 2**<br>Data wrangling with dplyr & tidyr Part I
+11.00 - 11.30 | *Coffee Break*
+11.30 - 12.00 | Data wrangling with dplyr & tidyr Part II
+12.00 - 12.30 | **Lesson 3**<br> Functional programming with `purrr` & `furrr`
+
+---
+
+# Schedule: R Markdown
+
+<br>
+
+
+Time | Activity 
+:----|:---
+12.30 - 13.00 | **Lesson 4**<br>R Markdown Basics with `rmarkdown` & `knitr`
+13.00 - 13.45 | *Lunch*
+13.45 - 15.00 | **Lesson 5** <br> Reproducible Reports with R Markdown 
+15.00 - 15.30 | *Tea Break*
+15.30 - 16.20 | **Lesson 6**<br> Dynamic Documents with `bookdown`
+16.20 - 15.00 | **Lesson 7**<br>Pretty Presentations with `xaringan`
+
+---
+
+# Get Started
+
+::: paddings
+
+Find slides at<br><Br>
+
+
+.center[
+.blue[<i class="fas fa-link"></i>  https://IBSAR2019.netlify.com/]
+]
+
+<br>
+
+
+Open <br><Br>
+
+.center[
+.blue[<i class="fas fa-link"></i>  http://bit.ly/IBSAR2019]
+]
+
+<br>
+
+and save a permanent copy to your RStudio Cloud account for the R exercises.
+
+<br><Br>
+
+
+:::
+
+---
+
+# Help me!
+
+
+::: paddings center font_large
+
+<img src="images/sticky-note.png" width="150px"/>
+
+
+Please send SOS signal by attaching a sticky note on your laptop
+  
+<br><br>
+  
+Annie or I will come to help you
+
+
+:::
+
 
 
 ---
 
-
-background-image: url("images/bg3.jpg")
-
-# <span style="text-shadow: 2px 2px 3px black;color:yellow;">Welcome to</span>
-# <span style="text-shadow: 2px 2px 30px white;">`r rmarkdown::metadata$title`</span>
-[Background photo by Adam H. Sparks]{.pos .font_small top:5px;left:5px;}
+```{r endslide, child="scripts/endslide.Rmd"}
+```

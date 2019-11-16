@@ -7,7 +7,7 @@ date: "1st Dec 2019 @ Biometrics by the Botanic Gardens | Adelaide, Australia"
 length: "90 minutes"
 color_theme: "yellow"
 pdflink: "session1.pdf"
-titleslide_bgimg: "images/bg1.jpg"
+titleslide_bgimg: "images/bg6.jpg"
 output:
   xaringan::moon_reader:
     css:
@@ -23,7 +23,7 @@ output:
     beforeInit: "assets/custom.js"
     lib_dir: libs
     includes:
-      in_header: "assets/custom.html"
+      #in_header: "assets/custom.html"
       # before_body: 
       after_body: "assets/remarkjs_extended.html"
       # includes
@@ -91,7 +91,8 @@ class: font_smaller
 </center>
 
 
-::: info
+
+::: { .info-box .pos width: 60%; margin-left: 20%; font-size: 24pt; }
 
 1. **data**, 
 2. a set of **aesthetic** mappings between variables in the data and visual properties, and
@@ -99,7 +100,8 @@ class: font_smaller
 
 :::
 
-::: bottom_abs width100 font_small bg-black white pad10
+
+::: footnote
 Reference: Wickham (2015) ggplot2 Elegant Graphics for Data Analysis
 :::
 
@@ -129,10 +131,15 @@ skimr::skim(iris)
 <img src="images/aes-mapping.png" width="80%"/>
 </center>
 
+::: paddings
+
+<br>
+
 * `Sepal.Length` is mapped to the `x` coordinate
 * `Sepal.Width` is mapped to the `y` coordinate
 * `Species` is mapped to the `color`
 
+:::
 
 ---
 
@@ -140,7 +147,7 @@ skimr::skim(iris)
 
 <br>
 
-::: { .info }
+::: { .info-box .pos width: 70%; margin-left: 15%; font-size: 24pt; }
 
 
 Each layer has a 
@@ -150,7 +157,13 @@ Each layer has a
 
 :::
 
+::: paddings
+
+<br><br><br><br>><br><br><br>
+
 Further specifications are provided by `position` adjustment, `show_legend` and so on. 
+
+:::
 
 ---
 
@@ -276,7 +289,7 @@ geoms$matches %>%
   select(geom, Title) %>% 
   DT::datatable(colnames = c("geom", "Description"),
                 rownames = FALSE,
-                options = list(dom = 'tp', ordering=F))
+                options = list(dom = 'tp', ordering=F)) 
 ```
 
 ---
