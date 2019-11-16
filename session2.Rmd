@@ -46,17 +46,211 @@ output:
 ```
 ```{r titleslide, child="scripts/titleslide.Rmd"}
 ```
+```{r data, include = FALSE}
+signal_dat <- readxl::read_xlsx("data/signal-data.xlsx")
+signal_cdat <- signal_dat %>% janitor::clean_names()
+
+```
+
+---
+
+class: font_smaller
+
+# `r emo::ji("target")` Aim: using this data, plot below graph
+
+```{r glimpse1, echo = FALSE}
+signal_dat %>% 
+  select(CD:PR) %>% 
+  glimpse()
+```
+
+```{r plot1, echo = FALSE, fig.width = 15, fig.height = 4.5}
+signal_dat %>% 
+  select(CD:PR) %>% 
+  pivot_longer(cols = CD:PR) %>% 
+  mutate(name = fct_recode(name,
+    `Call Duration` = "CD",
+    `Call Rate` = "CR",
+    `Pulse Rate` = "PR",
+    `Dominant Frequency` = "DF",
+    `Relative Amplitude` = "RA"
+  )) %>% 
+  ggplot(aes(x = value)) + 
+  geom_histogram() + 
+  facet_wrap( ~name, scales = "free_x", nrow = 1) + 
+  theme(strip.text = element_text(size = 16))
+```
+
+---
+
+
+# `r emo::ji("thinking")` Mapping variable to aesthestic 
+
+.font_smaller[
+```{r glimpse1, echo = FALSE}
+```
+]
+
+.paddings[
+<pre><code>
+ggplot(.bg-yellow[&lt;DATA&gt;], aes(x = .bg-yellow[&lt;VAR&gt;])) + 
+  geom_histogram() + 
+  facet_wrap(~ .bg-yellow[&lt;VAR&gt;],
+             scales = "free_x",
+             nrow = 1)
+</code> </pre>
+
+]
+
+::: { .pos .bg-white top: 90px; right:5px; border: solid 3px black; width: 77%; }
+
+```{r plot1, echo = FALSE, fig.width = 12, fig.height = 3}
+```
+
+:::
+
+---
+
+# `r emo::ji("wrench")` Data wrangling
+
+.center[
+Raw data is hardly ever in a format ready for downstream analysis
+
+]
+
+<br>
+
+::: grid 
+
+::: { .item border-right: dashed 3px black; }
+
+.center[
+## The data we *have*
+]
+
+```{r, echo = FALSE, fig.height = 4}
+out <- expand_grid(row = 1:3, col = 1:5) %>% 
+  mutate(
+    color = factor(col),
+    alpha = as.numeric(row == 1)*0.4 + 0.6,
+  ) 
+levels(out$color) <- c("#0D0887FF", "#7E03A8FF", "#CC4678FF", "#F89441FF", "#F0F921FF")
+ggplot(out, aes(col, row, fill = I(color), alpha = I(alpha))) +  
+  geom_tile(width = 0.9, height = 0.9) + 
+  coord_equal() + 
+  theme_void() + 
+  annotate("text", x = 1:5, y = 1, 
+           label = c("CD", "CR", "DF", "RA", "PR"),
+           size = 14, color = "gray") + 
+  annotate("text", x = 1:5, y = 2, label = "1", color = "gray", size = 10) + 
+  annotate("text", x = 1:5, y = 3, label = "2", color = "gray", size = 10) + 
+  scale_y_reverse() + 
+  guides(fill = FALSE)
+```
+
+
+::: 
+
+::: item 
+
+.center[
+## The data we *need*
+]
+
+```{r, echo = FALSE, fig.height = 14}
+out2 <- expand_grid(row = 1:11, col = 1:2) %>% 
+  mutate(
+    color = factor(rep(c(0, rep(1:5, each = 2)), each = 2)),
+    alpha = c(1, 1, rep(c(1, 0.6), times = 10)),
+    text = c("name", "value", "CD", "1", "CD", "2", "CR", "1", "CR", "2", "DF", "1", "DF", "2", "RA", "1", "RA", "2", "PR", "1", "PR", "2"),
+    size = c(10, 10, rep(10, 20))
+  ) 
+levels(out2$color) <- c("black", "#0D0887FF", "#7E03A8FF", "#CC4678FF", "#F89441FF", "#F0F921FF")
+
+out2 %>% 
+  ggplot(aes(col, row)) + 
+  geom_tile(width = 0.9, height = 0.9, aes(fill = I(color), alpha = I(alpha))) + 
+  geom_text(aes(label = text, size = I(size)), color = "gray") + 
+  theme_void() + 
+  coord_equal() + 
+  scale_y_reverse()
+
+```
+
+
+:::
+
+:::
+
+
+--
+
+::: {.pos .bg-white .font_small bottom: 10px; left: 25%; border: dashed 1px black; }
+
+<pre><code>
+ggplot(.bg-yellow[&lt;DATA&gt;], aes(x = <span class="bg-black" style="color:#E8E8E8; padding-left:3px;padding-right:3px;">value</span>)) + 
+  geom_histogram() + 
+  facet_wrap(~ <span class="bg-black" style="color:#E8E8E8; padding-left:3px;padding-right:3px;">name</span>,
+             scales = "free_x",
+             nrow = 1)
+</code> </pre>
+
+:::
+
+---
+
+
+# `r emo::ji("wrench")` Data wrangling: `tidyr::pivot_longer`
+
+
+::: grid 
+
+::: { .item border-right: dashed 3pt black; } 
+
+```{r, include = FALSE}
+dat <- signal_dat %>% select(CD:PR) 
+```
+```{r wrangle1, eval = FALSE}
+dat %>% 
+  pivot_longer(cols = CD:PR)
+```
+
+That's all!
+
+::: 
+
+::: item 
+
+```{r wrangle1, echo = F}
+```
+<p></p>
+
+:::
+
+:::
+
+
 
 
 ---
 
-# What's wrong with this data?
+# Frog data
 
 ```{r, echo = FALSE}
-iris %>% DT::datatable(rownames = FALSE,
-                options = list(dom = 'tp',pageLength = 10,scrollX = TRUE))
+signal_dat %>% 
+  DT::datatable(rownames = FALSE,
+                options = list(dom = 'tp', pageLength = 6, scrollX = "400px"))
+  
 ```
 
+.footnote.font_small[
+.red[Note: the header is slightly modified from original.]
+
+Tanner, Jessie C.; Ward, Jessica L.; Shaw, Ruth G.; Bee, Mark A. (2017), Data from:
+Multivariate phenotypic selection on a complex sexual signal, Dataset,
+https://doi.org/10.5061/dryad.n50cr
+
+]
 
 
 ---
@@ -68,7 +262,7 @@ iris %>% DT::datatable(rownames = FALSE,
 ::: paddings
 
 
-* Raw data is hardly ever in a ready format for downstream analysis
+* 
 
 * Aim: get the data ready for modelling or visualisation
 

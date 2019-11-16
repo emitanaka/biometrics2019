@@ -21,10 +21,11 @@ install.packages(c("tidyverse", "rmarkdown", "knitr", "rticles",
                  "xaringan", "usethis", "rmdformats", "prettydoc",
                  "linl", "shiny", "bookdown", "pagedown", "plotly", "remotes",
                  "DT", "furrr", "ggrepel", "skimr", "janitor"))
-# the following is not on CRAN 
+# the following is not on CRAN or development version needed
 remotes::install_github("gadenbuie/xaringanthemer")
 remotes::install_github("hadley/emo")
 remotes::install_github("thomasp85/patchwork")
+remotes::install_github("EmilHvitfeldt/paletteer")
 ```
 4. Make an account at https://rstudio.cloud (it's free).
 5. Make an account at https://rpubs.com (it's also free).
