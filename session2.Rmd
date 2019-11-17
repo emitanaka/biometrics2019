@@ -208,7 +208,7 @@ class: font_small
 The following commands all produce the same output on the right:  
   
 <br>
-
+.code-box[
 ```{r, eval = FALSE}
 pivot_longer(dat, cols = c("CD", "CR", "DF", "RA", "PR"))
 ```
@@ -221,7 +221,7 @@ pivot_longer(dat, cols = CD:PR)
 ```{r, eval = FALSE}
 pivot_longer(dat, cols = everything())
 ```
-
+]
 <br>
 
 Yup, that's all to take your data from .blue[wider] form to .blue[longer] form!
@@ -449,6 +449,7 @@ Note `janitor` is *not* part of `tidyverse` but it's one of my favorites!
 
 # Quick skim of the data
 
+
 <pre><code>
 .bg-yellow[skimr::skim](signal_cdat) 
 </code></pre>
@@ -500,6 +501,9 @@ class: font_small
 
 **Aim**: create a new variable of phonotaxis score 
 
+<br>
+
+.code-box[
 <pre><code>
 signal_cdat2 <- .bg-yellow[mutate](signal_cdat, 
    # rounding needed to get the same result as paper
@@ -508,8 +512,11 @@ signal_cdat2 <- .bg-yellow[mutate](signal_cdat,
    # defintion of phonotaxis score 
    score = (xbars - xbara) / (xbars + xbara))
 </code></pre>
+]
 
-* Think `mutate` as in for biology when a string of DNA is modified by mutation `r emo::ji("dna")`
+<br>
+
+Think `mutate` as in for biology when a string of DNA is modified by mutation `r emo::ji("dna")`
 
 ---
 
@@ -535,12 +542,17 @@ signal_cdat2 <- mutate(signal_cdat,
 
 # Select variables with `dplyr::select`
 
+<br>
+
+.paddings5[
+.code-box[
 <pre><code>
 .bg-yellow[select](signal_cdat2, 
-      # below is using tidyselect
-       c(starts_with("standard"), starts_with("alt"), 
-         starts_with("xbar"), score, starts_with("pho")))
+  # below is using tidyselect
+  c(starts_with("standard"), starts_with("alt"), 
+    starts_with("xbar"), score, starts_with("pho")))
 </code></pre>
+]]
 
 .font_small[
 ```{r, echo = FALSE}
@@ -573,15 +585,19 @@ class: font_small
 
 # Subsetting data with `dplyr::filter`
 
-::: paddings5 
+::: { .paddings5 margin-top: 10px; }
+
+.code-box[
 <pre><code>
 signal_cdatm <- .bg-yellow[filter](signal_cdat2, is.na(speaker_position))
 glimpse(select(signal_cdatm, speaker_position))
 </code></pre>
+]
 ```{r, echo = FALSE}
 signal_cdatm <- filter(signal_cdat2, is.na(speaker_position))
 glimpse(select(signal_cdatm, speaker_position))
 ```
+
 <p></p>
 
 
@@ -590,6 +606,8 @@ glimpse(select(signal_cdatm, speaker_position))
 ```{r}
 tidyverse_conflicts()
 ```
+
+<p></p>
 
 :::
 
@@ -600,17 +618,19 @@ class: font_small
 
 # Summarising data with `dplyr::summarise` usually coupled with `dplyr::group_by`
 
-::: paddings5
+::: { .paddings5 margin-top: 10px; }
 
+.code-box[
 <pre><code>
 signal_cdatg <- .bg-yellow[group_by](signal_cdatm, two_choice)
 signal_cdats <- .bg-yellow[summarise](signal_cdatg, 
                           avg_score = mean(score, na.rm = TRUE), 
-                           sd_score = sd(score, na.rm = TRUE)
+                           sd_score = sd(score, na.rm = TRUE),
                            nmissing = sum(is.na(score)),
                                   n = <span class="bg-yellow">n()</span>)
 signal_cdats
 </code></pre>
+]
 
 ```{r, echo = F}
 signal_cdatg <- group_by(signal_cdatm, two_choice)
@@ -627,6 +647,109 @@ signal_cdats
 
 ---
 
+class: font_small
+
+# The full code to get to the table summary
+
+::: paddings5
+
+<pre><code>
+signal_cdat <- janitor::clean_names(signal_dat)
+signal_cdat2 <- mutate(signal_cdat, 
+   xbara = round((alternative1 + alternative2 + alternative3) / 3),
+   xbars = round((standard1 + standard2 + standard3) / 3),
+   score = (xbars - xbara) / (xbars + xbara))
+signal_cdatm <- filter(signal_cdat2, is.na(speaker_position))
+signal_cdatg <- group_by(signal_cdatm, two_choice)
+signal_cdats <- summarise(signal_cdatg, 
+                          avg_score = mean(score, na.rm = TRUE), 
+                           sd_score = sd(score, na.rm = TRUE),
+                           nmissing = sum(is.na(score)),
+                                  n = n())
+</code></pre>
+
+:::
+
+---
+
+count: false
+class: font_small
+
+# The full code to get to the table summary
+
+::: paddings5
+
+<pre><code>
+.bg-yellow[signal_cdat] <- janitor::clean_names(signal_dat)
+.bg-yellow[signal_cdat2] <- mutate(signal_cdat, 
+   xbara = round((alternative1 + alternative2 + alternative3) / 3),
+   xbars = round((standard1 + standard2 + standard3) / 3),
+   score = (xbars - xbara) / (xbars + xbara))
+.bg-yellow[signal_cdatm] <- filter(signal_cdat2, is.na(speaker_position))
+.bg-yellow[signal_cdatg] <- group_by(signal_cdatm, two_choice)
+.bg-yellow[signal_cdats] <- summarise(signal_cdatg, 
+                          avg_score = mean(score, na.rm = TRUE), 
+                           sd_score = sd(score, na.rm = TRUE),
+                           nmissing = sum(is.na(score)),
+                                  n = n())
+</code></pre>
+
+:::
+
+`r emo::ji("weary")` The *pain point* - you have to think of a new variable name each time OR risk using the same and accidentally overwrite when unknowingly missed a sequence
+
+
+---
+
+# The pipe operator from `magrittr`
+
+<br>
+
+<center>
+
+.font_large[%>%]
+
+<pre><code>
+&lt;data&gt; %>% &lt;function&gt;(&lt;argA&gt;, &lt;argB&gt;)
+</code></pre>
+
+is the same as 
+
+<pre><code>
+&lt;function&gt;(&lt;data&gt;, &lt;argA&gt;, &lt;argB&gt;)
+</code></pre>
+
+<br>
+
+E.g. <code>filter(signal_cdat2, is.na(speaker_position))</code><br> is the same as <br>
+<code>signal_cdat2 %>% filter(is.na(speaker_position))</code>
+
+</center>
+
+---
+
+class: font_small
+
+# Chain of pipes
+
+```{r}
+signal_dat %>% 
+  janitor::clean_names() %>% 
+  mutate(xbara = round((alternative1 + alternative2 + alternative3) / 3),
+         xbars = round((standard1 + standard2 + standard3) / 3),
+         score = (xbars - xbara) / (xbars + xbara)) %>% 
+  filter(is.na(speaker_position)) %>% 
+  group_by(two_choice) %>% 
+  summarise(avg_score = mean(score, na.rm = TRUE), 
+             sd_score = sd(score, na.rm = TRUE),
+             nmissing = sum(is.na(score)),
+                    n = n())
+```
+
+
+---
+
+
 # Main `dplyr` verbs
 
 ::: paddings
@@ -635,11 +758,137 @@ signal_cdats
 * `select()` - select and rename variables (reduces column)
 * `filter()` - subset data (reduces rows) 
 * `summarise()` - reduce data to a summary statistics 
-* `arrange()` - order rows 
+* `arrange()` - ???
 * `group_by()` coupled with `ungroup()` - group operations 
+
+
+What does `arrange()` do?
 
 :::
 
+---
+
+# Special extensions <br>`*_if()`, `*_at()` and `*_all()`
+
+::: paddings
+
+::: grid 
+
+::: item 
+
+`mutate_if()`  
+`mutate_at()`  
+`mutate-all()`
+
+`select_if()`  
+`select_at()`  
+`select_all()`
+
+`filter_if()`  
+`filter_at()`  
+`filter_all()`
+
+
+
+::: 
+
+::: item 
+
+`summarise_if()`  
+`summarise_at()`  
+`summarise_all()`
+
+`group_by_if()`  
+`group_by_at()`  
+`group_by_all()`
+
+`arrange_if()`  
+`arrange_at()`  
+`arrange_all()`
+
+
+:::
+
+:::
+
+:::
+
+---
+
+# `*_if()`
+
+::: paddings
+
+.code-box[
+```{r eg1, eval =F}
+signal_cdat %>% 
+  mutate_if(is.character, as.factor) %>% 
+  select_if(is.factor)
+```
+]
+.font_small[
+```{r eg1, echo = F}
+```
+]
+
+<p></p>
+
+:::
+
+---
+
+# `*_at()`
+
+
+::: paddings
+
+.code-box[
+```{r eg2, eval =F}
+scale2 <- function(x, na.rm = FALSE) 
+  (x - mean(x, na.rm = na.rm)) / sd(x, na.rm)
+signal_cdat2 %>% 
+  mutate_at("score", scale2) 
+```
+]
+
+To use `tidyselect`, the variables need to be wrapped with `var()` function:
+
+.code-box[
+```{r eg2b, eval =F}
+signal_cdat2 %>% 
+  mutate_at(vars(cd:pr), scale2) 
+```
+]
+
+
+<p></p>
+
+:::
+
+
+---
+
+# `*_all()`
+
+
+::: paddings
+
+Applies function to all variables
+
+<br>
+
+.code-box[
+```{r eg3, eval =F}
+signal_cdat2 %>% 
+  mutate_all(I) 
+```
+]
+
+
+
+<p></p>
+
+:::
 
 
 
