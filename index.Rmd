@@ -1,7 +1,7 @@
 ---
-title: "Title"
+title: "Tidyverse + R Markdown Workshop"
 author: "Emi Tanaka"
-date: "XXth MMM YYYY"
+date: "1st Dec 2019"
 output:
   prettydoc::html_pretty:
     theme: tactile
@@ -21,9 +21,13 @@ Find the instructions that was sent in email [here](instructions.pdf).
 
 ## Slides 
 
-* [Session 1: XX](session1.html)
-* [Session 2: XX](session2.html)
-* [Session 3: XX](session3.html)
+* [Session 1: Data Visualisation with `ggplot2`](session1.html)
+* [Session 2: Data Wrangling with `tidyr` and `dplyr`](session2.html)
+* [Session 3: Functional Programming with `purrr` and `furrr`](session3.html)
+* [Session 4: R Markdown Basics](session4.html)
+* [Session 5: Reproducible Reports with `rmarkdown` and `knitr`](session5.html)
+* [Session 6: Dynamic Documents with `bookdown`](session6.html)
+* [Session 7: Pretty Presentations with `xaringan`](session7.html)
 
-All materials can be found at https://github.com/emitanaka/XXX.
+All materials can be found at https://github.com/emitanaka/biometrics2019.
 

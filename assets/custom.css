@@ -141,7 +141,7 @@ p {
 
 .scroll-350 {
   overflow-y: scroll;
-  height: 440px;
+  height: 480px;
 }
 
 .pad10 {
@@ -236,6 +236,11 @@ a {
  padding-right: 15%;
 }
 
+.paddings5 {
+ padding-left: 5%;
+ padding-right: 5%;
+}
+
 
 .footnote {
   position: absolute;
@@ -267,4 +272,5 @@ h2, h3 {
   width: 6em; 
   margin: auto;
 }
+
 

@@ -47,9 +47,8 @@ output:
 ```{r titleslide, child="scripts/titleslide.Rmd"}
 ```
 ```{r data, include = FALSE}
-signal_dat <- readxl::read_xlsx("data/signal-data.xlsx")
-signal_cdat <- signal_dat %>% janitor::clean_names()
-
+signal_dat <- readxl::read_xlsx("exercises/data/signal-data.xlsx")
+dat <- signal_dat %>% select(CD:PR) 
 ```
 
 ---
@@ -58,13 +57,11 @@ class: font_smaller
 
 # `r emo::ji("target")` Aim: using this data, plot below graph
 
-```{r glimpse1, echo = FALSE}
-signal_dat %>% 
-  select(CD:PR) %>% 
-  glimpse()
+```{r glimpse1}
+glimpse(dat)
 ```
 
-```{r plot1, echo = FALSE, fig.width = 15, fig.height = 4.5}
+```{r plot1, echo = FALSE, fig.width = 15, fig.height = 5.5}
 signal_dat %>% 
   select(CD:PR) %>% 
   pivot_longer(cols = CD:PR) %>% 
@@ -87,7 +84,7 @@ signal_dat %>%
 # `r emo::ji("thinking")` Mapping variable to aesthestic 
 
 .font_smaller[
-```{r glimpse1, echo = FALSE}
+```{r glimpse1}
 ```
 ]
 
@@ -128,7 +125,7 @@ Raw data is hardly ever in a format ready for downstream analysis
 ## The data we *have*
 ]
 
-```{r, echo = FALSE, fig.height = 4}
+```{r tile1, echo = FALSE, fig.height = 4}
 out <- expand_grid(row = 1:3, col = 1:5) %>% 
   mutate(
     color = factor(col),
@@ -199,6 +196,7 @@ ggplot(.bg-yellow[&lt;DATA&gt;], aes(x = <span class="bg-black" style="color:#E8
 
 ---
 
+class: font_small
 
 # `r emo::ji("wrench")` Data wrangling: `tidyr::pivot_longer`
 
@@ -207,15 +205,26 @@ ggplot(.bg-yellow[&lt;DATA&gt;], aes(x = <span class="bg-black" style="color:#E8
 
 ::: { .item border-right: dashed 3pt black; } 
 
-```{r, include = FALSE}
-dat <- signal_dat %>% select(CD:PR) 
+The following commands all produce the same output on the right:  
+  
+<br>
+
+```{r, eval = FALSE}
+pivot_longer(dat, cols = c("CD", "CR", "DF", "RA", "PR"))
+```
+```{r, eval = FALSE}
+pivot_longer(dat, cols = c(CD, CR, DF, RA, PR))
 ```
 ```{r wrangle1, eval = FALSE}
-dat %>% 
-  pivot_longer(cols = CD:PR)
+pivot_longer(dat, cols = CD:PR)
+```
+```{r, eval = FALSE}
+pivot_longer(dat, cols = everything())
 ```
 
-That's all!
+<br>
+
+Yup, that's all to take your data from .blue[wider] form to .blue[longer] form!
 
 ::: 
 
@@ -230,11 +239,114 @@ That's all!
 :::
 
 
+---
+
+class: font_smaller
+
+# Tidy evalution 
+
+
+::: grid 
+
+::: { .item border-right: dashed 3px black; }
+
+* `tidyverse` packages all employ **tidy evalution**, which includes **non-standard evaluation**, through .blue[`rlang`] package
+* It's the reason below are the same
+
+.code-box[
+```{r, eval = FALSE}
+pivot_longer(dat, 
+  cols = c("CD", "CR", "DF", "RA", "PR"))
+```
+```{r, eval = FALSE}
+pivot_longer(dat, 
+  cols = c(CD, CR, DF, RA, PR))
+```
+]
+
+* You've actually been using tidy evalution in `ggplot`!
+
+::: 
+
+::: item 
+
+
+{{content}}
+
+
+:::
+
+:::
+
+
+--
+
+--- 
+
+What would happen below?
+
+```{r, eval = FALSE}
+vars <- "CD", "CR", "DF", "RA", "PR")
+pivot_longer(dat, cols = vars)
+```
+
+{{content}}
+
+--
+
+--- 
+
+What if the object name is in the data?
+
+```{r, eval = FALSE}
+CD <- c("CD", "CR", "DF", "RA", "PR")
+pivot_longer(dat, cols = CD)
+```
+
+{{content}}
+
+--
+
+--- 
+
+To "unquote", you need to use `!!` (pronounced bang-bang)
+
+<pre><code>
+CD <- c("CD", "CR", "DF", "RA", "PR")
+pivot_longer(dat, cols = <span class="bg-yellow">!!</span>CD)
+</code></pre>
 
 
 ---
 
-# Frog data
+# `tidyselect`
+
+::: paddings
+
+Packages in `tidyverse` generally use .blue[`tidyselect`]
+
+<pre><code>
+pivot_longer(dat, cols = .bg-yellow[CD:PR])
+</code></pre>
+
+Selects all variables starting from `CD` to `PR`.
+
+```{r tile1, fig.height = 2.75, echo = FALSE}
+```
+
+
+<pre><code>
+pivot_longer(dat, cols = .bg-yellow[everything()])
+</code></pre>
+
+Selects every variables.
+
+:::
+
+
+---
+
+# `signal_dat`
 
 ```{r, echo = FALSE}
 signal_dat %>% 
@@ -255,18 +367,279 @@ https://doi.org/10.5061/dryad.n50cr
 
 ---
 
-# Data Wrangling
+class: font_small
 
-<br>
+# Non-syntatic variable names
 
 ::: paddings
 
+* **Syntatic** names consist of letters, digits, `.` and `_` only and begin with letters or `.` AND also cannot be in reserved words list (`?Reserved`)
+* You need to surround non-syntatic names with backticks if you wish to refer to them
+* E.g. in `signal_dat`, "`Frog ID`" is a variable with non-syntatic name because it has a space in it
+* To select "`Frog ID`", we use 
+```{r}
+signal_dat$`Frog ID`
+```
+<p></p>
 
-* 
-
-* Aim: get the data ready for modelling or visualisation
 
 :::
+
+
+::: footnote
+
+Wickham (2019) Advanced R. Second edition. Chapman & Hall/CRC
+:::
+
+---
+
+# Rename variable names with `dplyr::rename`
+
+::: paddings
+
+* Working with non-syntatic names is often a pain!
+* You can rename a variable using `dplyr::rename`
+
+:::
+
+<pre><code>
+signal_cdat <- .bg-yellow[rename](signal_dat, 
+    frog_id            = `Frog ID`,
+    two_choice_latency = `Two Choice Latency`,
+    two_choice         = `Two Choice`,
+    phonotaxis_score   = `Phonotaxis Score`,
+    speaker_position   = `Speaker Position`,
+    first_presented    = `First Presented`)
+</code></pre>
+
+<p></p>
+
+---
+
+
+# Clean variable names
+
+::: paddings
+
+* But it's still a pain to rename one-by-one
+* The .blue[`janitor`] package is fantastic way to clean at once
+
+:::
+
+<pre><code>
+signal_cdat <- .bg-yellow[janitor::clean_names](signal_dat)
+</code></pre>
+
+```{r, echo = FALSE}
+signal_cdat <- janitor::clean_names(signal_dat)
+```
+
+.font_smaller[
+```{r}
+glimpse(signal_cdat)
+```
+]
+
+::: footnote
+
+Note `janitor` is *not* part of `tidyverse` but it's one of my favorites!
+:::
+
+---
+
+# Quick skim of the data
+
+<pre><code>
+.bg-yellow[skimr::skim](signal_cdat) 
+</code></pre>
+```{r skim1, include = F}
+skimr::skim(signal_cdat)
+```
+
+
+.font_smaller.scroll-350[
+```{r skim1, echo = FALSE}
+```
+]
+
+<p></p>
+
+::: footnote
+
+Note `skimr` is *not* part of `tidyverse` but it's also one of my favorites!
+:::
+
+---
+
+exclude: true
+
+
+class: font_small
+
+# Make new variables
+
+::: paddings5
+
+* Phonotaxis scores (a standard way of measuring receiver behavior
+in single-stimulus behavioral assays in studies of acoustically communicating animals) are calculated as 
+$$\dfrac{\bar{x}_s - \bar{x}_a}{\bar{x}_s - \bar{x}_a}$$
+where 
+  * $\bar{x}_s$ is average latency to respond to standard stimulus<br> (i.e. mean of `standard1`, `standard2`, and `standard3`) and 
+  * $\bar{x}_a$ is the average latency to respond to alternative stimulus<br> (i.e. mean of `alternate1`, `alternate2`, and `alternate3`) 
+* **Aim**: make a new variable for phonotaxis score using .blue[`dplyr::mutate`]
+
+:::
+
+---
+
+class: font_small
+
+# Make new variables with `dplyr::mutate`
+
+::: paddings5
+
+**Aim**: create a new variable of phonotaxis score 
+
+<pre><code>
+signal_cdat2 <- .bg-yellow[mutate](signal_cdat, 
+   # rounding needed to get the same result as paper
+   xbara = round((alternative1 + alternative2 + alternative3) / 3),
+   xbars = round((standard1 + standard2 + standard3) / 3),
+   # defintion of phonotaxis score 
+   score = (xbars - xbara) / (xbars + xbara))
+</code></pre>
+
+* Think `mutate` as in for biology when a string of DNA is modified by mutation `r emo::ji("dna")`
+
+---
+
+exclude: true
+
+* The format is NEW = f(EXISTING VARIABLES)
+* You can add as many new variables, `mutate(data, X1 = A, X2 = B)`
+* You can overwrite existing variables: EXISTING VAR = f(EXISTING VARIABLES)
+* You can create new variables based on previously created newly variables in the same `mutate` call, e.g. `mutate(data, X = B, Y = 2 * X)`
+
+```{r, echo = FALSE}
+signal_cdat2 <- mutate(signal_cdat, 
+  # rounding needed to get the same result as paper
+  xbara = round((alternative1 + alternative2 + alternative3) / 3),
+  xbars = round((standard1 + standard2 + standard3) / 3),
+  score = (xbars - xbara) / (xbars + xbara))
+```
+
+:::
+
+---
+
+
+# Select variables with `dplyr::select`
+
+<pre><code>
+.bg-yellow[select](signal_cdat2, 
+      # below is using tidyselect
+       c(starts_with("standard"), starts_with("alt"), 
+         starts_with("xbar"), score, starts_with("pho")))
+</code></pre>
+
+.font_small[
+```{r, echo = FALSE}
+select(signal_cdat2, 
+       c(starts_with("standard"), 
+         starts_with("alt"), 
+         starts_with("xbar"), 
+         score,
+         starts_with("pho")))
+                       
+```
+]
+
+```{r, include = FALSE}
+tmp <- signal_cdat %>% 
+  rowwise() %>% 
+  mutate(ac = mean(c(alternative1, alternative2, alternative3), na.rm = T)) %>% 
+  ungroup() %>% 
+  mutate(cd = scale(cd), 
+         cr = scale(cr),
+         df = scale(df), 
+         ra = scale(ra),
+         pr = scale(pr)) %>% 
+  mutate(ac = scale(ac))
+coef(lm(phonotaxis_score ~ cd + cr + df + ra + pr, data = tmp))
+```
+---
+
+class: font_small
+
+# Subsetting data with `dplyr::filter`
+
+::: paddings5 
+<pre><code>
+signal_cdatm <- .bg-yellow[filter](signal_cdat2, is.na(speaker_position))
+glimpse(select(signal_cdatm, speaker_position))
+</code></pre>
+```{r, echo = FALSE}
+signal_cdatm <- filter(signal_cdat2, is.na(speaker_position))
+glimpse(select(signal_cdatm, speaker_position))
+```
+<p></p>
+
+
+* Note: `dplyr::filter` conflicts with `stats::filter`
+* Usually loading `tidyverse` displays this conflict
+```{r}
+tidyverse_conflicts()
+```
+
+:::
+
+
+---
+
+class: font_small
+
+# Summarising data with `dplyr::summarise` usually coupled with `dplyr::group_by`
+
+::: paddings5
+
+<pre><code>
+signal_cdatg <- .bg-yellow[group_by](signal_cdatm, two_choice)
+signal_cdats <- .bg-yellow[summarise](signal_cdatg, 
+                          avg_score = mean(score, na.rm = TRUE), 
+                           sd_score = sd(score, na.rm = TRUE)
+                           nmissing = sum(is.na(score)),
+                                  n = <span class="bg-yellow">n()</span>)
+signal_cdats
+</code></pre>
+
+```{r, echo = F}
+signal_cdatg <- group_by(signal_cdatm, two_choice)
+signal_cdats <- summarise(signal_cdatg, 
+                          avg_score = mean(score, na.rm = T), 
+                          sd_score = sd(score, na.rm = T),
+                          nmissing = sum(is.na(score)),
+                          n=n())
+signal_cdats
+```
+<p></p>
+
+:::
+
+---
+
+# Main `dplyr` verbs
+
+::: paddings
+
+* `mutate()` - create new or overwrite existing variables based on existing variables 
+* `select()` - select and rename variables (reduces column)
+* `filter()` - subset data (reduces rows) 
+* `summarise()` - reduce data to a summary statistics 
+* `arrange()` - order rows 
+* `group_by()` coupled with `ungroup()` - group operations 
+
+:::
+
 
 
 

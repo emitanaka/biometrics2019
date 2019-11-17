@@ -91,6 +91,7 @@
 
 
 .info-box {
+  position: relative;
   border: solid 3px black;
   background-color:white;
   padding-left: 15px;
@@ -110,6 +111,29 @@
   font-size: 12pt;
   background-color: #f2f2f2;
 }
+
+.code-box {
+  position: relative;
+  border: solid 3px black;
+  background-color:white;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 18pt;
+  border-radius: 7px;
+}
+
+.code-box:before {
+  position: absolute;
+  content: url("../images/code.png");
+  top: 0;
+  left: 0;
+  margin-left: -10px;
+  margin-top: -10px;
+  border-radius:20px;
+  font-size: 12pt;
+  background-color: #f2f2f2;
+}
+
 
 
 .html-box {
