@@ -6,8 +6,8 @@ date: "1st Dec 2019 | Biometerics by the Botanic Gardens | Adelaide, Australia"
 params: 
   wifi: "FILL"
   wifi_password: "FILL"
-  cloud_link: "bit.ly/xxx"
-  slide_link: ""
+  cloud_link: "http://bit.ly/biometrics-workshop-2019"
+  slide_link: "https://biometrics2019.netlify.com/"
 output:
   xaringan::moon_reader:
     css: 

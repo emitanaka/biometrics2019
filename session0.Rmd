@@ -194,7 +194,7 @@ Find slides at<br><Br>
 
 
 .center[
-.blue[<i class="fas fa-link"></i>  https://IBSAR2019.netlify.com/]
+.blue[<i class="fas fa-link"></i> https://biometrics2019.netlify.com/]
 ]
 
 <br>
@@ -203,7 +203,7 @@ Find slides at<br><Br>
 Open <br><Br>
 
 .center[
-.blue[<i class="fas fa-link"></i>  http://bit.ly/IBSAR2019]
+.blue[<i class="fas fa-link"></i>  http://bit.ly/biometrics-workshop-2019]
 ]
 
 <br>
