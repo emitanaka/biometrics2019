@@ -1,0 +1,61 @@
+---
+title: "R Package & R Markdown Workshop"
+author: 
+  - "Damjan Vukcevic"
+  - "Emi Tanaka"
+#date: "19th November 2019"
+output: 
+  html_document:
+    toc: true
+    toc_float: true 
+    code_download: true 
+    code_folding: "hide"
+---
+
+## About
+
+R is an interactive environment for data analysis and statistical modelling. Join us for two insightful workshops on R skills hosted by SSA Vic and Melbourne Integrative Genomics (MIG).
+
+When performing data analyses, you typically need to share your insights with others. In our morning workshop, you will learn how to put your R code together into a 'package', which makes it easier to use and very easy to share. Then in our afternoon workshop, you will learn how to share and communicate the results of your analyses with others (and your future self!) using R Markdown.
+
+## Workshop
+
+### Building R packages
+
+Morning workshop (9am to 12:30pm), presented by Damjan Vukcevic
+
+You have developed a new statistical method. Now it is time to share it with the world.
+
+The methods that actually get used in practice are those with readily available and user-friendly implementations. Writing and disseminating software is therefore a key skill for modern statisticians, one that is generally not taught widely. This course aims to fill the gap.
+
+The R software environment is widely used for statistical analyses. One of its distinguishing features is the extensive range of R ‘packages’, which anyone can write and share via the internet. This used to be an intimidating process but modern tools have made it simple.
+
+We begin our course with how to write a very basic package, and then show how to include documentation, examples and data. Further topics include: an efficient development workflow, managing relationships between packages, sharing your packages with others, and easy ways to manage packages (finding, installing, upgrading).
+
+### R Markdown
+
+Afternoon workshop (1:30pm to 5pm), presented by Emi Tanaka
+
+No matter how great your analysis, there is great benefit from streamlining your analysis to produce reproducible reports that can be easily disseminated. R Markdown can easily intermingle code and text to generate captivating, dynamic reports and presentations.
+
+The workshop will include in-depth explanation of the three main components of R Markdown: YAML, code chunks and text. These will be followed by hands-on exercises for you to dive straight into practising. You will learn how to: customise your documents with different output formats (e.g. Word, PDF or HTML); modify tables and figures; generate parametrised reports; make your document writing efficient and make beautiful slides with interactive components well-suited for data-storytelling or showcasing how your R package works.
+
+## About the presenters 
+
+```{r}
+dat <- tidyr::tribble(
+  ~Name, ~Position, ~University,
+  "Damjan Vukcevic", "Senior Lecturer", "University of Melbourne",
+  "Emi Tanaka", "Lecturer", "The University of Sydney"
+)
+knitr::kable(dat)
+```
+
+## Requirements
+
+Basic knowledge of R will be assumed. We expect you to have used R to load data, create simple visualisations, perform basic analyses and write simple functions.
+(R Markdown workshop only) Basic knowledge of LaTeX is desirable, but not essential.
+You will need to bring your own laptop (with administrative rights) to the workshops.
+ 
+
+ 

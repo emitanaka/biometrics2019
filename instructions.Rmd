@@ -1,11 +1,27 @@
 ---
 title: "Tidyverse & R Markdown Workshop"
-author: "Emi Tanaka"
+author: 
+  - "Emi Tanaka"
+  - "Annie Conway"
 date: "1st December 2019"
 fontfamily: bera
 closing: "------------------------------"
-output: pdf_document
+output: 
+  prettydoc::html_pretty:
+    theme: leonids
 ---
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy()
+```
+
+## Place
+
+University of Adelaide North Tce Campus, Hughes 322 Teaching Room
+
+Registration from 8.30am-8.50am
+
+Sunday 1st December 2019
 
 ## Instructions
 
@@ -20,12 +36,14 @@ tinytex::install_tinytex()
 install.packages(c("tidyverse", "rmarkdown", "knitr", "rticles",
                  "xaringan", "usethis", "rmdformats", "prettydoc",
                  "linl", "shiny", "bookdown", "pagedown", "plotly", "remotes",
-                 "DT", "furrr", "ggrepel", "skimr", "janitor"))
+                 "DT", "furrr", "ggrepel", "skimr", "janitor", "colorspace"))
 # the following is not on CRAN or development version needed
 remotes::install_github("gadenbuie/xaringanthemer")
 remotes::install_github("hadley/emo")
 remotes::install_github("thomasp85/patchwork")
 remotes::install_github("EmilHvitfeldt/paletteer")
+remotes::install_github("wilkelab/cowplot")
+remotes::install_github("clauswilke/colorblindr")
 ```
 4. Make an account at https://rstudio.cloud (it's free).
 5. Make an account at https://rpubs.com (it's also free).
@@ -35,7 +53,7 @@ remotes::install_github("EmilHvitfeldt/paletteer")
 
 ## Pre-Work
 
-You will get the most out of the workshop if you know some markdown, LaTeX, HTML/CSS and R. Please do these tutorials if you are not familiar or need to brush up with it! 
+You will get the most out of the workshop if you know some markdown, LaTeX, HTML/CSS and R. Below are some optional tutorials that will be helpful for you to practice with.
 
 * Markdown tutorial https://www.markdowntutorial.com - 10 minutes tutorial
 * LaTeX tutorial https://www.latex-tutorial.com/quick-start/

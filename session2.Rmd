@@ -851,7 +851,7 @@ signal_cdat2 %>%
 ```
 ]
 
-To use `tidyselect`, the variables need to be wrapped with `var()` function:
+To use `tidyselect`, the variables need to be wrapped with `vars()` function:
 
 .code-box[
 ```{r eg2b, eval =F}
@@ -890,6 +890,19 @@ signal_cdat2 %>%
 
 :::
 
+---
+
+class: middle center
+
+Open and go through:
+
+`challenge-04-wrangling.Rmd`
+
+<br>
+
+For answers go to (but don't look until trying!):
+
+`challenge-04-wrangling-solution.Rmd`
 
 
 ---

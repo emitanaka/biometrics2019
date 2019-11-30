@@ -1,0 +1,64 @@
+---
+title: "My first xaringan slide"
+subtitle: "Not!"
+author: "Emi Tanaka"
+date: "4th October 2019"
+output: 
+  xaringan::moon_reader
+---
+
+# Slide after title slide
+
+---
+
+# Next slide
+
+* We can use **markdown**!
+
+--- 
+
+* Oops there is a space after `---`!
+
+* It creates a horizontal line instead of a new slide.
+
+
+---
+
+# Showcase
+
+Great for showing code and output.
+
+.pull-left[
+
+## Code
+
+```{r plot, eval = FALSE}
+library(ggplot2)
+ggplot(cars, aes(speed, dist)) + 
+  geom_point()
+```
+
+]
+
+
+.pull-right[
+
+## Output
+
+```{r plot, echo = FALSE}
+```
+
+]
+
+---
+
+# Interactive components
+
+```{r}
+DT::datatable(cars)
+```
+
+
+
+
+

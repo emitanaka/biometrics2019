@@ -1,0 +1,83 @@
+```{r setup, include = FALSE}
+library(tidyverse)
+library(agridat)
+library(scales)
+knitr::opts_chunk$set(
+  fig.path = "challenge04/"
+)
+```
+
+```{r exercise-01}
+hessling.argentina %>% 
+  select(-year) %>% 
+  summarise_all(mean)
+```
+
+```{r exercise-02}
+dat_prec <- hessling.argentina %>% 
+  select(year, starts_with("p")) %>% 
+  pivot_longer(-year, 
+               names_to = "month",
+               values_to = "precipitation") %>% 
+  mutate(month = as.integer(substring(month, 2, 3)),
+         date = as.Date(paste(year, month, "01", sep = "-")))
+dat_prec %>% 
+  ggplot(aes(date, precipitation)) + 
+  geom_point() + 
+  geom_line() + 
+  theme_bw(base_size = 18)
+```
+
+```{r exercise-03}
+dat_temp <- hessling.argentina %>% 
+  select(year, starts_with("t")) %>% 
+  pivot_longer(-year, 
+               names_to = "month",
+               values_to = "temp_dev") %>% 
+  mutate(month = as.integer(substring(month, 2, 3)),
+         date = as.Date(paste(year, month, "01", sep = "-")))
+dat <- full_join(dat_prec, dat_temp, by = c("year", "month", "date")) %>% 
+  pivot_longer(c(precipitation, temp_dev),
+               names_to = "type")
+dat %>% 
+  ggplot(aes(date, value)) + 
+  geom_point() + 
+  geom_line() + 
+  facet_grid(type ~ ., scale = "free_y") + 
+  theme_bw(base_size = 18)
+```
+```{r exercise-04}
+dat <- 
+  rbind(mutate(nass.barley,  crop = "barley"),
+        mutate(nass.corn,    crop = "corn"),
+        mutate(nass.cotton,  crop = "cotton"),
+        mutate(nass.hay,     crop = "hay"),
+        mutate(nass.rice,    crop = "rice"),
+        mutate(nass.sorghum, crop = "sorghum"),
+        mutate(nass.soybean, crop = "soybean"),
+        mutate(nass.wheat,   crop = "wheat"))
+dat %>% 
+  filter(state == "Alabama") %>% 
+  ggplot(aes(year, yield)) + 
+  geom_point() +
+  facet_grid(crop ~ ., scale = "free_y") + 
+  theme_bw(base_size = 18)
+```
+
+```{r exercise-05}
+farenheight_to_celsius <- function(x) return((x - 32) * 5/9) 
+dat <- minnesota.barley.weather %>%
+  mutate(min = farenheight_to_celsius(min),
+         max = farenheight_to_celsius(max),
+         date = as.Date(paste(year, mo, "01", sep = "-"))) %>% 
+  select(site, date, min, max) %>% 
+  pivot_longer(min:max) 
+
+dat %>% 
+  ggplot(aes(date, value, color = name)) + 
+  geom_line() + 
+  theme_bw(base_size = 18) + 
+  labs(y = "Temperature", color = "Temperature") + 
+  theme(legend.position = "bottom")
+```
+

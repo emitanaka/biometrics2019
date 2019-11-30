@@ -1,0 +1,82 @@
+```{r setup, include = FALSE}
+library(tidyverse)
+library(agridat)
+library(scales)
+knitr::opts_chunk$set(
+  fig.path = "challenge02/"
+)
+```
+
+```{r exercise-01}
+ggplot(nass.cotton, aes(year, yield)) + 
+  geom_point(aes(color = acres)) + 
+  facet_wrap(~state) + 
+  scale_y_log10(name = "Yield") + 
+  scale_color_distiller(palette = 2, 
+                        direction = 1,
+                        trans = "log10",
+                        breaks = trans_breaks("log10", function(x) 10^x),
+                         labels = trans_format("log10", math_format(10.^.x))) +
+  labs(x = "Year", title = "US Cotton Yields", subtitle = "1900 to 2011") 
+```
+
+```{r exercise-02}
+# drop the state so it doesn't get facet wrapped
+shadow_dat <- nass.cotton
+shadow_dat$state <- NULL
+ggplot(nass.cotton, aes(year, acres)) +
+  geom_point(data = shadow_dat, color = "gray") +
+  geom_point() +
+  facet_wrap(~state) + 
+  scale_y_log10() + 
+  labs(y = "Acres", x = "Year",
+       title = "US Land for Cotton Farm", subtitle = "1900 to 2011")
+```
+
+```{r exercise-03}
+ggplot(hazell.vegetables, aes(year, celery, fill = celery > 0)) + 
+  geom_col() + 
+  geom_hline(yintercept = 0) + 
+  scale_y_continuous(labels = dollar) + 
+  labs(y = "Gross profit", x = "Year",
+       title = "Celery", fill = "Profit") +
+  scale_fill_manual(labels = c("No", "Yes"),
+                    values = c("#ff1a1a", "#008000")) +
+  scale_x_discrete(labels = 1:6)
+```
+
+```{r exercise-04}
+ggplot(hanks.sprinkler, aes(factor(row), factor(subplot))) +
+  geom_tile(aes(fill = dir)) +
+  geom_point(aes(color = factor(irr)), size = 9) +
+  geom_text(aes(label = block)) +
+  scale_fill_manual(values = c("black", "gray"), 
+                    name = "Direction of\n sprinkler") + 
+  labs(x = "Row", y = "Subplot", color = "Irrigation") + 
+  guides(fill = guide_legend(order = 2),
+         color = guide_legend(order = 1))
+```
+
+
+```{r exercise-05}
+minnesota.barley.weather$date <- with(minnesota.barley.weather, 
+                                      as.Date(paste(year, mo, "01", sep = "-")))
+
+
+farenheight_to_celsius <- function(x) return((x - 32) * 5/9) 
+ggplot(minnesota.barley.weather, aes(x = date)) + 
+  geom_line(aes(y = farenheight_to_celsius(min)), color = "#166ee0") + 
+  geom_line(aes(y = farenheight_to_celsius(max)), color = "#e0161d")  + 
+  facet_wrap(~site) + 
+  scale_y_continuous(name = "Temperature",
+                     label = function(x) paste0(x, "°C")) +
+  scale_x_date(breaks = scales::date_breaks(width = "3 year"),
+               date_labels = "%Y",
+               name = "Time")  +
+  ggtitle("Minnesota Monthly Temperature 1927-1936")
+
+
+```
+
+
+

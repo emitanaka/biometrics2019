@@ -271,6 +271,11 @@ h2, h3 {
   height: 6em;
   width: 6em; 
   margin: auto;
+  overflow: hidden;
 }
 
-
+.profile-pic {
+  display: inline;
+  margin: 0 auto;
+  margin-left: -25%; //centers the image
+}

@@ -1,0 +1,68 @@
+```{r setup, include = FALSE}
+library(tidyverse)
+library(agridat)
+library(ggrepel)
+knitr::opts_chunk$set(
+  fig.path = "challenge01/"
+)
+```
+
+
+```{r exercise-01}
+ggplot() 
+# or ggplot() + geom_blank()
+```
+
+```{r exercise-02}
+ggplot(crampton.pig, aes(weight1, weight2, color = treatment, size = feed)) + 
+  geom_point()
+```
+
+```{r exercise-03}
+ggplot(crampton.pig, aes(rep, treatment, fill = weight2 - weight1)) + 
+  geom_tile(color = "black", size = 2)
+```
+
+```{r exercise-04}
+ggplot(crampton.pig, aes(weight2 - weight1, fill = treatment)) + 
+  geom_density(alpha = 0.7) + 
+  geom_vline(xintercept = 0)
+```
+
+```{r exercise-05}
+ggplot(crampton.pig, aes(treatment, weight2 - weight1)) + 
+  geom_violin(aes(fill = treatment), show.legend = FALSE, color = "brown") + 
+  geom_boxplot(width = 0.1)
+```
+
+```{r exercise-06}
+ggplot(crampton.pig, aes(interaction(rep, treatment), color = treatment)) +
+  geom_linerange(aes(ymin = weight1, ymax = weight2))
+```
+
+```{r exercise-07}
+ggplot(nass.soybean, aes(year, yield)) + 
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
+
+```{r exercise-08}
+ggplot(nass.soybean, aes(year, yield)) + 
+  geom_hex() + 
+  geom_smooth(method = "lm", color = "red")
+```
+
+```{r exercise-09}
+ggplot(nass.soybean, aes(yield)) + 
+  geom_histogram() + 
+  geom_density(aes(y = ..count..), color = "red", fill = "red", alpha = 0.5) # can use "y = stat(count)" instead
+```
+
+```{r exercise-10}
+edgeyields <- subset(nass.soybean, yield < 5 | yield > 50)
+ggplot(nass.soybean, aes(yield, state)) +
+  geom_point(color = "grey") +
+  geom_point(data = edgeyields, color = "red") +
+  geom_text_repel(data = edgeyields, aes(label = year))
+```
+

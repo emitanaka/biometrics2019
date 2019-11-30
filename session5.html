@@ -7,8 +7,6 @@
     <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
     <link href="libs/font-awesome-animation-1.0/font-awesome-animation-emi.css" rel="stylesheet" />
     <script src="libs/fontawesome-5.0.13/js/fontawesome-all.min.js"></script>
-    <link href="libs/countdown-0.2.0/countdown.css" rel="stylesheet" />
-    <script src="libs/countdown-0.2.0/countdown.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/animate.css" type="text/css" />
     <link rel="stylesheet" href="assets/cssgrid.css" type="text/css" />
@@ -24,7 +22,18 @@
 
 
 
+class: bg-pro center middle hide-slide-number
 
+
+
+&lt;div class="bg-black white"  style="width:45%;right:0;bottom:0;padding-left:5px;border: solid 4px white;margin: auto;"&gt;
+&lt;i class="fas fa-exclamation-circle"&gt;&lt;/i&gt; These slides are viewed best by Chrome and occasionally need to be refreshed if elements did not load properly. See here for &lt;a href=session5.pdf&gt;PDF &lt;i class="fas fa-file-pdf"&gt;&lt;/i&gt;&lt;/a&gt;. 
+&lt;/div&gt;
+
+
+---
+
+count: false
 background-image: url(images/bg1.jpg)
 background-size: cover
 class: hide-slide-number title-slide
@@ -36,7 +45,7 @@ class: hide-slide-number title-slide
 # &lt;span style="text-shadow: 2px 2px 30px white;"&gt;R Markdown Workshop&lt;/span&gt;
 
 &lt;br&gt;&lt;br&gt;
-## &lt;span style="color:yellow;text-shadow: 2px 2px 30px black;"&gt;Reproducible Reports with R Markdown&lt;/span&gt;
+## &lt;span style="color:yellow;text-shadow: 2px 2px 30px black;"&gt;Pretty Presentations with `xaringan` &lt;img src='images/xaringan.png' height = '50px'&gt;&lt;/span&gt;
 
 :::
 
@@ -60,1188 +69,486 @@ School of Mathematics and Statistics
 :::::::::: 
 
 
-::: { .shade_black .pos .font_small width:20%;right:10px;bottom:20%;padding:5px;border: solid 5px white;}
 
-&lt;i class="fas fa-exclamation-circle"&gt;&lt;/i&gt; These slides are viewed best by Chrome and occasionally need to be refreshed if elements did not load properly. See here for &lt;a href=session5.pdf style="color:white!important"/&gt;PDF &lt;i class="fas fa-file-pdf"&gt;&lt;/i&gt;&lt;/a&gt;. 
+
+
+
+---
+
+# HTML Slides from Rmd
+
+::: grid
+
+::: item 
+
+* There are a number of ways to make html slides in Rmd including `ioslides` and `slidy`. 
+* My favorite one is `xaringan` 📦!
+* It's highly customisable.
+* These slides are made by `xaringan`!
+* `xaringan` uses `remark.js` to render the final html instead of `pandoc` (which means some `pandoc` features don't work)
+
+:::: 
+
+::: item 
+
+&lt;iframe src="https://slides.yihui.name/xaringan/" height = "450px" width = "600px"&gt;&lt;/iframe&gt;
+
+https://slides.yihui.name/xaringan
 
 :::
 
-
+:::
 
 ---
 
 
 class: center middle
 
-.font_large[How does it all work?]
 
-&lt;br&gt;
+.font_large[🔍 Open and inspect the file]
 
-&lt;img src="images/rmd-magic.png" width = "700px"/&gt;
-
+.font_large[`first-xaringan.Rmd`]
 
 ---
 
-class: font_small
+class: font_smaller
 
-# R Markdown under the hood: .blue[`html_document`]
+# `xaringan` slides
 
-.indigo[`knitr`] 📦 does the hard work of converting &lt;code&gt;Rmd&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;&amp;nbsp; &lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt;&amp;nbsp;&lt;code&gt;md&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;
 ::: grid 
 
 ::: item 
 
-````markdown
----
-title: "My Report"
-output: html_document
----
-
-# Hello
-
-```{r}
-1 + 1
-```
-
-
-````
-&lt;p&gt;&lt;/p&gt;
-
-::: 
-
-::: item 
-
-````markdown
----
-title: "My Report"
-output: html_document
----
-
-# Hello
-
-```r
-1 + 1
-```
-
-```
-## [1] 2
-```
-
-````
-
-&lt;p&gt;&lt;/p&gt;
-
-:::
-
-:::
-
-::: {.pos top:20%;left:20%;}
-`Rmd` &lt;i class="far fa-file"&gt;&lt;/i&gt;
-:::
-::: {.pos top:20%;left:70%;}
-`md` &lt;i class="far fa-file"&gt;&lt;/i&gt;
-:::
-
-
----
-
-class: font_small
-
-# R Markdown under the hood: .blue[`html_document`]
-
-Then .indigo[`rmarkdown`] 📦 prepares &lt;code&gt;md&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt; for .indigo[`pandoc`] to convert to html &lt;i class="far fa-file"&gt;&lt;/i&gt;.
-::: grid 
-
-::: item 
-
-````markdown
----
-title: "My Report"
-output: html_document
----
-
-# Hello
-
-```r
-1 + 1
-```
-
-```
-## [1] 2
-```
-
-````
-
-&lt;p&gt;&lt;/p&gt;
-
-:::
-
-::: item 
-
-```html
-
-&lt;body&gt;
-&lt;div class="container-fluid main-container"&gt;
-&lt;div class="fluid-row" id="header"&gt;
-&lt;h1 class="title toc-ignore"&gt;My Report&lt;/h1&gt;
-&lt;/div&gt;
-&lt;div id="hello" class="section level1"&gt;
-&lt;h1&gt;Hello&lt;/h1&gt;
-&lt;pre class="r"&gt;&lt;code&gt;1 + 1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 2&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-```
-
-
-
-:::
-
-:::
-
-
-::: {.white .font_small .pos bottom:60px; right:10%; width:200px;padding:5px;background-color:rgb(0,0,0, 0.3);border: solid 3px black;	}
-&lt;i class="fas  fa-exclamation-triangle"&gt;&lt;/i&gt; This html file is missing some elements due to restriction of space.
-:::
-
-::: {.pos top:20%;left:20%;}
-`md` &lt;i class="far fa-file"&gt;&lt;/i&gt;
-:::
-::: {.pos top:20%;left:70%;}
-`html` &lt;i class="far fa-file"&gt;&lt;/i&gt;
-:::
-
----
-
-class: font_small
-
-# R Markdown under the hood: .blue[`pdf_document`]
-
-Same as before: `knitr` 📦 converts &lt;code&gt;Rmd&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;&amp;nbsp; &lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt;&amp;nbsp;&lt;code&gt;md&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;
-::: grid  
-
-::: item 
-
-````markdown
----
-title: "My Report"
-output: pdf_document
----
-
-# Hello
-
-```{r}
-1 + 1
-```
-
-
-````
-&lt;p&gt;&lt;/p&gt;
-
-::: 
-
-::: item 
-
-````markdown
----
-title: "My Report"
-output: pdf_document
----
-
-# Hello
-
-```r
-1 + 1
-```
-
-```
-## [1] 2
-```
-
-````
-
-&lt;p&gt;&lt;/p&gt;
-
-:::
-
-:::
-
-::: { .pos top:20%;left:20%; }
-`Rmd` &lt;i class="far fa-file"&gt;&lt;/i&gt;
-:::
-::: { .pos top:20%;left:70%; }
-`md` &lt;i class="far fa-file"&gt;&lt;/i&gt;
-:::
-
----
-
-class: font_small
-
-# R Markdown under the hood: .blue[`pdf_document`]
-
-Then `rmarkdown` 📦 prepares &lt;code&gt;md&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt; for `pandoc` to convert to .indigo[`tex`] &lt;i class="far fa-file"&gt;&lt;/i&gt; &lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt; pdf &lt;i class="fas fa-file-pdf"&gt;&lt;/i&gt;.
-::: grid  
-
-
-::: item 
-
-````markdown
----
-title: "My Report"
-output: html_document
----
-
-# Hello
-
-```r
-1 + 1
-```
-
-```
-## [1] 2
-```
-
-````
-
-&lt;p&gt;&lt;/p&gt;
-
-:::
-
-::: item 
-
-```latex
-\begin{document}
-\maketitle
-\hypertarget{hello}{%
-\section{Hello}\label{hello}}
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{1} \OperatorTok{+}\StringTok{ }\DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-\begin{verbatim}
-## [1] 2
-\end{verbatim}
-\end{document}
-```
-
-
-
-:::
-
-:::
-
-::: {.pos top:20%;left:10%;}
-`md` &lt;i class="far fa-file"&gt;&lt;/i&gt;
-:::
-::: {.pos top:20%;right:40%;}
-`tex` &lt;i class="far fa-file"&gt;&lt;/i&gt;
-:::
-
-::: {.white .font_small .pos bottom:7%; right:10%; width:200px;padding:5px;background-color:rgb(0,0,0, 0.3);border: solid 3px black;	}
-&lt;i class="fas  fa-exclamation-triangle"&gt;&lt;/i&gt; This tex document is missing elements before `\begin{document}` due to restriction of space.
-:::
-
----
-
-class: center middle transition
-
-
-# Meta data with YAML
-
-&lt;br&gt;
-
-&lt;img src="images/metadata.png" width = "400px"/&gt;
-
-
----
-
-# YAML - YAML Ain't Markup Language
-
-:::: { .grid grid: 1fr / 1fr 2fr; }
-
-::: item 
-
-Basic format
 ```markdown
 ---
-key: value
----
-```
-:::
-
-::: item 
-
-Example
-
-```
----
-title: "R Markdown Workshop"
-subtitle: "The Basics"
+title: "My first xaringan slide"
+subtitle: "Not!"
 author: "Emi Tanaka"
-date: "`r Sys.Date()`"
-output: html_document
----
-```
-
-There must be a space after "`:`"!
-&lt;p&gt;&lt;/p&gt;
-:::
-
-:::
-
-
----
-
-class: font_small
-
-# Default (minimal) html output
-
-```
-&lt;!DOCTYPE html&gt;
-&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-
-&lt;head&gt;
-&lt;meta name="author" content="Emi Tanaka" /&gt;
-&lt;meta name="date" content="2019-11-19" /&gt;
-&lt;title&gt;R Markdown Workshop&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;h1 class="title toc-ignore"&gt;R Markdown Workshop&lt;/h1&gt;
-&lt;h3 class="subtitle"&gt;The Basics&lt;/h3&gt;
-&lt;h4 class="author"&gt;Emi Tanaka&lt;/h4&gt;
-&lt;h4 class="date"&gt;2019-11-19&lt;/h4&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-```
-&lt;p&gt;&lt;/p&gt;
-
-::: { .info-box .pos width:200px;left:30%;top:48%;}
-
-html meta data
-
-:::
-
-::: { .info-box .pos width:420px;left:47%;top:70%;}
-
-Default html template add special YAML key values to file automatically
-
-:::
-
-::: {.output .pos top:80px; right:20px; width: 450px;}
-
-&lt;img src = "images/minimal-html-output.png" width = "400px"/&gt;
-
-:::
-
----
-
-
-# YAML structure
-
-::: paddings
-
-* White spaces indicate structure in YAML - don't use tabs though!
-* Same as R, you can comment lines by starting with `#`.
-* YAML is case sensitive.
-* A `key` can hold multiple values. 
-
-```markdown
-key: 
-  - value1
-  - value2
-```
-
-```markdown
-key: [value1, value2]
-```
-
-&lt;p&gt;&lt;/p&gt;
-
-:::
-
-
----
-
-class: font_small
-
-# YAML with multiple key values
-
-```
----
-title: "R Package &amp; R Markdown Workshop"
-author: 
-* - "Damjan Vukcevic"
-* - "Emi Tanaka"
-output: html_document
----
-```
-
-.output[
-
-html raw file
-
-```
-&lt;body&gt;
-&lt;h1 class="title toc-ignore"&gt;R Package &amp; R Markdown Workshop&lt;/h1&gt;
-*&lt;h4 class="author"&gt;Damjan Vukcevic&lt;/h4&gt;
-*&lt;h4 class="author"&gt;Emi Tanaka&lt;/h4&gt; 
-&lt;/body&gt;
-```
-
-&lt;p&gt;&lt;/p&gt;
-
-]
-
-
-
-::: {.output .pos top:100px; right:20px; width:470px;}
-
-&lt;img src = "images/minimal-html-output2.png" width = "450px"/&gt;
-
-:::
-
----
-
-class: font_small
-
-# Values spanning multiple lines
-
-```markdown
----
-title: &gt;
-  this is a\ 
-  single line\
-  
-abstract: |
-  this value spans\
-  many lines and\
-  appears as it is\
-  
-output: pdf_document
----
-
-```
-
-::: {.pos top:80px; right:20px;}
-output&lt;br&gt;
-&lt;img src = "images/minimal-pdf-output.png" width = "800px" style="border: solid 3px black;"/&gt;
-
-:::
-
-
-
----
-
-class: center middle
-
-
-.font_large[🔎 Open and inspect the file]
-
-.font_large[`second-rmarkdown.Rmd`]
-
-
----
-
-
-
-# `key` can contain `key`s
-
-::: paddings
-
-```
----
+date: "4th October 2019"
 output: 
-  html_document:
-    toc: true
-    toc_float: true 
-    code_download: true 
-    code_folding: "hide"
+  xaringan::moon_reader
 ---
+
+# Slide after title slide
+
+*---
+
+# Next slide
+
+We can use **markdown**!
+
+*--- 
+
+
 ```
-
-.font_large[What does each of the above keys do?]
-
 :::
 
-<div class="countdown" id="timer_5dcf4646" style="right:0;bottom:0;font-size:1em;">
-<code><span class="digits minutes">04</span><span class="digits colon">:</span><span class="digits seconds">00</span></code>
-</div>
+::: item
 
----
-
-
-# `ymlthis` 📦
-
-
-::: grid 
-
-::: item 
-
-&lt;img src="images/ymlthis.png" height = "550px" style="border: solid 1px black;"/&gt;
-
-::: 
-
-::: item 
-
-* If you installed `ymlthis` then go to RStudio &gt; Addins &gt; YMLTHIS 
-* It will launch a shiny app with various YAML options
-* See also helper functions at https://ymlthis.r-lib.org/
-
+&lt;iframe src="exercises/first-xaringan.html"  height = "450px" width = "600px"&gt;&lt;/iframe&gt;
 
 :::
 
 :::
 
+::: { .info-box .pos width:200px;left:31%;top:35%;}
+
+YAML information used for title slide
+
+:::
+
+::: { .info-box .pos width:250px;left:31%;bottom:11%;}
+
+No spaces after `---`!
+
+:::
+
 ---
 
-class: center middle
+class: middle center
 
+To fully customise `xaringan` slides, &lt;br&gt;you need to know some HTML/CSS
 
-.font_large[🔧 Open and inspect the file]
-
-.font_large[`challenge-01-yaml.Rmd`]
-
-
----
-
-class: middle center transition
-
-# Text
+--
 
 &lt;br&gt;
 
-&lt;img src="images/text.png" width = "400px"/&gt;
+We'll have a short intro 💻
+
 
 
 ---
 
-# Text in Markdown: Headers
+# HTML/CSS
 
+&lt;br&gt;
 
 ::: grid 
 
-::: item 
+::: item
 
-&lt;br&gt; 
-
-.text[
-
-```markdown
-# Header 1
-## Header 2
-### Header 3
-#### Header 4
-##### Header 5
-###### Header 6
-
-```
-
-&lt;p&gt;&lt;/p&gt;
-
-]
-
-::: 
-
-::: item 
-
-&lt;Br&gt;
-
-.output[
-
-# Header 1
-## Header 2
-### Header 3
-#### Header 4
-##### Header 5
-###### Header 6
-
-]
-
-:::
-
-:::
-
-
-::: footnote
-Go to RStudio &gt; Help &gt; Markdown Quick Reference
-:::
-
----
-
-# Text in Markdown: Formatting
-
-
-::: grid 
-
-::: item 
-
-&lt;br&gt; 
-
-.text[
-
-```markdown
- **This text is bold** 
- 
- __This text is also bold__  
- 
- *This text is italic* 
- 
- _This text is also italic_  
- 
- **_You can combine both_** 
-```
-
-&lt;p&gt;&lt;/p&gt;
-
-]
-
-::: 
-
-::: item 
-
-&lt;p&gt;&lt;Br&gt;&lt;/p&gt;
-
-.output[
-
-**This text is bold** 
- 
-__This text is also bold__  
- 
-*This text is italic* 
- 
-_This text is also italic_  
- 
-**_You can combine both_** 
-
-]
-
-:::
-
-:::
-
-
-::: footnote
-Go to RStudio &gt; Help &gt; Markdown Quick Reference
-:::
-
----
-
-# Text in Markdown: Lists
-
-::: grid 
-
-::: item 
-
-.text[
-
-```markdown
- 1. Breakfast
-   * Cereal
-   * Milk
- 1. Lunch
-   * Pizza
- * Tissue box 
-   * Soft 
-   * Hard
- * Soy sauce
- 
-
-```
-
-
-&lt;p&gt;&lt;/p&gt;
-
-]
-
-::: 
-
-::: item 
-
-.output[
-
-1. Breakfast
-  * Cereal
-  * Milk
-1. Lunch
-   * Pizza
-* Tissue box 
-   * Soft 
-   * Hard
-* Soy sauce
-
-]
-
-:::
-
-:::
-
-
-::: footnote
-Go to RStudio &gt; Help &gt; Markdown Quick Reference
-:::
-
-
-
----
-
-# Markdown: lightweight markup language&lt;br&gt; *Focus on writing - add flair later*
-
-::: {.grid grid: 270px 1fr / 1fr 1fr; } 
-
-::: { .item border: double 10px #005ab3; }
-
-.blue[`markdown`]
-
-```markdown
-# Section 
-Bla bla.
-Then **bold**.
-```
-
-
-
-::: 
-
-::: item bg-grey
-
-.blue[`html`]
-
+.html-box[
 ```html
-&lt;h1&gt;Section&lt;/h1&gt;
-Bla bla.
-Then &lt;b&gt;bold&lt;/b&gt;.
-
+&lt;div class="bg-red"&gt;
+This creates a box 
+with red background.
+&lt;/div&gt;
 ```
-::: 
+]
 
-::: item  bg-grey
 
-.blue[`latex`]
-
-```latex
-\section{Section}
-Bla bla.
-Then \textbf{bold}.
-
-```
-
-::: 
-
-::: item 
-
-.blue[`docx`]
-
-
-# Section 
-Bla bla.  
-Then **bold**.
-
-::: 
-
-:::
-
----
-
-class: center middle
-
-
-.font_large[🔧 Open and go through:]
-
-.font_large[`challenge-02-table.Rmd`]
-
-<div class="countdown" id="timer_5dcf44ae" style="right:0;bottom:0;font-size:1em;">
-<code><span class="digits minutes">05</span><span class="digits colon">:</span><span class="digits seconds">00</span></code>
-</div>
-
-
----
-
-class: middle center transition
-
-# Code chunk
-
-&lt;br&gt;
-
-&lt;img src="images/code-chunk.png" width = "400px"/&gt;
-
-
----
-
-
-
-# Keyboard shortcut for inserting code chunk  
-
-::: paddings
-
-&lt;br&gt;
-
-In RStudio .Rmd &lt;i class="far fa-file"&gt;&lt;/i&gt; press
-
-&lt;br&gt;
-
-* Mac: &lt;kbd&gt;⌘&lt;/kbd&gt; + &lt;kbd&gt;⌥&lt;/kbd&gt; + &lt;kbd&gt;i&lt;/kbd&gt; 
-
-
-* PC: &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;Alt&lt;/kbd&gt; + &lt;kbd&gt;i&lt;/kbd&gt; 
-
-&lt;br&gt;
-
-to insert a chunk of R code
-
-::: font_large
-
-````markdown
-```{r}
-
-```
-````
-
-
-:::
-
----
-
-# Chunk options: &lt;code&gt;echo&lt;/code&gt; &amp; &lt;code&gt;eval&lt;/code&gt;
-
-::: grid 
-::: item 
-
-````markdown
-```{r, echo = FALSE}
-plot(speed ~ dist, cars)
-```
-````
-&lt;center&gt;
-&lt;i class="fas fa-arrow-down"&gt;&lt;/i&gt;
-&lt;/center&gt;
-
-&lt;img src="figure/unnamed-chunk-1-1.svg" width="288" style="display: block; margin: auto;" /&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-::: 
-
-::: item 
-
-````markdown
-```{r, eval = FALSE}
-plot(speed ~ dist, cars)
-```
-````
-
-&lt;center&gt;
-&lt;i class="fas fa-arrow-down"&gt;&lt;/i&gt;
-&lt;/center&gt;
-
-
-```r
-plot(speed ~ dist, cars)
-```
-
-&lt;p&gt;&lt;/p&gt;
-
-:::
-
-:::
-
----
-
-# Valid chunk options
-
-&lt;Br&gt;
-
-::: paddings
-
-* Chunk options must be written in **one line**, i.e. no line break. 
-
-
-* All option values must be **valid R expressions**. Exception is the chunk name. E.g.
-   * `fig.path = figures/` is not valid but &lt;br&gt;`fig.path = "figures/"` is valid
-   * `eval = true` is not valid but&lt;br&gt; `eval = runif(1) &gt; 0.5` is valid
-   
-:::
-
----
-
-# Chunk names (or labels)
-
-&lt;br&gt;
-
-::: paddings
-
-The chunk below is called `plot1`.
-````markdown
-```{r plot1}
-ggplot(cars, aes(dist, speed)) + geom_point()
-```
-````
-
-All chunks have a label regardless of whether it is explicitly supplied or not.
-
-&lt;i class="fa fa-exclamation-triangle"&gt;&lt;/i&gt; Do not include spaces, "_" or punctuation marks in your chunk name!
-
-:::
-
----
-
-class: center middle
-
-
-.font_large[🔧 Pick your challenge:]
-
-&lt;br&gt;
-
-* `challenge-03-include.Rmd`
-* `challenge-04-global-option.Rmd`
-* `challenge-05-figures.Rmd`
-* `challenge-06-cache.Rmd`
-* `challenge-07-names.Rmd`
-
-<div class="countdown" id="timer_5dcf4472" style="right:0;bottom:0;font-size:1em;">
-<code><span class="digits minutes">25</span><span class="digits colon">:</span><span class="digits seconds">00</span></code>
-</div>
-
----
-
-
-class: middle center transition
-
-# Inline code
-
-&lt;br&gt;
-
-&lt;img src="images/inline-code.png" width = "400px"/&gt;
-
----
-
-# Inline R Commands
-
-&lt;Br&gt;
-
-::: paddings
-
-Text can contain inline R commands where output is `eval`uated but code is not `echo`ed. 
-
-:::
-
-&lt;br&gt;&lt;br&gt;
-
-::: grid
-
-::: {.item border-right: dashed 3px black; }
-
-.label[Text]
-
-```markdown
-Updated last: `r Sys.Date()`
-```
-
-.label[Output]
-
-Updated last: 2019-11-16
 
 :::
 
 ::: item 
 
-.label[Text]
 
-```markdown
-The value of $\pi$ is `r pi`.
+.css-box[
+```css
+.bg-red {
+  background-color: red;
+}
+
 ```
+]
 
-.label[Output]
+::: {.output background-color:red!important; }
 
-The value of `\(\pi\)` is 3.1415927.
+This creates a box 
+with red background.
 
 :::
 
 :::
 
----
 
 
-# Accessing YAML meta data inline
-
-::: grid
-
-::: item 
-
-All YAML meta data are stored in `rmarkdown::metadata` as a list.
-
-```
----
-title: "R Markdown Workshop"
-output: html_document
----
-```
---- 
-
-
-```r
-rmarkdown::metadata$title
-```
-
-```
-  [1] "R Markdown Workshop"
-```
-
-&lt;p&gt;&lt;/p&gt;
-
-:::
-
-::: item 
-
-All key values of `params` is stored as a list in `params`. 
-
-```
----
-params: 
-   data: datav1.csv
-output: pdf_document
----
-```
-
---- 
-
-
-```r
-params$data
-```
-
-```
-  [1] "data1.csv"
-```
-&lt;p&gt;&lt;/p&gt;
-:::
 
 :::
 
 
+
+
 ---
 
-class: center middle white
-background-color: #0a2631
+# HTML/CSS II
 
-.font_large[Stack your Rmd components as you want but only one YAML piece and it needs to be on the top!]
+But the box and text look too squished.
+
+I increase the padding here.
 
 &lt;br&gt;
-
-&lt;img src="images/lego-stack.png" width = "600px"/&gt;
-
-
-For workflow, you'd probably want to keep your tower's height manageable.
-
----
-
-# R Markdown is not just for R
 
 ::: grid 
 
-::: item 
+::: item
 
-````markdown
-```{python, echo = FALSE}
-a = [1, 2, 3]
-a[0]
+.html-box[
+```html
+&lt;div class="bg-red"&gt;
+This creates a box 
+with red background.
+&lt;/div&gt;
 ```
-````
-
-&lt;center&gt;
-&lt;i class="fas fa-arrow-down"&gt;&lt;/i&gt;
-&lt;/center&gt;
+]
 
 
-```
-  1
-```
-&lt;p&gt;&lt;/p&gt;
 
 :::
 
 ::: item 
 
-````markdown
-```{bash, echo = FALSE}
-date +%B
-```
-````
-&lt;center&gt;
-&lt;i class="fas fa-arrow-down"&gt;&lt;/i&gt;
-&lt;/center&gt;
 
+.css-box[
+```css
+.bg-red {
+  background-color: red;
+* padding: 20px; 
+}
 
 ```
-  November
-```
-&lt;p&gt;&lt;/p&gt;
-::::
+]
 
-::::
+::: {.output background-color:red!important;padding:20px; }
 
----
+This creates a box 
+with red background.
 
-class: center middle transition
+:::
 
-# Sharing your html documents
+:::
 
----
 
-# RPubs 
-
-::: paddings 
-
-After knitting, find this Publish button:
-
-&lt;center&gt;
-&lt;img src="images/publish.png" width = "170px" style = "border: solid 1px black;"/&gt;
-&lt;/center&gt;
-
-and select RPubs if there is a choice:
-
-&lt;center&gt;
-&lt;img src="images/rpub.png" width = "600px" style = "border: solid 1px black;"/&gt;
-&lt;/center&gt;
 
 
 :::
 
 ---
 
-# Netlify: without Git
+# HTML/CSS III
 
-::: paddings
+But a white text suits better.
 
-* Rename your output html file as `index.html`
-* Go to https://app.netlify.com/
-* If you are logged in, go to the bottom of Sites to find
+::: grid 
 
-&lt;center&gt;
-&lt;img src="images/netlify.png" width = "400px"/&gt;
-&lt;/center&gt;
+::: item
 
-* Drag and drop the folder that contains the `index.html` 
-* 🎉 it's alive!
-* You probably want to change the site name - to do this go to site &gt; site settings &gt; change site name.
+.html-box[
+```html
+&lt;div class="bg-red"&gt;
+This creates a box 
+with red background.
+&lt;/div&gt;
+```
+]
+
+
+
+:::
+
+::: item 
+
+
+.css-box[
+```css
+.bg-red {
+  background-color: red;
+  padding: 20px; 
+* color: white;
+}
+
+```
+]
+
+::: {.output background-color:red!important;padding:20px; color: white; }
+
+This creates a box 
+with red background.
+
+:::
+
+:::
 
 :::
 
 ---
 
-# Netlify: with Git
+# HTML/CSS IV
+
+In contrast to `div`, `span` is "inline".
+
+::: grid 
+
+::: item
+
+.html-box[
+```html
+*&lt;span class="bg-red"&gt;
+This creates a box 
+with red background.
+*&lt;/span&gt;
+```
+]
+
+
+
+:::
+
+::: item 
+
+
+.css-box[
+```css
+.bg-red {
+  background-color: red;
+  padding: 20px; 
+  color: white;
+}
+
+```
+]
+
+::: { .output padding-bottom: 20px;}
+
+&lt;span style="background-color:red!important;padding:20px; color: white;"&gt; This creates a box with red background.&lt;/span&gt;
+
+:::
+
+:::
+
+:::
+
+---
+
+# `remark.js`: div and span classes
+
+`remark.js` makes it easier to write `div` and `span` elements.
+
+
+::: grid 
+
+::: { .item border-right: dashed 3px black; } 
+
+Text in new line
+
+```markdown
+.bg-red[
+Some text
+]
+```
+
+is converted to
+
+```markdown
+&lt;div class="bg-red"&gt;
+Some text
+&lt;/div&gt;
+```
+
+
+::: 
+
+::: item  
+
+Placing `[` `]` in the same line
+
+```markdown
+.bg-red[Some text]
+```
+
+results in 
+
+```markdown
+&lt;span class="bg-red"&gt;
+Some text
+&lt;/span&gt;
+```
+
+
+:::
+
+:::
+
+---
+
+class: font_small
+
+# Specifying CSS 
 
 ::: paddings
 
-* Rename your output html file as `index.html`
-* Git commit your folder (or html file alone if no dependency)
-* Host it on GitHub (my preference), GitLab or Bitbucket
-* Go to https://app.netlify.com/ and create a new site from the repo
-* 🎉🎉🎉🎉🎉 
-* Again, you probably want to change the site name - to do this go to site &gt; site settings &gt; change site name.
 
+You can specify the css file in the YAML:
+
+```
+output: 
+  xaringan::moon_reader: 
+    css: 
+      - "default" # in-built theme
+      - "default_fonts" # in built theme
+      - "custom.css" # your own 
+```
+
+then define all custom classes in `custom.css`, e.g.
+
+```css
+
+.bg-red {
+  background-color: red;
+}
+
+```
+
+
+:::
+
+---
+
+# Apply class to the whole slide
+
+::: paddings
+
+```markdown
+
+# Slide 1
+
+---
+
+*class: bg-red
+
+# Slide 2
+
+This slide will have a red background
+
+---
+
+# Slide 3
+
+```
+
+:::
+
+
+---
+
+class: middle center
+
+::: paddings
+
+Alternatively, you can use `xaringanthemer` to customise the look of a `xaringan`.
+
+&lt;br&gt;
+
+.font_large[💻 Open and knit&lt;br&gt; `demo-xaringan.Rmd`]
+
+&lt;br&gt;
+
+.font_large[Customise the slide to your liking ✨ ]
+
+&lt;br&gt;
+
+By the way, can you figure out what `xaringan::inf_mr()` does?
+
+
+:::
+
+---
+
+# Resources 
+
+
+
+::: grid 
+
+::: { .item  border-right: dashed 3px black; }
+
+* Thanks for coming!
+* There are more to Tidyverse + R Markdown than can be taught in a one day workshop and some helpful resources are on the right to ask questions. 
+
+&lt;br&gt;
+
+::: { .info-box .pos width: 500px;}
+
+All source files to this workshop &lt;br&gt;can be found at 
+
+https://github.com/emitanaka/biometrics2019
+
+:::
+
+
+::: 
+
+::: item 
+
+## Learn with the *community*
+
+* Your local R-Ladies Meetup: [Melbourne](https://www.meetup.com/en-AU/rladies-melbourne/), [Sydney](https://www.meetup.com/rladies-sydney/), [Canberra](https://www.meetup.com/rladies-canberra/), [Perth](https://www.meetup.com/en-AU/rladies-perth/), [Adelaide](https://www.meetup.com/en-AU/rladies-adelaide/), [Brisbane](https://www.meetup.com/en-AU/rladies-brisbane/)
+* [R4DS Community Slack](https://www.rfordatasci.com/)
+* [Twitter with hastag #rstats](https://twitter.com/search?q=%23rstats)
+* [RStudio Community](https://community.rstudio.com/)
+* [Stackoverflow](https://stackoverflow.com/questions/tagged/r) (I answer questions tagged with `xaringan` often)
+
+:::
 
 :::
 
@@ -1274,90 +581,83 @@ devtools::session_info()
    language (EN)                        
    collate  en_AU.UTF-8                 
    ctype    en_AU.UTF-8                 
-   tz       Australia/Sydney            
-   date     2019-11-16                  
+   tz       Australia/Adelaide          
+   date     2019-12-01                  
   
   ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   package     * version    date       lib source                              
-   anicon        0.1.0      2019-05-28 [1] Github (emitanaka/anicon@377aece)   
-   assertthat    0.2.1      2019-03-21 [1] CRAN (R 3.6.0)                      
-   backports     1.1.4      2019-04-10 [1] CRAN (R 3.6.0)                      
-   broom         0.5.2      2019-04-07 [1] CRAN (R 3.6.0)                      
-   callr         3.3.1      2019-07-18 [1] CRAN (R 3.6.0)                      
-   cellranger    1.1.0      2016-07-27 [1] CRAN (R 3.6.0)                      
-   cli           1.1.0      2019-03-19 [1] CRAN (R 3.6.0)                      
-   colorspace    1.4-1      2019-03-18 [1] CRAN (R 3.6.0)                      
-   countdown     0.2.0      2019-05-30 [1] Github (gadenbuie/countdown@c8e8710)
-   crayon        1.3.4      2017-09-16 [1] CRAN (R 3.6.0)                      
-   curl          4.2        2019-09-24 [1] CRAN (R 3.6.0)                      
-   desc          1.2.0      2018-05-01 [1] CRAN (R 3.6.0)                      
-   devtools      2.0.2      2019-04-08 [1] CRAN (R 3.6.0)                      
-   digest        0.6.22     2019-10-21 [1] CRAN (R 3.6.0)                      
-   dplyr       * 0.8.3      2019-07-04 [1] CRAN (R 3.6.0)                      
-   emo           0.0.0.9000 2019-06-03 [1] Github (hadley/emo@02a5206)         
-   evaluate      0.14       2019-05-28 [1] CRAN (R 3.6.0)                      
-   forcats     * 0.4.0      2019-02-17 [1] CRAN (R 3.6.0)                      
-   fs            1.3.1      2019-05-06 [1] CRAN (R 3.6.0)                      
-   generics      0.0.2      2018-11-29 [1] CRAN (R 3.6.0)                      
-   ggplot2     * 3.2.1      2019-08-10 [1] CRAN (R 3.6.0)                      
-   glue          1.3.1.9000 2019-10-24 [1] Github (tidyverse/glue@71eeddf)     
-   gtable        0.3.0      2019-03-25 [1] CRAN (R 3.6.0)                      
-   haven         2.1.0      2019-02-19 [1] CRAN (R 3.6.0)                      
-   hms           0.5.1      2019-08-23 [1] CRAN (R 3.6.0)                      
-   htmltools     0.4.0      2019-10-04 [1] CRAN (R 3.6.0)                      
-   httr          1.4.1      2019-08-05 [1] CRAN (R 3.6.0)                      
-   icon          0.1.0      2019-05-28 [1] Github (ropenscilabs/icon@a510f88)  
-   jsonlite      1.6        2018-12-07 [1] CRAN (R 3.6.0)                      
-   knitr         1.25       2019-09-18 [1] CRAN (R 3.6.0)                      
-   lattice       0.20-38    2018-11-04 [1] CRAN (R 3.6.0)                      
-   lazyeval      0.2.2      2019-03-15 [1] CRAN (R 3.6.0)                      
-   lifecycle     0.1.0      2019-08-01 [1] CRAN (R 3.6.0)                      
-   lubridate     1.7.4      2018-04-11 [1] CRAN (R 3.6.0)                      
-   magrittr      1.5        2014-11-22 [1] CRAN (R 3.6.0)                      
-   Matrix        1.2-17     2019-03-22 [1] CRAN (R 3.6.0)                      
-   memoise       1.1.0      2017-04-21 [1] CRAN (R 3.6.0)                      
-   modelr        0.1.4      2019-02-18 [1] CRAN (R 3.6.0)                      
-   munsell       0.5.0      2018-06-12 [1] CRAN (R 3.6.0)                      
-   nlme          3.1-140    2019-05-12 [1] CRAN (R 3.6.0)                      
-   pillar        1.4.2      2019-06-29 [1] CRAN (R 3.6.0)                      
-   pkgbuild      1.0.3      2019-03-20 [1] CRAN (R 3.6.0)                      
-   pkgconfig     2.0.3      2019-09-22 [1] CRAN (R 3.6.0)                      
-   pkgload       1.0.2      2018-10-29 [1] CRAN (R 3.6.0)                      
-   prettyunits   1.0.2      2015-07-13 [1] CRAN (R 3.6.0)                      
-   processx      3.4.1      2019-07-18 [1] CRAN (R 3.6.0)                      
-   ps            1.3.0      2018-12-21 [1] CRAN (R 3.6.0)                      
-   purrr       * 0.3.2      2019-03-15 [1] CRAN (R 3.6.0)                      
-   quoter        0.1.0      2019-07-28 [1] local                               
-   R6            2.4.0      2019-02-14 [1] CRAN (R 3.6.0)                      
-   Rcpp          1.0.2      2019-07-25 [1] CRAN (R 3.6.0)                      
-   readr       * 1.3.1      2018-12-21 [1] CRAN (R 3.6.0)                      
-   readxl        1.3.1      2019-03-13 [1] CRAN (R 3.6.0)                      
-   remotes       2.0.4      2019-04-10 [1] CRAN (R 3.6.0)                      
-   reticulate    1.12       2019-04-12 [1] CRAN (R 3.6.0)                      
-   rlang         0.4.0.9000 2019-08-03 [1] Github (r-lib/rlang@b0905db)        
-   rmarkdown     1.16       2019-10-01 [1] CRAN (R 3.6.0)                      
-   rprojroot     1.3-2      2018-01-03 [1] CRAN (R 3.6.0)                      
-   rstudioapi    0.10       2019-03-19 [1] CRAN (R 3.6.0)                      
-   rvest         0.3.4      2019-05-15 [1] CRAN (R 3.6.0)                      
-   scales        1.0.0      2018-08-09 [1] CRAN (R 3.6.0)                      
-   selectr       0.4-1      2018-04-06 [1] CRAN (R 3.6.0)                      
-   sessioninfo   1.1.1      2018-11-05 [1] CRAN (R 3.6.0)                      
-   stringi       1.4.3      2019-03-12 [1] CRAN (R 3.6.0)                      
-   stringr     * 1.4.0      2019-02-10 [1] CRAN (R 3.6.0)                      
-   testthat      2.2.1      2019-07-25 [1] CRAN (R 3.6.0)                      
-   tibble      * 2.1.3      2019-06-06 [1] CRAN (R 3.6.0)                      
-   tidyr       * 1.0.0      2019-09-11 [1] CRAN (R 3.6.0)                      
-   tidyselect    0.2.5      2018-10-11 [1] CRAN (R 3.6.0)                      
-   tidyverse   * 1.2.1      2017-11-14 [1] CRAN (R 3.6.0)                      
-   usethis       1.5.0      2019-04-07 [1] CRAN (R 3.6.0)                      
-   vctrs         0.2.0.9000 2019-08-03 [1] Github (r-lib/vctrs@11c34ae)        
-   whisker       0.3-2      2013-04-28 [1] CRAN (R 3.6.0)                      
-   withr         2.1.2      2018-03-15 [1] CRAN (R 3.6.0)                      
-   xaringan      0.9        2019-03-06 [1] CRAN (R 3.6.0)                      
-   xfun          0.10       2019-10-01 [1] CRAN (R 3.6.0)                      
-   xml2          1.2.0      2018-01-24 [1] CRAN (R 3.6.0)                      
-   yaml          2.2.0      2018-07-25 [1] CRAN (R 3.6.0)                      
-   zeallot       0.1.0      2018-01-28 [1] CRAN (R 3.6.0)                      
+   package     * version    date       lib source                            
+   anicon        0.1.0      2019-05-28 [1] Github (emitanaka/anicon@377aece) 
+   assertthat    0.2.1      2019-03-21 [1] CRAN (R 3.6.0)                    
+   backports     1.1.4      2019-04-10 [1] CRAN (R 3.6.0)                    
+   broom         0.5.2      2019-04-07 [1] CRAN (R 3.6.0)                    
+   callr         3.3.1      2019-07-18 [1] CRAN (R 3.6.0)                    
+   cellranger    1.1.0      2016-07-27 [1] CRAN (R 3.6.0)                    
+   cli           1.1.0      2019-03-19 [1] CRAN (R 3.6.0)                    
+   colorspace    1.4-1      2019-03-18 [1] CRAN (R 3.6.0)                    
+   crayon        1.3.4      2017-09-16 [1] CRAN (R 3.6.0)                    
+   desc          1.2.0      2018-05-01 [1] CRAN (R 3.6.0)                    
+   devtools      2.0.2      2019-04-08 [1] CRAN (R 3.6.0)                    
+   digest        0.6.22     2019-10-21 [1] CRAN (R 3.6.0)                    
+   dplyr       * 0.8.3      2019-07-04 [1] CRAN (R 3.6.0)                    
+   emo           0.0.0.9000 2019-06-03 [1] Github (hadley/emo@02a5206)       
+   evaluate      0.14       2019-05-28 [1] CRAN (R 3.6.0)                    
+   forcats     * 0.4.0      2019-02-17 [1] CRAN (R 3.6.0)                    
+   fs            1.3.1      2019-05-06 [1] CRAN (R 3.6.0)                    
+   generics      0.0.2      2018-11-29 [1] CRAN (R 3.6.0)                    
+   ggplot2     * 3.2.1      2019-08-10 [1] CRAN (R 3.6.0)                    
+   glue          1.3.1.9000 2019-10-24 [1] Github (tidyverse/glue@71eeddf)   
+   gtable        0.3.0      2019-03-25 [1] CRAN (R 3.6.0)                    
+   haven         2.1.0      2019-02-19 [1] CRAN (R 3.6.0)                    
+   hms           0.5.1      2019-08-23 [1] CRAN (R 3.6.0)                    
+   htmltools     0.4.0      2019-10-04 [1] CRAN (R 3.6.0)                    
+   httr          1.4.1      2019-08-05 [1] CRAN (R 3.6.0)                    
+   icon          0.1.0      2019-05-28 [1] Github (ropenscilabs/icon@a510f88)
+   jsonlite      1.6        2018-12-07 [1] CRAN (R 3.6.0)                    
+   knitr         1.25       2019-09-18 [1] CRAN (R 3.6.0)                    
+   lattice       0.20-38    2018-11-04 [1] CRAN (R 3.6.0)                    
+   lazyeval      0.2.2      2019-03-15 [1] CRAN (R 3.6.0)                    
+   lifecycle     0.1.0      2019-08-01 [1] CRAN (R 3.6.0)                    
+   lubridate     1.7.4      2018-04-11 [1] CRAN (R 3.6.0)                    
+   magrittr      1.5        2014-11-22 [1] CRAN (R 3.6.0)                    
+   memoise       1.1.0      2017-04-21 [1] CRAN (R 3.6.0)                    
+   modelr        0.1.4      2019-02-18 [1] CRAN (R 3.6.0)                    
+   munsell       0.5.0      2018-06-12 [1] CRAN (R 3.6.0)                    
+   nlme          3.1-140    2019-05-12 [1] CRAN (R 3.6.0)                    
+   pillar        1.4.2      2019-06-29 [1] CRAN (R 3.6.0)                    
+   pkgbuild      1.0.3      2019-03-20 [1] CRAN (R 3.6.0)                    
+   pkgconfig     2.0.3      2019-09-22 [1] CRAN (R 3.6.0)                    
+   pkgload       1.0.2      2018-10-29 [1] CRAN (R 3.6.0)                    
+   prettyunits   1.0.2      2015-07-13 [1] CRAN (R 3.6.0)                    
+   processx      3.4.1      2019-07-18 [1] CRAN (R 3.6.0)                    
+   ps            1.3.0      2018-12-21 [1] CRAN (R 3.6.0)                    
+   purrr       * 0.3.2      2019-03-15 [1] CRAN (R 3.6.0)                    
+   R6            2.4.0      2019-02-14 [1] CRAN (R 3.6.0)                    
+   Rcpp          1.0.2      2019-07-25 [1] CRAN (R 3.6.0)                    
+   readr       * 1.3.1      2018-12-21 [1] CRAN (R 3.6.0)                    
+   readxl        1.3.1      2019-03-13 [1] CRAN (R 3.6.0)                    
+   remotes       2.0.4      2019-04-10 [1] CRAN (R 3.6.0)                    
+   rlang         0.4.0.9000 2019-08-03 [1] Github (r-lib/rlang@b0905db)      
+   rmarkdown     1.16       2019-10-01 [1] CRAN (R 3.6.0)                    
+   rprojroot     1.3-2      2018-01-03 [1] CRAN (R 3.6.0)                    
+   rstudioapi    0.10       2019-03-19 [1] CRAN (R 3.6.0)                    
+   rvest         0.3.4      2019-05-15 [1] CRAN (R 3.6.0)                    
+   scales        1.0.0      2018-08-09 [1] CRAN (R 3.6.0)                    
+   sessioninfo   1.1.1      2018-11-05 [1] CRAN (R 3.6.0)                    
+   stringi       1.4.3      2019-03-12 [1] CRAN (R 3.6.0)                    
+   stringr     * 1.4.0      2019-02-10 [1] CRAN (R 3.6.0)                    
+   testthat      2.2.1      2019-07-25 [1] CRAN (R 3.6.0)                    
+   tibble      * 2.1.3      2019-06-06 [1] CRAN (R 3.6.0)                    
+   tidyr       * 1.0.0      2019-09-11 [1] CRAN (R 3.6.0)                    
+   tidyselect    0.2.5      2018-10-11 [1] CRAN (R 3.6.0)                    
+   tidyverse   * 1.2.1      2017-11-14 [1] CRAN (R 3.6.0)                    
+   usethis       1.5.0      2019-04-07 [1] CRAN (R 3.6.0)                    
+   vctrs         0.2.0.9000 2019-08-03 [1] Github (r-lib/vctrs@11c34ae)      
+   withr         2.1.2      2018-03-15 [1] CRAN (R 3.6.0)                    
+   xaringan      0.9        2019-03-06 [1] CRAN (R 3.6.0)                    
+   xfun          0.10       2019-10-01 [1] CRAN (R 3.6.0)                    
+   xml2          1.2.0      2018-01-24 [1] CRAN (R 3.6.0)                    
+   yaml          2.2.0      2018-07-25 [1] CRAN (R 3.6.0)                    
+   zeallot       0.1.0      2018-01-28 [1] CRAN (R 3.6.0)                    
   
   [1] /Library/Frameworks/R.framework/Versions/3.6/Resources/library
 ```

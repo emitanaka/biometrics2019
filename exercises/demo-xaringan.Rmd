@@ -1,0 +1,106 @@
+---
+title: "Demo xaringanthemer"
+subtitle: "Let's learn ggplot"
+author: "Your Name"
+date: "19th November 2019"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+---
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+write_xaringan_theme(
+  text_color = "#1c5253",
+  text_font_size = "22pt",
+  code_font_size = "14pt", 
+  background_color = "white",
+  title_slide_background_color = "#F47D5F",
+  header_font_google = google_font("Permanent Marker"),
+  text_font_google = google_font("Shadows Into Light"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+```{r setup, include = FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(
+  fig.width = 4,
+  fig.height = 4,
+  fig.align = "center",
+  tidy = FALSE
+)
+theme_set(theme_bw(base_size = 20))
+```
+
+
+# What is `ggplot`?
+
+* It's a function implemented in the R-package `ggplot2`
+
+
+* It can create a *beautiful* plot based on the (layered) grammar of graphics.
+
+
+---
+
+# Example: iris data set
+
+
+```{r}
+str(iris)
+```
+
+---
+
+# Example: empty canvas
+
+```{r}
+library(ggplot2)
+ggplot(iris, aes(Sepal.Length, Sepal.Width))
+```
+
+---
+
+# Example: scatter plot
+
+
+```{r}
+library(ggplot2)
+ggplot(iris, aes(Sepal.Length, Sepal.Width)) + 
+  geom_point()
+```
+
+
+---
+
+# Example: violin plot
+
+
+```{r}
+library(ggplot2)
+ggplot(iris, aes(Species, Sepal.Width)) + 
+  geom_violin()
+```
+
+---
+
+# Example: layer more
+
+
+```{r}
+library(ggplot2)
+ggplot(iris, aes(Species, Sepal.Width)) + 
+  geom_violin() + 
+  geom_boxplot(width = 0.1) 
+```
+
+---
+
+# That's it!
+
+This was a super short `ggplot` intro.
+
+To find out more about `xaringanthemer` see 
+
+https://github.com/gadenbuie/xaringanthemer

@@ -1,0 +1,70 @@
+---
+title: "R Markdown Workshop"
+subtitle: "Challenge: References"
+output: 
+  bookdown::html_document2:
+    number_sections: false
+---
+
+
+```{r setup, include = FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(
+  fig.height = 3.5,
+  fig.width = 3.5,
+  fig.align = "center", 
+  echo = FALSE
+)
+theme_set(theme_bw(base_size = 14))
+```
+
+## Challenge
+
+* Knit this document and see what happens to where the text contains `@\ref`
+* Change this document output to `bookdown::pdf_document2`.
+
+## Report
+
+There is a theory that the faster a car travels, the distances taken to stop is longer!
+
+We collected observations on `r nrow(cars)` distances taken to stop for cars at different speeds. The scatter plot of this data is shown in Figure \@ref(fig:plot1).
+
+
+```{r plot1, fig.cap = "This is just a simple scatterplot"}
+ggplot(cars, aes(speed, dist)) + 
+  geom_point() +
+  labs(x = "Speed", y = "Distance to stop") + 
+  geom_smooth(method = "lm")
+```
+
+The estimate of intercept and slope of a linear model to this data can be found in Table \@ref(tab:model1).
+
+```{r model1}
+fit <- lm(dist ~ speed, cars)
+knitr::kable(broom::tidy(fit), 
+             booktabs = TRUE,
+             caption = "The linear model fit")
+```
+
+Various goodness of fit measures for the model can be seen in Table \@ref(tab:GoF).
+
+
+```{r GoF}
+knitr::kable(broom::glance(fit), 
+             booktabs = TRUE, 
+             caption = "(ref:goodness-of-fit)")
+```
+
+
+(ref:goodness-of-fit) This caption is written in a *separate* paragraph. Notice **R markdown** syntax can be used! The goodness of fit measures in this table refers to the model fitted in Table \@ref(tab:model1).
+
+(ref:resplot) The text reference also works for figures as well and can appear anywhere in the R Markdown document.
+
+```{r resplot, fig.cap = "(ref:resplot)"}
+broom::augment(fit) %>% 
+  ggplot(aes(speed, .resid)) + 
+  geom_point() + 
+  labs(y = "Residual", x = "Speed", title = "Residual plot")
+
+```
+

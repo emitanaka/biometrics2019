@@ -1,4 +1,15 @@
+class: bg-pro center middle hide-slide-number
 
+
+
+<div class="bg-black white"  style="width:45%;right:0;bottom:0;padding-left:5px;border: solid 4px white;margin: auto;">
+<i class="fas fa-exclamation-circle"></i> These slides are viewed best by Chrome and occasionally need to be refreshed if elements did not load properly. See here for <a href=`r rmarkdown::metadata$pdflink`>PDF <i class="fas fa-file-pdf"></i></a>. 
+</div>
+
+
+---
+
+count: false
 background-image: url(`r rmarkdown::metadata$titleslide_bgimg`)
 background-size: cover
 class: hide-slide-number title-slide
@@ -34,10 +45,6 @@ School of Mathematics and Statistics
 :::::::::: 
 
 
-::: { .shade_black .pos .font_small width:20%;right:10px;bottom:20%;padding:5px;border: solid 5px white;}
 
-<i class="fas fa-exclamation-circle"></i> These slides are viewed best by Chrome and occasionally need to be refreshed if elements did not load properly. See here for <a href=`r rmarkdown::metadata$pdflink` style="color:white!important"/>PDF <i class="fas fa-file-pdf"></i></a>. 
-
-:::
 
 

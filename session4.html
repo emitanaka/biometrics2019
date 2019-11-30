@@ -7,13 +7,15 @@
     <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
     <link href="libs/font-awesome-animation-1.0/font-awesome-animation-emi.css" rel="stylesheet" />
     <script src="libs/fontawesome-5.0.13/js/fontawesome-all.min.js"></script>
+    <link href="libs/countdown-0.2.0/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown-0.2.0/countdown.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/animate.css" type="text/css" />
     <link rel="stylesheet" href="assets/cssgrid.css" type="text/css" />
-    <link rel="stylesheet" href="assets/fira-code.css" type="text/css" />
-    <link rel="stylesheet" href="assets/boxes.css" type="text/css" />
-    <link rel="stylesheet" href="assets/image_modal.css" type="text/css" />
     <link rel="stylesheet" href="assets/custom.css" type="text/css" />
+    <link rel="stylesheet" href="assets/fira-code.css" type="text/css" />
+    <link rel="stylesheet" href="assets/image_modal.css" type="text/css" />
+    <link rel="stylesheet" href="assets/boxes.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -23,7 +25,18 @@
 
 
 
+class: bg-pro center middle hide-slide-number
 
+
+
+&lt;div class="bg-black white"  style="width:45%;right:0;bottom:0;padding-left:5px;border: solid 4px white;margin: auto;"&gt;
+&lt;i class="fas fa-exclamation-circle"&gt;&lt;/i&gt; These slides are viewed best by Chrome and occasionally need to be refreshed if elements did not load properly. See here for &lt;a href=session4.pdf&gt;PDF &lt;i class="fas fa-file-pdf"&gt;&lt;/i&gt;&lt;/a&gt;. 
+&lt;/div&gt;
+
+
+---
+
+count: false
 background-image: url(images/bg1.jpg)
 background-size: cover
 class: hide-slide-number title-slide
@@ -35,7 +48,7 @@ class: hide-slide-number title-slide
 # &lt;span style="text-shadow: 2px 2px 30px white;"&gt;R Markdown Workshop&lt;/span&gt;
 
 &lt;br&gt;&lt;br&gt;
-## &lt;span style="color:yellow;text-shadow: 2px 2px 30px black;"&gt;R Markdown Basics with &lt;br&gt;`rmarkdown` &lt;img src='images/rmarkdown.png' height = '50px'&gt; &amp; `knitr` &lt;img src='images/knitr.png' height = '50px'&gt;&lt;/span&gt;
+## &lt;span style="color:yellow;text-shadow: 2px 2px 30px black;"&gt;Reproducible Reports with R Markdown&lt;/span&gt;
 
 :::
 
@@ -59,195 +72,90 @@ School of Mathematics and Statistics
 :::::::::: 
 
 
-::: { .shade_black .pos .font_small width:20%;right:10px;bottom:20%;padding:5px;border: solid 5px white;}
 
-&lt;i class="fas fa-exclamation-circle"&gt;&lt;/i&gt; These slides are viewed best by Chrome and occasionally need to be refreshed if elements did not load properly. See here for &lt;a href=session3.pdf style="color:white!important"/&gt;PDF &lt;i class="fas fa-file-pdf"&gt;&lt;/i&gt;&lt;/a&gt;. 
-
-:::
 
 
 
 ---
 
-# What you can do with R Markdown?
+class: center middle
 
---
 
-&lt;br&gt;
-&lt;center&gt;
-&lt;iframe src="session1.html" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
-&lt;/center&gt;
+.font_large[🔍 Open and inspect the file]
 
-&lt;div class="color-box"&gt;
-These &lt;b&gt;slides&lt;/b&gt; are made using R Markdown.
-&lt;/div&gt;
+.font_large[`demo-header.Rmd`]
 
 ---
 
-# What you can do with R Markdown?
-
-&lt;br&gt;
-&lt;center&gt;
-&lt;iframe src="output/html/html_template_paper.html" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
-&lt;/center&gt;
-
-&lt;div class="color-box"&gt;
-This &lt;b&gt;dynamic report&lt;/b&gt; is made using R Markdown.
-&lt;/div&gt;
-
----
-
-# What you can do with R Markdown?
-
-&lt;br&gt;
-&lt;center&gt;
-&lt;object data="output/articles/article_template_pnas_article.pdf" type="application/pdf" width="80%" height="450px" style="border: solid 3px black;"&gt;
-&lt;embed src="output/articles/article_template_pnas_article.pdf" type="application/pdf" /&gt;
-&lt;/object&gt;
-&lt;/center&gt;
+# Cross Reference
 
 
-&lt;div class="color-box"&gt;
-This &lt;b&gt;manuscript&lt;/b&gt; is made using R Markdown.
-&lt;/div&gt;
-
-
----
-
-
-# What you can do with R Markdown?
-
-&lt;br&gt;
-&lt;center&gt;
-&lt;iframe src="https://otexts.com/fpp2/" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
-&lt;/center&gt;
-
-
-&lt;div class="color-box"&gt;
-This &lt;b&gt;online book&lt;/b&gt; is made using R Markdown.&lt;br&gt;
-Available at https://otexts.com/fpp2/ &lt;br&gt;
-
-The &lt;b&gt;pdf book&lt;/b&gt; version is also made using R Markdown. 
-&lt;/div&gt;
-
----
-
-# What you can do with R Markdown?
-
-&lt;br&gt;
-&lt;div class="grid" style="grid: 1fr / 1fr 1fr;"&gt;
-&lt;div class="item"&gt;
-&lt;center&gt;
-&lt;iframe src="https://thesis.earo.me/" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
-&lt;/center&gt;
-&lt;/div&gt;
-
-&lt;div class="item"&gt;
-&lt;center&gt;
-&lt;a href="https://github.com/earowang/thesis/blob/master/_thesis/thesis.pdf"&gt;&lt;img src="images/earothesis.png" width="60%" style="border: solid 3px black;"/&gt;&lt;/a&gt;
-&lt;/center&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-&lt;div class="color-box"&gt;
-This &lt;b&gt;thesis&lt;/b&gt; (online and pdf) is made using R Markdown.&lt;br&gt;
-Available at https://thesis.earo.me/ &lt;br&gt;
-
-&lt;/div&gt;
-
----
-
-# What you can do with R Markdown?
-
-&lt;br&gt;
-&lt;div class="grid" style="grid: 1fr / 1fr 1fr;"&gt;
-&lt;div class="item"&gt;
-&lt;center&gt;
-&lt;iframe src="https://emitanaka.org/r/posts/2018-12-12-scientific-and-technical-blogging-radix-vs-blogdown/" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
-&lt;/center&gt;
-&lt;/div&gt;
-
-&lt;div class="item"&gt;
-&lt;center&gt;
-&lt;iframe src="https://emitanaka.rbind.io/post/scientific-and-technical-blogging-radix-vs-blogdown-remix/" width="80%" height="450px" style="border: solid 3px black;"&gt;&lt;/iframe&gt;
-&lt;/center&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-&lt;div class="color-box"&gt;
-These &lt;b&gt;blog posts&lt;/b&gt; are made using R Markdown.
-
-&lt;/div&gt;
-
----
-
-# What you can do with R Markdown?
-
-::: { .grid .grid: 1fr / 2.5fr 1fr; } 
+::: grid 
 
 ::: item 
 
-Possibilities are endless...
-
-* Microsoft Word document (.doc, .docx)
-* Open Document Text (.odt)
-* Rich text format (.rtf)
-* Power point slides (.ppt, .pptx)
-* Posters (as .html or .pdf)
-* Resume (as .html or .pdf)
-* Interactive R Notebooks (.html)
-* Markdown documents (.md)
-* Dashboard (.html)
+* When you make a header via Rmd
+```markdown
+# Some Header
+```
+ an .red[id is created automatically].
+* The id is created by replacing .blue[space with `-`] and making it .blue[all lower case].
+* Now you can link to this header by `[some text](#some-header)`.
+* Cross references work for both pdf and html outputs.
 
 ::: 
 
 ::: item 
 
-&lt;br&gt;
 &lt;center&gt;
-&lt;img src="images/rmarkdown-book-cover.png" width = "50%"&gt;
+&lt;iframe src="exercises/demo-header.html" width = "90%", height = "500px"&gt;&lt;/iframe&gt;
 &lt;/center&gt;
-
-.font_small[Check out [Xie et al. (2018) R Markdown: The Definite Guide](https://bookdown.org/yihui/rmarkdown/).]
 
 :::
 
 :::
 
 
-
 ---
 
-# Before R Markdown (and Sweave)
+
+# Direct Reference for `html`
 
 &lt;br&gt;
-&lt;center&gt;
-&lt;img src="images/rmd-motivation.png" width  = "90%"/&gt;
-&lt;/center&gt;
-
----
-
-# R Markdown in a nutshell 🥜
-
 
 ::: paddings
 
-
-R Markdown integrates .blue[**text**] + .blue[`code`] in one source document with ability to knit *to many output formats* (via Pandoc).
-
-&lt;img src="images/rmd-overview.png" width  = "100%"/&gt;
-
+* For `html` output, you can also give a link directly to the relevant section
+* E.g. open `demo-header.html` in a web browser
+* Append say `#chicken-data` to the url. It should look like 
+.center[
+`demo-header.html#chicken-data`
+]
+* It should have taken you to straight to the corresponding header 🏃‍♀
 
 :::
 
-
-
 ---
 
+
+# User-defined id
+
+
+&lt;br&gt;
+
+::: paddings 
+
+* You can define your own id by appending `{#your-id}`.
+
+```markdown
+# Some header {#header1}
+```
+* Now you can link to this header with the id `header1`.
+* Note there should be no space in the id name!
+
+::: 
+
+---
 
 
 class: center middle
@@ -255,35 +163,383 @@ class: center middle
 
 .font_large[🔍 Open and inspect the file]
 
-.font_large[`first-rmarkdown.Rmd`]
+.font_large[`demo.bib`]
 
 
 
 ---
 
-# R Markdown Basics
+class: font_smaller
+
+# Bibliography
+
+* BibTeX citation style format is used to store references in `.bib` files.
+* Remember that you can get most BibTeX citation for R packages `citation` function. (Scroll below to see the BibTeX citation).
+
+.scroll-350[
+
+```r
+citation("xaringan")
+```
+
+```
+  
+  To cite package 'xaringan' in publications use:
+  
+    Yihui Xie (2019). xaringan: Presentation Ninja. R package version 0.9. https://CRAN.R-project.org/package=xaringan
+  
+  A BibTeX entry for LaTeX users is
+  
+    @Manual{,
+      title = {xaringan: Presentation Ninja},
+      author = {Yihui Xie},
+      year = {2019},
+      note = {R package version 0.9},
+      url = {https://CRAN.R-project.org/package=xaringan},
+    }
+```
+]
+
+---
+
+class: center middle
 
 
-&lt;img src="images/demo-first-rmd.png" width="80%" /&gt;
+.font_large[🔎 Open, inspect and knit the file]
+
+.font_large[`demo-citation.Rmd`]
+
+---
+
+# Citations
+
+&lt;br&gt;
+
+::: paddings
+
+* You can include BibTeX by specifying the `bib` file at YAML as:
+
+```markdown
+bibliography: bibliography.bib
+```
+
+
+[@bibtex-key] &lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt; (Author et al. 2019)
+
+or 
+
+@bibtex-key &lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt; Author et al. 2019
+
+* See `demo-citation.Rmd`
+
+
+:::
+
+---
+
+class: font_small
+
+
+# Figure References
+
+::: paddings 
+
+* Support for figure references are included for output format type `bookdown::pdf_document2` for pdf or `bookdown::html_document2` for html.
+
+````markdown
+```{r plot1, fig.cap = "Caption"}
+ggplot(cars, aes(dist, speed)) + geom_point()
+```
+````
+
+* Above figure number can be referenced as .red[`\@ref(fig:plot1)`]
+
+* The reference label has the prefix `fig:` before the chunk label.
+
+
+
+
+:::
+
+---
+
+class: font_small
+
+
+# Table References
+
+::: paddings 
+
+* Support for table references are also included for output format type `bookdown::pdf_document2` for pdf or `bookdown::html_document2` for html.
+
+````markdown
+```{r table1}
+knitr::kable(cars, booktabs = TRUE, caption = "Caption")
+```
+````
+
+* Above table number can be referenced as .red[`\@ref(tab:table1)`]
+
+* The reference label has the prefix `tab:` before the chunk label.
+
+:::
 
 
 ---
 
-# Knitting: &lt;code&gt;Rmd&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;&amp;nbsp; &lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt;&amp;nbsp;&lt;code&gt;md&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;&amp;nbsp;&lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt; &amp;nbsp;&lt;code&gt;html&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;
+class: font_small
 
-&lt;img src="images/demo-knit-html.png" width="100%" /&gt;
+# Markdown for Captions
+
+::: paddings
+
+````markdown
+```{r plot1, fig.cap = "(ref:label)"}
+ggplot(cars, aes(dist, speed)) + geom_point()
+```
+````
+
+* Then the caption can be entered in a separate paragraph with empty lines above and below it
+
+```markdown
+
+(ref:label) This is the *caption* with **markdown**.
+
+```
+
+* You can substitute `label` with another unique label composed of alphanumeric characters, :, -, or /
+* This caption supports markdown syntax
+* This is great for long captions
+* It also works for tables!
+
+
+:::
 
 
 ---
 
 
-# Knitting: &lt;code&gt;Rmd&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;&amp;nbsp; &lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt;&amp;nbsp;&lt;code&gt;md&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;&amp;nbsp;&lt;i class="fas fa-arrow-right"&gt;&lt;/i&gt; &amp;nbsp;&lt;code&gt;pdf&lt;/code&gt; &lt;i class="far fa-file"&gt;&lt;/i&gt;
+class: center middle
 
-&lt;img src="images/demo-knit-pdf.png" width="100%" /&gt;
+
+.font_large[🔧 Open and work through]
+
+.font_large[`challenge-12-references.Rmd`]
+
+<div class="countdown" id="timer_5de27e67" style="right:0;bottom:0;font-size:1em;">
+<code><span class="digits minutes">05</span><span class="digits colon">:</span><span class="digits seconds">00</span></code>
+</div>
+
+
 
 
 ---
 
+class: font_small
+
+# Parametrized Report
+
+````markdown
+---
+title: "Parameterized Report"
+params:
+*  species: setosa 
+output: html_document
+---
+
+```{r, message = FALSE, fig.dim = c(3,2)}
+library(tidyverse)
+iris %&gt;% 
+*  filter(Species==params$species) %&gt;% 
+   ggplot(aes(Sepal.Length, Sepal.Width)) +
+   geom_point(aes(color=Species))
+```
+````
+
+::: {.output .pos top:60px; right:10px;}
+&lt;img src = "images/parameterised-report-eg1.png" width = "550px"/&gt;
+
+:::
+
+---
+
+class: font_smaller
+
+# Knit with Parameters
+
+::: grid
+::: item 
+
+```markdown
+---
+title: "Parameterized Report"
+params:
+  species: 
+    label: "Species"
+    value: setosa
+    input: select
+    choices: [setosa, versicolor, virginica]
+  color: red
+  max:
+    label: "Maximum Sepal Width"
+    value: 4
+    input: slider
+    min: 4
+    max: 5
+    step: 0.1
+output: html_document
+---
+```
+
+:::
+
+::: item 
+
+&lt;img src = "images/knit-with-params.png" width = "250px" style="border: solid 3px black;"/&gt;
+
+````markdown
+```{r, message = params$printmsg}
+library(tidyverse)
+iris %&gt;% 
+  filter(Species==params$species) %&gt;% 
+  filter(Sepal.Width &lt; params$max) %&gt;% 
+  ggplot(aes(Sepal.Length, Sepal.Width)) +
+  geom_point(color = params$color) + 
+  labs(title = params$species)
+```
+````
+
+
+
+:::
+
+:::
+
+---
+
+class: font_smaller
+
+# Shiny Report Generator
+::: grid
+::: item 
+```markdown
+---
+title: "Parameterized Report"
+params:
+  species: 
+    label: "Species"
+    value: setosa
+    input: select
+    choices: [setosa, versicolor, virginica]
+  color: red
+  max:
+    label: "Maximum Sepal Width"
+    value: 5
+    input: slider
+    min: 4
+    max: 5
+    step: 0.05
+output: html_document
+---
+```
+
+:::
+
+::: item 
+
+&lt;Br&gt;
+
+&lt;img src = "images/shiny-params.png" width = "100%" style="border: solid 3px black;"/&gt;
+
+:::
+
+:::
+
+---
+
+class: center middle
+
+
+.font_large[🔧 Open and work through]
+
+.font_large[`challenge-13-params.Rmd`]
+
+<div class="countdown" id="timer_5de27dae" style="right:0;bottom:0;font-size:1em;">
+<code><span class="digits minutes">05</span><span class="digits colon">:</span><span class="digits seconds">00</span></code>
+</div>
+
+---
+
+class: font_smaller
+
+# R Markdown via Command Line
+
+::: grid 
+
+::: item 
+
+`demo-render.Rmd`
+
+````markdown
+---
+title: "Parameterized Report"
+params:
+*  species: setosa
+output: html_document
+---
+
+```{r, message = FALSE, fig.dim = c(3,2)}
+library(tidyverse)
+iris %&gt;% 
+*  filter(Species==params$species) %&gt;% 
+   ggplot(aes(Sepal.Length, Sepal.Width)) +
+   geom_point(aes(color=Species))
+```
+````
+
+:::
+
+::: item 
+
+You can knit this file via R command by&lt;br&gt; using the `render` function:
+
+
+```r
+library(rmarkdown)
+render("demo-render.Rmd")
+```
+
+&lt;br&gt;
+
+You can overwrite the YAML values&lt;br&gt;  by supplying arguments to `render`:
+
+
+```r
+library(rmarkdown)
+render("demo-render.Rmd", 
+       output_format = "pdf_document",
+       params = list(species = "virginica"))
+```
+
+:::
+
+:::
+
+---
+
+class: center middle
+
+
+.font_large[🔧 Open and work through]
+
+.font_large[`challenge-14-letters.Rmd`]
+
+<div class="countdown" id="timer_5de27dc5" style="right:0;bottom:0;font-size:1em;">
+<code><span class="digits minutes">10</span><span class="digits colon">:</span><span class="digits seconds">00</span></code>
+</div>
+
+
+---
 
 # Themes: `html_document`  
 
@@ -432,8 +688,130 @@ https://github.com/juba/rmdformats
 
 ---
 
+# `rticles` - LaTeX Journal Article Templates
+
+&lt;!-- The Modal --&gt;
+&lt;div id="myModal4" class="modal"&gt;
+  &lt;div id="caption4"&gt;&lt;/div&gt;
+  &lt;span class="close" onclick="document.getElementById('myModal4').style.display='none'"&gt;&amp;times;&lt;/span&gt;
+  &lt;iframe class="modal-content" id="img04"&gt;&lt;/iframe&gt;&lt;br&gt;
+&lt;/div&gt;
+::: grid
+::: item 
+* `acm` &lt;img class='modalPdf' alt='acm_article'/&gt;
+* `acs` &lt;img class='modalPdf' alt='acs_article'/&gt;
+* `aea` &lt;img class='modalPdf' alt='aea_article'/&gt;
+* `agu` &lt;img class='modalPdf' alt='agu_article'/&gt;
+* `amq` &lt;img class='modalPdf' alt='amq_article'/&gt;
+* `ams` &lt;img class='modalPdf' alt='ams_article'/&gt;
+* `asa` &lt;img class='modalPdf' alt='asa_article'/&gt;
+* `biometrics` &lt;img class='modalPdf' alt='biometrics_article'/&gt;
+* `copernicus` &lt;img class='modalPdf' alt='copernicus_article'/&gt;
 
 
+:::
+
+::: item 
+
+* `elsevier` &lt;img class='modalPdf' alt='elsevier_article'/&gt;
+* `frontiers` &lt;img class='modalPdf' alt='frontiers_article'/&gt;
+* `ieee` &lt;img class='modalPdf' alt='ieee_article'/&gt;
+* `jss` &lt;img class='modalPdf' alt='jss_article'/&gt;
+* `mdpi` &lt;img class='modalPdf' alt='mdpi_article'/&gt;
+* `mnras` &lt;img class='modalPdf' alt='mnras_article'/&gt;
+* `peerj` &lt;img class='modalPdf' alt='peerj_article'/&gt;
+* `plos` &lt;img class='modalPdf' alt='plos_article'/&gt;
+
+:::
+
+::: item 
+* `pnas` &lt;img class='modalPdf' alt='pnas_article'/&gt;
+* `rjournal` &lt;img class='modalPdf' alt='rjournal_article'/&gt;
+* `rsos` &lt;img class='modalPdf' alt='rsos_article'/&gt;
+* `rss` &lt;img class='modalPdf' alt='rss_article'/&gt;
+* `sage` &lt;img class='modalPdf' alt='sage_article'/&gt;
+* `sim` &lt;img class='modalPdf' alt='sim_article'/&gt;
+* `springer` &lt;img class='modalPdf' alt='springer_article'/&gt;
+* `tf` &lt;img class='modalPdf' alt='tf_article'/&gt;
+
+::::
+
+::::
+
+
+::: {.bottom_abs .width100 .bg-indigo .white padding-left:10px;}
+Go to RStudio &gt; File &gt; New File &gt; R Markdown ... &gt; From Template
+:::
+
+
+---
+
+
+# External Files in Templating
+
+::: grid
+
+::: item 
+
+* When using `rticles`, each journal usually require external files (e.g. `cls` or image files).
+* These external components are stored within the package.
+* So use `draft` instead of `render`! 
+
+::: 
+
+::: item bg-gray
+
+**GUI**
+
+* `RStudio &gt; File &gt; New File &gt; R Markdown ... &gt; From Template`
+
+**Command line**
+
+
+```r
+rmarkdown::draft("file.Rmd", 
+ template = "biometrics_article",
+ package = "rticles")
+```
+
+
+
+:::
+
+:::
+
+---
+
+# Making your own R Markdown template 
+
+::: paddings
+
+* You need to make an R package first!&lt;br&gt;
+Go to RStudio &gt; New Project &gt; New Directory &gt; R Package or `usethis::create_package()`
+
+
+* When you are in your R package project,
+
+
+```r
+usethis::use_rmarkdown_template("&lt;Name&gt;")
+```
+
+* Modify the `skeleton/skeleton.Rmd` to how you want and add all external files to the `skeleton` folder.
+* Install your package.
+* 🎉 And now find it at RStudio &gt; File &gt; New File &gt; R Markdown &gt; From Template.
+
+:::
+
+---
+
+class: center middle
+
+
+.font_large[🔧 Create your own &lt;br&gt;R Markdown Template Package!]
+
+
+---
 
 
 
@@ -460,86 +838,85 @@ devtools::session_info()
    language (EN)                        
    collate  en_AU.UTF-8                 
    ctype    en_AU.UTF-8                 
-   tz       Australia/Sydney            
-   date     2019-11-16                  
+   tz       Australia/Adelaide          
+   date     2019-12-01                  
   
   ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   package     * version    date       lib source                            
-   anicon        0.1.0      2019-05-28 [1] Github (emitanaka/anicon@377aece) 
-   assertthat    0.2.1      2019-03-21 [1] CRAN (R 3.6.0)                    
-   backports     1.1.4      2019-04-10 [1] CRAN (R 3.6.0)                    
-   broom         0.5.2      2019-04-07 [1] CRAN (R 3.6.0)                    
-   callr         3.3.1      2019-07-18 [1] CRAN (R 3.6.0)                    
-   cellranger    1.1.0      2016-07-27 [1] CRAN (R 3.6.0)                    
-   cli           1.1.0      2019-03-19 [1] CRAN (R 3.6.0)                    
-   colorspace    1.4-1      2019-03-18 [1] CRAN (R 3.6.0)                    
-   crayon        1.3.4      2017-09-16 [1] CRAN (R 3.6.0)                    
-   curl          4.2        2019-09-24 [1] CRAN (R 3.6.0)                    
-   dadjoke       0.1.2      2019-07-07 [1] Github (jhollist/dadjoke@21ec24c) 
-   desc          1.2.0      2018-05-01 [1] CRAN (R 3.6.0)                    
-   devtools      2.0.2      2019-04-08 [1] CRAN (R 3.6.0)                    
-   digest        0.6.22     2019-10-21 [1] CRAN (R 3.6.0)                    
-   dplyr       * 0.8.3      2019-07-04 [1] CRAN (R 3.6.0)                    
-   emo           0.0.0.9000 2019-06-03 [1] Github (hadley/emo@02a5206)       
-   evaluate      0.14       2019-05-28 [1] CRAN (R 3.6.0)                    
-   forcats     * 0.4.0      2019-02-17 [1] CRAN (R 3.6.0)                    
-   fs            1.3.1      2019-05-06 [1] CRAN (R 3.6.0)                    
-   generics      0.0.2      2018-11-29 [1] CRAN (R 3.6.0)                    
-   ggplot2     * 3.2.1      2019-08-10 [1] CRAN (R 3.6.0)                    
-   glue          1.3.1.9000 2019-10-24 [1] Github (tidyverse/glue@71eeddf)   
-   gtable        0.3.0      2019-03-25 [1] CRAN (R 3.6.0)                    
-   haven         2.1.0      2019-02-19 [1] CRAN (R 3.6.0)                    
-   hms           0.5.1      2019-08-23 [1] CRAN (R 3.6.0)                    
-   htmltools     0.4.0      2019-10-04 [1] CRAN (R 3.6.0)                    
-   httr          1.4.1      2019-08-05 [1] CRAN (R 3.6.0)                    
-   icon          0.1.0      2019-05-28 [1] Github (ropenscilabs/icon@a510f88)
-   jsonlite      1.6        2018-12-07 [1] CRAN (R 3.6.0)                    
-   knitr         1.25       2019-09-18 [1] CRAN (R 3.6.0)                    
-   lattice       0.20-38    2018-11-04 [1] CRAN (R 3.6.0)                    
-   lazyeval      0.2.2      2019-03-15 [1] CRAN (R 3.6.0)                    
-   lifecycle     0.1.0      2019-08-01 [1] CRAN (R 3.6.0)                    
-   lubridate     1.7.4      2018-04-11 [1] CRAN (R 3.6.0)                    
-   magrittr      1.5        2014-11-22 [1] CRAN (R 3.6.0)                    
-   memoise       1.1.0      2017-04-21 [1] CRAN (R 3.6.0)                    
-   modelr        0.1.4      2019-02-18 [1] CRAN (R 3.6.0)                    
-   munsell       0.5.0      2018-06-12 [1] CRAN (R 3.6.0)                    
-   nlme          3.1-140    2019-05-12 [1] CRAN (R 3.6.0)                    
-   pillar        1.4.2      2019-06-29 [1] CRAN (R 3.6.0)                    
-   pkgbuild      1.0.3      2019-03-20 [1] CRAN (R 3.6.0)                    
-   pkgconfig     2.0.3      2019-09-22 [1] CRAN (R 3.6.0)                    
-   pkgload       1.0.2      2018-10-29 [1] CRAN (R 3.6.0)                    
-   prettyunits   1.0.2      2015-07-13 [1] CRAN (R 3.6.0)                    
-   processx      3.4.1      2019-07-18 [1] CRAN (R 3.6.0)                    
-   ps            1.3.0      2018-12-21 [1] CRAN (R 3.6.0)                    
-   purrr       * 0.3.2      2019-03-15 [1] CRAN (R 3.6.0)                    
-   quoter        0.1.0      2019-07-28 [1] local                             
-   R6            2.4.0      2019-02-14 [1] CRAN (R 3.6.0)                    
-   Rcpp          1.0.2      2019-07-25 [1] CRAN (R 3.6.0)                    
-   readr       * 1.3.1      2018-12-21 [1] CRAN (R 3.6.0)                    
-   readxl        1.3.1      2019-03-13 [1] CRAN (R 3.6.0)                    
-   remotes       2.0.4      2019-04-10 [1] CRAN (R 3.6.0)                    
-   rlang         0.4.0.9000 2019-08-03 [1] Github (r-lib/rlang@b0905db)      
-   rmarkdown     1.16       2019-10-01 [1] CRAN (R 3.6.0)                    
-   rprojroot     1.3-2      2018-01-03 [1] CRAN (R 3.6.0)                    
-   rstudioapi    0.10       2019-03-19 [1] CRAN (R 3.6.0)                    
-   rvest         0.3.4      2019-05-15 [1] CRAN (R 3.6.0)                    
-   scales        1.0.0      2018-08-09 [1] CRAN (R 3.6.0)                    
-   sessioninfo   1.1.1      2018-11-05 [1] CRAN (R 3.6.0)                    
-   stringi       1.4.3      2019-03-12 [1] CRAN (R 3.6.0)                    
-   stringr     * 1.4.0      2019-02-10 [1] CRAN (R 3.6.0)                    
-   testthat      2.2.1      2019-07-25 [1] CRAN (R 3.6.0)                    
-   tibble      * 2.1.3      2019-06-06 [1] CRAN (R 3.6.0)                    
-   tidyr       * 1.0.0      2019-09-11 [1] CRAN (R 3.6.0)                    
-   tidyselect    0.2.5      2018-10-11 [1] CRAN (R 3.6.0)                    
-   tidyverse   * 1.2.1      2017-11-14 [1] CRAN (R 3.6.0)                    
-   usethis       1.5.0      2019-04-07 [1] CRAN (R 3.6.0)                    
-   vctrs         0.2.0.9000 2019-08-03 [1] Github (r-lib/vctrs@11c34ae)      
-   withr         2.1.2      2018-03-15 [1] CRAN (R 3.6.0)                    
-   xaringan      0.9        2019-03-06 [1] CRAN (R 3.6.0)                    
-   xfun          0.10       2019-10-01 [1] CRAN (R 3.6.0)                    
-   xml2          1.2.0      2018-01-24 [1] CRAN (R 3.6.0)                    
-   yaml          2.2.0      2018-07-25 [1] CRAN (R 3.6.0)                    
-   zeallot       0.1.0      2018-01-28 [1] CRAN (R 3.6.0)                    
+   package     * version    date       lib source                              
+   anicon        0.1.0      2019-05-28 [1] Github (emitanaka/anicon@377aece)   
+   assertthat    0.2.1      2019-03-21 [1] CRAN (R 3.6.0)                      
+   backports     1.1.4      2019-04-10 [1] CRAN (R 3.6.0)                      
+   broom         0.5.2      2019-04-07 [1] CRAN (R 3.6.0)                      
+   callr         3.3.1      2019-07-18 [1] CRAN (R 3.6.0)                      
+   cellranger    1.1.0      2016-07-27 [1] CRAN (R 3.6.0)                      
+   cli           1.1.0      2019-03-19 [1] CRAN (R 3.6.0)                      
+   colorspace    1.4-1      2019-03-18 [1] CRAN (R 3.6.0)                      
+   countdown     0.2.0      2019-05-30 [1] Github (gadenbuie/countdown@c8e8710)
+   crayon        1.3.4      2017-09-16 [1] CRAN (R 3.6.0)                      
+   desc          1.2.0      2018-05-01 [1] CRAN (R 3.6.0)                      
+   devtools      2.0.2      2019-04-08 [1] CRAN (R 3.6.0)                      
+   digest        0.6.22     2019-10-21 [1] CRAN (R 3.6.0)                      
+   dplyr       * 0.8.3      2019-07-04 [1] CRAN (R 3.6.0)                      
+   emo           0.0.0.9000 2019-06-03 [1] Github (hadley/emo@02a5206)         
+   evaluate      0.14       2019-05-28 [1] CRAN (R 3.6.0)                      
+   forcats     * 0.4.0      2019-02-17 [1] CRAN (R 3.6.0)                      
+   fs            1.3.1      2019-05-06 [1] CRAN (R 3.6.0)                      
+   generics      0.0.2      2018-11-29 [1] CRAN (R 3.6.0)                      
+   ggplot2     * 3.2.1      2019-08-10 [1] CRAN (R 3.6.0)                      
+   glue          1.3.1.9000 2019-10-24 [1] Github (tidyverse/glue@71eeddf)     
+   gtable        0.3.0      2019-03-25 [1] CRAN (R 3.6.0)                      
+   haven         2.1.0      2019-02-19 [1] CRAN (R 3.6.0)                      
+   hms           0.5.1      2019-08-23 [1] CRAN (R 3.6.0)                      
+   htmltools     0.4.0      2019-10-04 [1] CRAN (R 3.6.0)                      
+   httr          1.4.1      2019-08-05 [1] CRAN (R 3.6.0)                      
+   icon          0.1.0      2019-05-28 [1] Github (ropenscilabs/icon@a510f88)  
+   jsonlite      1.6        2018-12-07 [1] CRAN (R 3.6.0)                      
+   knitr         1.25       2019-09-18 [1] CRAN (R 3.6.0)                      
+   lattice       0.20-38    2018-11-04 [1] CRAN (R 3.6.0)                      
+   lazyeval      0.2.2      2019-03-15 [1] CRAN (R 3.6.0)                      
+   lifecycle     0.1.0      2019-08-01 [1] CRAN (R 3.6.0)                      
+   lubridate     1.7.4      2018-04-11 [1] CRAN (R 3.6.0)                      
+   magrittr      1.5        2014-11-22 [1] CRAN (R 3.6.0)                      
+   memoise       1.1.0      2017-04-21 [1] CRAN (R 3.6.0)                      
+   modelr        0.1.4      2019-02-18 [1] CRAN (R 3.6.0)                      
+   munsell       0.5.0      2018-06-12 [1] CRAN (R 3.6.0)                      
+   nlme          3.1-140    2019-05-12 [1] CRAN (R 3.6.0)                      
+   pillar        1.4.2      2019-06-29 [1] CRAN (R 3.6.0)                      
+   pkgbuild      1.0.3      2019-03-20 [1] CRAN (R 3.6.0)                      
+   pkgconfig     2.0.3      2019-09-22 [1] CRAN (R 3.6.0)                      
+   pkgload       1.0.2      2018-10-29 [1] CRAN (R 3.6.0)                      
+   prettyunits   1.0.2      2015-07-13 [1] CRAN (R 3.6.0)                      
+   processx      3.4.1      2019-07-18 [1] CRAN (R 3.6.0)                      
+   ps            1.3.0      2018-12-21 [1] CRAN (R 3.6.0)                      
+   purrr       * 0.3.2      2019-03-15 [1] CRAN (R 3.6.0)                      
+   R6            2.4.0      2019-02-14 [1] CRAN (R 3.6.0)                      
+   Rcpp          1.0.2      2019-07-25 [1] CRAN (R 3.6.0)                      
+   readr       * 1.3.1      2018-12-21 [1] CRAN (R 3.6.0)                      
+   readxl        1.3.1      2019-03-13 [1] CRAN (R 3.6.0)                      
+   remotes       2.0.4      2019-04-10 [1] CRAN (R 3.6.0)                      
+   rlang         0.4.0.9000 2019-08-03 [1] Github (r-lib/rlang@b0905db)        
+   rmarkdown     1.16       2019-10-01 [1] CRAN (R 3.6.0)                      
+   rprojroot     1.3-2      2018-01-03 [1] CRAN (R 3.6.0)                      
+   rstudioapi    0.10       2019-03-19 [1] CRAN (R 3.6.0)                      
+   rvest         0.3.4      2019-05-15 [1] CRAN (R 3.6.0)                      
+   scales        1.0.0      2018-08-09 [1] CRAN (R 3.6.0)                      
+   sessioninfo   1.1.1      2018-11-05 [1] CRAN (R 3.6.0)                      
+   stringi       1.4.3      2019-03-12 [1] CRAN (R 3.6.0)                      
+   stringr     * 1.4.0      2019-02-10 [1] CRAN (R 3.6.0)                      
+   testthat      2.2.1      2019-07-25 [1] CRAN (R 3.6.0)                      
+   tibble      * 2.1.3      2019-06-06 [1] CRAN (R 3.6.0)                      
+   tidyr       * 1.0.0      2019-09-11 [1] CRAN (R 3.6.0)                      
+   tidyselect    0.2.5      2018-10-11 [1] CRAN (R 3.6.0)                      
+   tidyverse   * 1.2.1      2017-11-14 [1] CRAN (R 3.6.0)                      
+   usethis       1.5.0      2019-04-07 [1] CRAN (R 3.6.0)                      
+   vctrs         0.2.0.9000 2019-08-03 [1] Github (r-lib/vctrs@11c34ae)        
+   whisker       0.3-2      2013-04-28 [1] CRAN (R 3.6.0)                      
+   withr         2.1.2      2018-03-15 [1] CRAN (R 3.6.0)                      
+   xaringan      0.9        2019-03-06 [1] CRAN (R 3.6.0)                      
+   xfun          0.10       2019-10-01 [1] CRAN (R 3.6.0)                      
+   xml2          1.2.0      2018-01-24 [1] CRAN (R 3.6.0)                      
+   yaml          2.2.0      2018-07-25 [1] CRAN (R 3.6.0)                      
+   zeallot       0.1.0      2018-01-28 [1] CRAN (R 3.6.0)                      
   
   [1] /Library/Frameworks/R.framework/Versions/3.6/Resources/library
 ```

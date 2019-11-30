@@ -1,0 +1,16 @@
+---
+title: "My first R Markdown"
+output: html_document
+---
+
+## This is a second-level header 
+
+This is some text written in R Markdown 
+
+I can use **markdown** syntax _here_. 
+
+```{r}
+# some R code
+1 + 2
+```
+

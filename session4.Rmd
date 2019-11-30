@@ -1,12 +1,14 @@
 ---
 title: "R Markdown Workshop"
-subtitle: "R Markdown Basics with <br>`rmarkdown` <img src='images/rmarkdown.png' height = '50px'> & `knitr` <img src='images/knitr.png' height = '50px'>"
+subtitle: "Reproducible Reports with R Markdown"
 author: "Emi Tanaka"
 email: "dr.emi.tanaka@gmail.com"
 date: "1st Dec 2019 @ Biometrics by the Botanic Gardens | Adelaide, Australia"
-length: "30 minutes"
+length: "75 minutes"
 color_theme: "yellow"
-pdflink: "session3.pdf"
+pdflink: "session4.pdf"
+params:
+  data: data1.csv
 titleslide_bgimg: "images/bg1.jpg"
 output:
   xaringan::moon_reader:
@@ -14,10 +16,10 @@ output:
       - ninjutsu 
       - "assets/animate.css"
       - "assets/cssgrid.css"
-      - "assets/fira-code.css"
-      - "assets/boxes.css"
-      - "assets/image_modal.css"
       - "assets/custom.css"
+      - "assets/fira-code.css"
+      - "assets/image_modal.css"
+      - "assets/boxes.css"
     self_contained: false 
     seal: false 
     chakra: 'libs/remark-latest.min.js'
@@ -52,185 +54,84 @@ output:
 
 ---
 
-# What you can do with R Markdown?
+class: center middle
 
---
 
-<br>
-<center>
-<iframe src="session1.html" width="80%" height="450px" style="border: solid 3px black;"></iframe>
-</center>
+.font_large[`r emo::ji("search")` Open and inspect the file]
 
-<div class="color-box">
-These <b>slides</b> are made using R Markdown.
-</div>
+.font_large[`demo-header.Rmd`]
 
 ---
 
-# What you can do with R Markdown?
-
-<br>
-<center>
-<iframe src="output/html/html_template_paper.html" width="80%" height="450px" style="border: solid 3px black;"></iframe>
-</center>
-
-<div class="color-box">
-This <b>dynamic report</b> is made using R Markdown.
-</div>
-
----
-
-# What you can do with R Markdown?
-
-<br>
-<center>
-<object data="output/articles/article_template_pnas_article.pdf" type="application/pdf" width="80%" height="450px" style="border: solid 3px black;">
-<embed src="output/articles/article_template_pnas_article.pdf" type="application/pdf" />
-</object>
-</center>
+# Cross Reference
 
 
-<div class="color-box">
-This <b>manuscript</b> is made using R Markdown.
-</div>
-
-
----
-
-
-# What you can do with R Markdown?
-
-<br>
-<center>
-<iframe src="https://otexts.com/fpp2/" width="80%" height="450px" style="border: solid 3px black;"></iframe>
-</center>
-
-
-<div class="color-box">
-This <b>online book</b> is made using R Markdown.<br>
-Available at https://otexts.com/fpp2/ <br>
-
-The <b>pdf book</b> version is also made using R Markdown. 
-</div>
-
----
-
-# What you can do with R Markdown?
-
-<br>
-<div class="grid" style="grid: 1fr / 1fr 1fr;">
-<div class="item">
-<center>
-<iframe src="https://thesis.earo.me/" width="80%" height="450px" style="border: solid 3px black;"></iframe>
-</center>
-</div>
-
-<div class="item">
-<center>
-<a href="https://github.com/earowang/thesis/blob/master/_thesis/thesis.pdf"><img src="images/earothesis.png" width="60%" style="border: solid 3px black;"/></a>
-</center>
-</div>
-</div>
-
-
-
-<div class="color-box">
-This <b>thesis</b> (online and pdf) is made using R Markdown.<br>
-Available at https://thesis.earo.me/ <br>
-
-</div>
-
----
-
-# What you can do with R Markdown?
-
-<br>
-<div class="grid" style="grid: 1fr / 1fr 1fr;">
-<div class="item">
-<center>
-<iframe src="https://emitanaka.org/r/posts/2018-12-12-scientific-and-technical-blogging-radix-vs-blogdown/" width="80%" height="450px" style="border: solid 3px black;"></iframe>
-</center>
-</div>
-
-<div class="item">
-<center>
-<iframe src="https://emitanaka.rbind.io/post/scientific-and-technical-blogging-radix-vs-blogdown-remix/" width="80%" height="450px" style="border: solid 3px black;"></iframe>
-</center>
-</div>
-</div>
-
-
-
-<div class="color-box">
-These <b>blog posts</b> are made using R Markdown.
-
-</div>
-
----
-
-# What you can do with R Markdown?
-
-::: { .grid .grid: 1fr / 2.5fr 1fr; } 
+::: grid 
 
 ::: item 
 
-Possibilities are endless...
-
-* Microsoft Word document (.doc, .docx)
-* Open Document Text (.odt)
-* Rich text format (.rtf)
-* Power point slides (.ppt, .pptx)
-* Posters (as .html or .pdf)
-* Resume (as .html or .pdf)
-* Interactive R Notebooks (.html)
-* Markdown documents (.md)
-* Dashboard (.html)
+* When you make a header via Rmd
+```markdown
+# Some Header
+```
+ an .red[id is created automatically].
+* The id is created by replacing .blue[space with `-`] and making it .blue[all lower case].
+* Now you can link to this header by `[some text](#some-header)`.
+* Cross references work for both pdf and html outputs.
 
 ::: 
 
 ::: item 
 
-<br>
 <center>
-<img src="images/rmarkdown-book-cover.png" width = "50%">
+<iframe src="exercises/demo-header.html" width = "90%", height = "500px"></iframe>
 </center>
-
-.font_small[Check out [Xie et al. (2018) R Markdown: The Definite Guide](https://bookdown.org/yihui/rmarkdown/).]
 
 :::
 
 :::
 
 
-
 ---
 
-# Before R Markdown (and Sweave)
+
+# Direct Reference for `html`
 
 <br>
-<center>
-<img src="images/rmd-motivation.png" width  = "90%"/>
-</center>
-
----
-
-# R Markdown in a nutshell `r emo::ji("peanut")`
-
 
 ::: paddings
 
-
-R Markdown integrates .blue[**text**] + .blue[`code`] in one source document with ability to knit *to many output formats* (via Pandoc).
-
-<img src="images/rmd-overview.png" width  = "100%"/>
-
+* For `html` output, you can also give a link directly to the relevant section
+* E.g. open `demo-header.html` in a web browser
+* Append say `#chicken-data` to the url. It should look like 
+.center[
+`demo-header.html#chicken-data`
+]
+* It should have taken you to straight to the corresponding header `r emo::ji("exercise")`
 
 :::
 
-
-
 ---
 
+
+# User-defined id
+
+
+<br>
+
+::: paddings 
+
+* You can define your own id by appending `{#your-id}`.
+
+```markdown
+# Some header {#header1}
+```
+* Now you can link to this header with the id `header1`.
+* Note there should be no space in the id name!
+
+::: 
+
+---
 
 
 class: center middle
@@ -238,35 +139,357 @@ class: center middle
 
 .font_large[`r emo::ji("search")` Open and inspect the file]
 
-.font_large[`first-rmarkdown.Rmd`]
+.font_large[`demo.bib`]
 
 
 
 ---
 
-# R Markdown Basics
+class: font_smaller
+
+# Bibliography
+
+* BibTeX citation style format is used to store references in `.bib` files.
+* Remember that you can get most BibTeX citation for R packages `citation` function. (Scroll below to see the BibTeX citation).
+
+.scroll-350[
+```{r}
+citation("xaringan")
+```
+]
+
+---
+
+class: center middle
 
 
-<img src="images/demo-first-rmd.png" width="80%" />
+.font_large[`r emo::ji("search")` Open, inspect and knit the file]
+
+.font_large[`demo-citation.Rmd`]
+
+---
+
+# Citations
+
+<br>
+
+::: paddings
+
+* You can include BibTeX by specifying the `bib` file at YAML as:
+
+```markdown
+bibliography: bibliography.bib
+```
+
+
+[@bibtex-key] <i class="fas fa-arrow-right"></i> (Author et al. 2019)
+
+or 
+
+@bibtex-key <i class="fas fa-arrow-right"></i> Author et al. 2019
+
+* See `demo-citation.Rmd`
+
+
+:::
+
+---
+
+class: font_small
+
+
+# Figure References
+
+::: paddings 
+
+* Support for figure references are included for output format type `bookdown::pdf_document2` for pdf or `bookdown::html_document2` for html.
+
+````markdown
+`r ''````{r plot1, fig.cap = "Caption"}
+ggplot(cars, aes(dist, speed)) + geom_point()
+```
+````
+
+* Above figure number can be referenced as .red[`\@ref(fig:plot1)`]
+
+* The reference label has the prefix `fig:` before the chunk label.
+
+
+
+
+:::
+
+---
+
+class: font_small
+
+
+# Table References
+
+::: paddings 
+
+* Support for table references are also included for output format type `bookdown::pdf_document2` for pdf or `bookdown::html_document2` for html.
+
+````markdown
+`r ''````{r table1}
+knitr::kable(cars, booktabs = TRUE, caption = "Caption")
+```
+````
+
+* Above table number can be referenced as .red[`\@ref(tab:table1)`]
+
+* The reference label has the prefix `tab:` before the chunk label.
+
+:::
 
 
 ---
 
-# Knitting: <code>Rmd</code> <i class="far fa-file"></i>&nbsp; <i class="fas fa-arrow-right"></i>&nbsp;<code>md</code> <i class="far fa-file"></i>&nbsp;<i class="fas fa-arrow-right"></i> &nbsp;<code>html</code> <i class="far fa-file"></i>
+class: font_small
 
-<img src="images/demo-knit-html.png" width="100%" />
+# Markdown for Captions
+
+::: paddings
+
+````markdown
+`r ''````{r plot1, fig.cap = "(ref:label)"}
+ggplot(cars, aes(dist, speed)) + geom_point()
+```
+````
+
+* Then the caption can be entered in a separate paragraph with empty lines above and below it
+
+```markdown
+
+(ref:label) This is the *caption* with **markdown**.
+
+```
+
+* You can substitute `label` with another unique label composed of alphanumeric characters, :, -, or /
+* This caption supports markdown syntax
+* This is great for long captions
+* It also works for tables!
+
+
+:::
 
 
 ---
 
 
-# Knitting: <code>Rmd</code> <i class="far fa-file"></i>&nbsp; <i class="fas fa-arrow-right"></i>&nbsp;<code>md</code> <i class="far fa-file"></i>&nbsp;<i class="fas fa-arrow-right"></i> &nbsp;<code>pdf</code> <i class="far fa-file"></i>
+class: center middle
 
-<img src="images/demo-knit-pdf.png" width="100%" />
+
+.font_large[`r emo::ji("wrench")` Open and work through]
+
+.font_large[`challenge-12-references.Rmd`]
+
+`r countdown::countdown(5, font_size = "1em")`
+
+
 
 
 ---
 
+class: font_small
+
+# Parametrized Report
+
+````markdown
+---
+title: "Parameterized Report"
+params:
+*  species: setosa 
+output: html_document
+---
+
+`r ''````{r, message = FALSE, fig.dim = c(3,2)}
+library(tidyverse)
+iris %>% 
+*  filter(Species==params$species) %>% 
+   ggplot(aes(Sepal.Length, Sepal.Width)) +
+   geom_point(aes(color=Species))
+```
+````
+
+::: {.output .pos top:60px; right:10px;}
+<img src = "images/parameterised-report-eg1.png" width = "550px"/>
+
+:::
+
+---
+
+class: font_smaller
+
+# Knit with Parameters
+
+::: grid
+::: item 
+
+```markdown
+---
+title: "Parameterized Report"
+params:
+  species: 
+    label: "Species"
+    value: setosa
+    input: select
+    choices: [setosa, versicolor, virginica]
+  color: red
+  max:
+    label: "Maximum Sepal Width"
+    value: 4
+    input: slider
+    min: 4
+    max: 5
+    step: 0.1
+output: html_document
+---
+```
+
+:::
+
+::: item 
+
+<img src = "images/knit-with-params.png" width = "250px" style="border: solid 3px black;"/>
+
+````markdown
+`r ''````{r, message = params$printmsg}
+library(tidyverse)
+iris %>% 
+  filter(Species==params$species) %>% 
+  filter(Sepal.Width < params$max) %>% 
+  ggplot(aes(Sepal.Length, Sepal.Width)) +
+  geom_point(color = params$color) + 
+  labs(title = params$species)
+```
+````
+
+
+
+:::
+
+:::
+
+---
+
+class: font_smaller
+
+# Shiny Report Generator
+::: grid
+::: item 
+```markdown
+---
+title: "Parameterized Report"
+params:
+  species: 
+    label: "Species"
+    value: setosa
+    input: select
+    choices: [setosa, versicolor, virginica]
+  color: red
+  max:
+    label: "Maximum Sepal Width"
+    value: 5
+    input: slider
+    min: 4
+    max: 5
+    step: 0.05
+output: html_document
+---
+```
+
+:::
+
+::: item 
+
+<Br>
+
+<img src = "images/shiny-params.png" width = "100%" style="border: solid 3px black;"/>
+
+:::
+
+:::
+
+---
+
+class: center middle
+
+
+.font_large[`r emo::ji("wrench")` Open and work through]
+
+.font_large[`challenge-13-params.Rmd`]
+
+`r countdown::countdown(5, font_size = "1em")`
+
+---
+
+class: font_smaller
+
+# R Markdown via Command Line
+
+::: grid 
+
+::: item 
+
+`demo-render.Rmd`
+
+````markdown
+---
+title: "Parameterized Report"
+params:
+*  species: setosa
+output: html_document
+---
+
+`r ''````{r, message = FALSE, fig.dim = c(3,2)}
+library(tidyverse)
+iris %>% 
+*  filter(Species==params$species) %>% 
+   ggplot(aes(Sepal.Length, Sepal.Width)) +
+   geom_point(aes(color=Species))
+```
+````
+
+:::
+
+::: item 
+
+You can knit this file via R command by<br> using the `render` function:
+
+```{r, eval = FALSE}
+library(rmarkdown)
+render("demo-render.Rmd")
+```
+
+<br>
+
+You can overwrite the YAML values<br>  by supplying arguments to `render`:
+
+```{r, eval = FALSE}
+library(rmarkdown)
+render("demo-render.Rmd", 
+       output_format = "pdf_document",
+       params = list(species = "virginica"))
+```
+
+:::
+
+:::
+
+---
+
+class: center middle
+
+
+.font_large[`r emo::ji("wrench")` Open and work through]
+
+.font_large[`challenge-14-letters.Rmd`]
+
+`r countdown::countdown(10, font_size = "1em")`
+
+
+---
 
 # Themes: `html_document`  
 
@@ -415,8 +638,129 @@ https://github.com/juba/rmdformats
 
 ---
 
+# `rticles` - LaTeX Journal Article Templates
+
+<!-- The Modal -->
+<div id="myModal4" class="modal">
+  <div id="caption4"></div>
+  <span class="close" onclick="document.getElementById('myModal4').style.display='none'">&times;</span>
+  <iframe class="modal-content" id="img04"></iframe><br>
+</div>
+::: grid
+::: item 
+* `acm` <img class='modalPdf' alt='acm_article'/>
+* `acs` <img class='modalPdf' alt='acs_article'/>
+* `aea` <img class='modalPdf' alt='aea_article'/>
+* `agu` <img class='modalPdf' alt='agu_article'/>
+* `amq` <img class='modalPdf' alt='amq_article'/>
+* `ams` <img class='modalPdf' alt='ams_article'/>
+* `asa` <img class='modalPdf' alt='asa_article'/>
+* `biometrics` <img class='modalPdf' alt='biometrics_article'/>
+* `copernicus` <img class='modalPdf' alt='copernicus_article'/>
 
 
+:::
+
+::: item 
+
+* `elsevier` <img class='modalPdf' alt='elsevier_article'/>
+* `frontiers` <img class='modalPdf' alt='frontiers_article'/>
+* `ieee` <img class='modalPdf' alt='ieee_article'/>
+* `jss` <img class='modalPdf' alt='jss_article'/>
+* `mdpi` <img class='modalPdf' alt='mdpi_article'/>
+* `mnras` <img class='modalPdf' alt='mnras_article'/>
+* `peerj` <img class='modalPdf' alt='peerj_article'/>
+* `plos` <img class='modalPdf' alt='plos_article'/>
+
+:::
+
+::: item 
+* `pnas` <img class='modalPdf' alt='pnas_article'/>
+* `rjournal` <img class='modalPdf' alt='rjournal_article'/>
+* `rsos` <img class='modalPdf' alt='rsos_article'/>
+* `rss` <img class='modalPdf' alt='rss_article'/>
+* `sage` <img class='modalPdf' alt='sage_article'/>
+* `sim` <img class='modalPdf' alt='sim_article'/>
+* `springer` <img class='modalPdf' alt='springer_article'/>
+* `tf` <img class='modalPdf' alt='tf_article'/>
+
+::::
+
+::::
+
+
+::: {.bottom_abs .width100 .bg-indigo .white padding-left:10px;}
+Go to RStudio > File > New File > R Markdown ... > From Template
+:::
+
+
+---
+
+
+# External Files in Templating
+
+::: grid
+
+::: item 
+
+* When using `rticles`, each journal usually require external files (e.g. `cls` or image files).
+* These external components are stored within the package.
+* So use `draft` instead of `render`! 
+
+::: 
+
+::: item bg-gray
+
+**GUI**
+
+* `RStudio > File > New File > R Markdown ... > From Template`
+
+**Command line**
+
+```{r, eval = FALSE}
+rmarkdown::draft("file.Rmd", 
+ template = "biometrics_article",
+ package = "rticles")
+```
+
+
+
+:::
+
+:::
+
+---
+
+# Making your own R Markdown template 
+
+::: paddings
+
+* You need to make an R package first!<br>
+Go to RStudio > New Project > New Directory > R Package or `usethis::create_package()`
+
+
+* When you are in your R package project,
+
+```{r, eval = FALSE}
+usethis::use_rmarkdown_template("<Name>")
+```
+
+* Modify the `skeleton/skeleton.Rmd` to how you want and add all external files to the `skeleton` folder.
+* Install your package.
+* `r emo::ji("tada")` And now find it at RStudio > File > New File > R Markdown > From Template.
+
+:::
+
+---
+
+class: center middle
+
+
+.font_large[`r emo::ji("wrench")` Create your own <br>R Markdown Template Package!]
+
+
+---
 
 ```{r endslide, child="scripts/endslide.Rmd"}
 ```
+
