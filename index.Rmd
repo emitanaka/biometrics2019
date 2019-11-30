@@ -1,6 +1,8 @@
 ---
 title: "Tidyverse + R Markdown Workshop"
-author: "Emi Tanaka"
+author: 
+ - "Emi Tanaka"
+ - "Annie Conway"
 date: "1st Dec 2019"
 output:
   prettydoc::html_pretty:
@@ -21,10 +23,10 @@ Find the instructions that was sent in email [here](instructions.pdf).
 
 ## Slides 
 
-* [Session 1: Data Visualisation with `ggplot2`](session1.html)
-* [Session 2: Data Wrangling with `tidyr` and `dplyr`](session2.html)
-* [Session 3: R Markdown Basics with `rmarkdown` and `knitr`](session3.html)
-* [Session 4: Reproducible Reports](session4.html)
-* [Session 5: Pretty Presentations with `xaringan`](session5.html)
+* [Session 1: Data Visualisation with `ggplot2`](session1.html) <a href="session1.pdf" style = "background-color: #015F85; padding-left: 3px; padding-right: 3px; font-size: 6pt;color: white; border: solid 3px black;">PDF</a>
+* [Session 2: Data Wrangling with `tidyr` and `dplyr`](session2.html) <a href="session2.pdf" style = "background-color: #015F85; padding-left: 3px; padding-right: 3px; font-size: 6pt;color: white; border: solid 3px black;">PDF</a> 
+* [Session 3: R Markdown Basics with `rmarkdown` and `knitr`](session3.html) <a href="session3.pdf" style = "background-color: #015F85; padding-left: 3px; padding-right: 3px; font-size: 6pt;color: white; border: solid 3px black;">PDF</a>
+* [Session 4: Reproducible Reports](session4.html) <a href="session4.pdf" style = "background-color: #015F85; padding-left: 3px; padding-right: 3px; font-size: 6pt;color: white; border: solid 3px black;">PDF</a>
+* [Session 5: Pretty Presentations with `xaringan`](session5.html) <a href="session5.pdf" style = "background-color: #015F85; padding-left: 3px; padding-right: 3px; font-size: 6pt;color: white; border: solid 3px black;">PDF</a>
 
 
