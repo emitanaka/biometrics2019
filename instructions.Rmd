@@ -33,7 +33,7 @@ tinytex::install_tinytex()
 ```
 3. Install the following packages and its dependencies:
 ```{r, eval = FALSE}
-install.packages(c("tidyverse", "rmarkdown", "knitr", "rticles",
+install.packages(c("tidyverse", "rmarkdown", "knitr", "rticles", "agridat",
                  "xaringan", "usethis", "rmdformats", "prettydoc",
                  "linl", "shiny", "bookdown", "pagedown", "plotly", "remotes",
                  "DT", "furrr", "ggrepel", "skimr", "janitor", "colorspace"))
