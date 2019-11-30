@@ -23,6 +23,7 @@ Find the instructions that was sent in email [here](instructions.pdf).
 
 ## Slides 
 
+* [Session 0: Introduction](session0.html) <a href="session0.pdf" style = "background-color: #015F85; padding-left: 3px; padding-right: 3px; font-size: 6pt;color: white; border: solid 3px black;">PDF</a>
 * [Session 1: Data Visualisation with `ggplot2`](session1.html) <a href="session1.pdf" style = "background-color: #015F85; padding-left: 3px; padding-right: 3px; font-size: 6pt;color: white; border: solid 3px black;">PDF</a>
 * [Session 2: Data Wrangling with `tidyr` and `dplyr`](session2.html) <a href="session2.pdf" style = "background-color: #015F85; padding-left: 3px; padding-right: 3px; font-size: 6pt;color: white; border: solid 3px black;">PDF</a> 
 * [Session 3: R Markdown Basics with `rmarkdown` and `knitr`](session3.html) <a href="session3.pdf" style = "background-color: #015F85; padding-left: 3px; padding-right: 3px; font-size: 6pt;color: white; border: solid 3px black;">PDF</a>
