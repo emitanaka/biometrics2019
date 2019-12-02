@@ -46,6 +46,11 @@ output:
 ```
 ```{r titleslide, child="scripts/titleslide.Rmd"}
 ```
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  fig.path = "figure/session5/"
+)
+```
 
 ---
 

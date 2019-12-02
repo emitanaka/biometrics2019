@@ -49,6 +49,10 @@ output:
 ```{r data, include = FALSE}
 signal_dat <- readxl::read_xlsx("exercises/data/signal-data.xlsx")
 dat <- signal_dat %>% select(CD:PR) 
+
+knitr::opts_chunk$set(
+  fig.path = "figure/session2/"
+)
 ```
 
 ---
@@ -286,7 +290,7 @@ pivot_longer(dat,
 What would happen below?
 
 ```{r, eval = FALSE}
-vars <- "CD", "CR", "DF", "RA", "PR")
+vars <- c("CD", "CR", "DF", "RA", "PR")
 pivot_longer(dat, cols = vars)
 ```
 
@@ -778,7 +782,7 @@ What does `arrange()` do?
 
 `mutate_if()`  
 `mutate_at()`  
-`mutate-all()`
+`mutate_all()`
 
 `select_if()`  
 `select_at()`  

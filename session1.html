@@ -94,6 +94,8 @@ School of Mathematics and Statistics
 
 
 
+
+
 ---
 
 class: font_smaller
@@ -105,14 +107,14 @@ class: font_smaller
 
 ::: item 
 
-&lt;img src="figure/state-wine-1.svg" width="561.6" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/state-wine-1.svg" width="561.6" style="display: block; margin: auto;" /&gt;
 
 
 :::
 
 ::: item 
 
-&lt;img src="figure/variety-wine-1.svg" width="561.6" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/variety-wine-1.svg" width="561.6" style="display: block; margin: auto;" /&gt;
 
 
 :::
@@ -166,11 +168,11 @@ skimr::skim(iris)
    n obs: 150 
    n variables: 5 
   
-  ── Variable type:factor ───────────────────────────────────────────
+  ── Variable type:factor ─────────────────────────────────────────
    variable missing complete   n n_unique                       top_counts ordered
     Species       0      150 150        3 set: 50, ver: 50, vir: 50, NA: 0   FALSE
   
-  ── Variable type:numeric ──────────────────────────────────────────
+  ── Variable type:numeric ────────────────────────────────────────
        variable missing complete   n mean   sd  p0 p25  p50 p75 p100     hist
    Petal.Length       0      150 150 3.76 1.77 1   1.6 4.35 5.1  6.9 ▇▁▁▂▅▅▃▁
     Petal.Width       0      150 150 1.2  0.76 0.1 0.3 1.3  1.8  2.5 ▇▁▁▅▃▃▂▂
@@ -243,7 +245,7 @@ Further specifications are provided by `position` adjustment, `show_legend` and 
 ggplot(iris, aes(Species))
 ```
 
-&lt;img src="figure/unnamed-chunk-2-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-3-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -251,7 +253,7 @@ ggplot(iris, aes(Species))
 ggplot(iris, aes(Species, Sepal.Length))
 ```
 
-&lt;img src="figure/unnamed-chunk-3-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-4-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -316,7 +318,7 @@ p &lt;- ggplot(iris, aes(Species, Sepal.Length))
 p + geom_violin()
 ```
 
-&lt;img src="figure/unnamed-chunk-7-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-8-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 :::
 
@@ -327,7 +329,7 @@ p + geom_violin()
 p + geom_boxplot()
 ```
 
-&lt;img src="figure/boxplot-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/boxplot-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 :::
 
@@ -338,7 +340,7 @@ p + geom_boxplot()
 p + geom_point()
 ```
 
-&lt;img src="figure/unnamed-chunk-8-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-9-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 :::
 
@@ -371,7 +373,7 @@ g &lt;- ggplot(iris, aes(Species, Sepal.Length)) + geom_boxplot()
 
 ::: item 
 
-&lt;img src="figure/boxplot-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/boxplot-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 &lt;p&gt;&lt;/p&gt;
 
@@ -428,7 +430,7 @@ p &lt;- ggplot(iris, aes(Sepal.Length))
 p + geom_histogram()
 ```
 
-&lt;img src="figure/unnamed-chunk-12-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-13-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 
 ::: 
@@ -441,7 +443,7 @@ p + geom_histogram()
 p + stat_bin(geom = "bar")
 ```
 
-&lt;img src="figure/unnamed-chunk-13-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-14-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 
 ::: 
@@ -455,7 +457,7 @@ p + stat_bin(geom = "bar")
 p + stat_bin(geom = "line")
 ```
 
-&lt;img src="figure/unnamed-chunk-14-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-15-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 &lt;p&gt;&lt;/p&gt;
 
 :::
@@ -527,7 +529,7 @@ To map an aesthestic to computed statistical variable (say called .pink[`var`]),
 p + geom_histogram(aes(y = stat(density) ))
 ```
 
-&lt;img src="figure/unnamed-chunk-16-1.svg" width="360" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-17-1.svg" width="360" style="display: block; margin: auto;" /&gt;
 
 ```r
 p + geom_histogram(aes(y = ..density.. ))
@@ -579,7 +581,7 @@ ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
 
 ::: item 
 
-&lt;img src="figure/plot1-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/plot1-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 ::: 
 
@@ -607,7 +609,7 @@ ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
 
 ::: item 
 
-&lt;img src="figure/plot1a-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/plot1a-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 ::: 
 
@@ -626,7 +628,7 @@ ggplot(data = iris, aes(x = Species, y = Sepal.Length)) +
 
 ::: item 
 
-&lt;img src="figure/plot1b-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/plot1b-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 ::: 
 
@@ -666,7 +668,7 @@ ggplot(iris, aes(Species, Sepal.Length)) +
 ::: item
 
 
-&lt;img src="figure/plot2-1.svg" width="360" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/plot2-1.svg" width="360" style="display: block; margin: auto;" /&gt;
 
 
 :::
@@ -695,7 +697,7 @@ g &lt;- ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) + geom_poi
 g
 ```
 
-&lt;img src="figure/unnamed-chunk-19-1.svg" width="360" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-20-1.svg" width="360" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -703,7 +705,7 @@ g
 g + facet_wrap(~Species)
 ```
 
-&lt;img src="figure/plot3-1.svg" width="504" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/plot3-1.svg" width="504" style="display: block; margin: auto;" /&gt;
 &lt;p&gt;&lt;/p&gt;
 
 
@@ -719,7 +721,7 @@ g + facet_wrap(~Species)
 g + facet_grid(cut(Petal.Length, 3) ~ Species)
 ```
 
-&lt;img src="figure/unnamed-chunk-20-1.svg" width="504" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-21-1.svg" width="504" style="display: block; margin: auto;" /&gt;
 
 :::
 
@@ -773,7 +775,7 @@ colnames(iris)
 
 ::: item 
 
-&lt;img src="figure/unnamed-chunk-22-1.svg" width="432" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-23-1.svg" width="432" style="display: block; margin: auto;" /&gt;
 
 ::: 
 
@@ -808,7 +810,7 @@ For answers go to (but don't look until trying!):
 `challenge-01-recreate-ggplot-solution.Rmd`
 
 
-<div class="countdown" id="timer_5de278b5" style="right:0;bottom:0;font-size:1em;">
+<div class="countdown" id="timer_5de5971d" style="right:0;bottom:0;font-size:1em;">
 <code><span class="digits minutes">20</span><span class="digits colon">:</span><span class="digits seconds">00</span></code>
 </div>
 
@@ -835,17 +837,17 @@ skimr::skim(diamonds)
    n obs: 53940 
    n variables: 10 
   
-  ── Variable type:factor ───────────────────────────────────────────
+  ── Variable type:factor ─────────────────────────────────────────
    variable missing complete     n n_unique                                    top_counts ordered
     clarity       0    53940 53940        8  SI1: 13065, VS2: 12258, SI2: 9194, VS1: 8171    TRUE
       color       0    53940 53940        7           G: 11292, E: 9797, F: 9542, H: 8304    TRUE
         cut       0    53940 53940        5 Ide: 21551, Pre: 13791, Ver: 12082, Goo: 4906    TRUE
   
-  ── Variable type:integer ──────────────────────────────────────────
+  ── Variable type:integer ────────────────────────────────────────
    variable missing complete     n   mean      sd  p0 p25  p50     p75  p100     hist
       price       0    53940 53940 3932.8 3989.44 326 950 2401 5324.25 18823 ▇▃▂▁▁▁▁▁
   
-  ── Variable type:numeric ──────────────────────────────────────────
+  ── Variable type:numeric ────────────────────────────────────────
    variable missing complete     n  mean   sd   p0   p25   p50   p75  p100     hist
       carat       0    53940 53940  0.8  0.47  0.2  0.4   0.7   1.04  5.01 ▇▅▁▁▁▁▁▁
       depth       0    53940 53940 61.75 1.43 43   61    61.8  62.5  79    ▁▁▁▃▇▁▁▁
@@ -891,7 +893,7 @@ g + scale_y_continuous() +
   scale_x_continuous()
 ```
 
-&lt;img src="figure/diamond1-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/diamond1-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 
 ::: 
@@ -904,7 +906,7 @@ g + scale_x_reverse() +
   scale_y_continuous(trans="log10")
 ```
 
-&lt;img src="figure/diamond2-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/diamond2-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 ::: 
 
@@ -916,7 +918,7 @@ g + scale_y_log10() +
   scale_x_sqrt()
 ```
 
-&lt;img src="figure/diamond3-1.svg" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/diamond3-1.svg" width="288" style="display: block; margin: auto;" /&gt;
 
 
 ::: 
@@ -963,7 +965,7 @@ g +
   geom_hline(yintercept = 10000, color = "red", size = 2)
 ```
 
-&lt;img src="figure/unnamed-chunk-25-1.svg" width="432" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-26-1.svg" width="432" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -977,7 +979,7 @@ g +
   )
 ```
 
-&lt;img src="figure/unnamed-chunk-26-1.svg" width="432" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-27-1.svg" width="432" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -993,7 +995,7 @@ g +
   )
 ```
 
-&lt;img src="figure/unnamed-chunk-27-1.svg" width="432" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-28-1.svg" width="432" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1007,7 +1009,7 @@ g +
   )
 ```
 
-&lt;img src="figure/unnamed-chunk-28-1.svg" width="432" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-29-1.svg" width="432" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1021,7 +1023,7 @@ g +
        fill = "Count") # Changes the legend name 
 ```
 
-&lt;img src="figure/unnamed-chunk-29-1.svg" width="504" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/unnamed-chunk-30-1.svg" width="504" style="display: block; margin: auto;" /&gt;
 
 
 ```r
@@ -1043,7 +1045,7 @@ For answers go to (but again don't look until trying!):
 `challenge-02-ggplot-scales-solution.Rmd`
 
 
-<div class="countdown" id="timer_5de27af4" style="right:0;bottom:0;font-size:1em;">
+<div class="countdown" id="timer_5de59979" style="right:0;bottom:0;font-size:1em;">
 <code><span class="digits minutes">15</span><span class="digits colon">:</span><span class="digits seconds">00</span></code>
 </div>
 
@@ -1062,14 +1064,14 @@ class: transition middle animated slideInLeft
 
 ::: item 
 
-&lt;img src="figure/state-wine-1.svg" width="561.6" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/state-wine-1.svg" width="561.6" style="display: block; margin: auto;" /&gt;
 
 
 :::
 
 ::: item 
 
-&lt;img src="figure/variety-wine-1.svg" width="561.6" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/variety-wine-1.svg" width="561.6" style="display: block; margin: auto;" /&gt;
 
 
 :::
@@ -1124,7 +1126,7 @@ ggplot(diamonds, aes(carat, price)) + geom_hex() +
 
 ::: item 
 
-&lt;img src="figure/ele-text-1.svg" width="273.6" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/ele-text-1.svg" width="273.6" style="display: block; margin: auto;" /&gt;
 
 &lt;p&gt;&lt;/p&gt;
 
@@ -1177,7 +1179,7 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width)) + geom_point() +
 
 ::: item 
 
-&lt;img src="figure/ele-line-1.svg" width="230.4" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/ele-line-1.svg" width="230.4" style="display: block; margin: auto;" /&gt;
 
 &lt;p&gt;&lt;/p&gt;
 
@@ -1233,7 +1235,7 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
 
 ::: item 
 
-&lt;img src="figure/ele-rect-1.svg" width="230.4" style="display: block; margin: auto;" /&gt;
+&lt;img src="figure/session1/ele-rect-1.svg" width="230.4" style="display: block; margin: auto;" /&gt;
 
 &lt;p&gt;&lt;/p&gt;
 
@@ -1285,7 +1287,7 @@ devtools::session_info()
    collate  en_AU.UTF-8                 
    ctype    en_AU.UTF-8                 
    tz       Australia/Adelaide          
-   date     2019-12-01                  
+   date     2019-12-03                  
   
   ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
    package     * version    date       lib source                              

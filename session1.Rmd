@@ -48,6 +48,12 @@ output:
 ```
 ```{r wine-graph, child="scripts/wine-graph.Rmd"}
 ```
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  fig.path = "figure/session1/"
+)
+```
+
 
 ---
 

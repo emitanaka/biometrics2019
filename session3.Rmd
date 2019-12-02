@@ -51,6 +51,11 @@ output:
 ```
 ```{r titleslide, child="scripts/titleslide.Rmd"}
 ```
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  fig.path = "figure/session3/"
+)
+```
 
 ---
 
@@ -203,50 +208,6 @@ Possibilities are endless...
 
 :::
 
----
-
-# Schedule 
-
-<br>
-
-Time | Activity 
-:----|:-----
-1:30PM - 3.00PM | `r emo::ji("document")` *Session 1: R Markdown Basics* 
-3.00PM - 3.30PM | `r emo::ji("coffee")` *Afternoon Tea* 
-3.30PM - 4.30pm | `r emo::ji("book")` *Session 2: Reproducible Reports* 
-4.30PM - 5.00pm | `r emo::ji("butterfly")` *Session 3: Pretty Presentations* 
-
----
-
-
-# Get Started
-
-::: paddings
-
-Find slides at<br><Br>
-
-
-.center[
-.blue[<i class="fas fa-link"></i>  https://rmd-ssavic-2019.netlify.com/]
-]
-
-<br>
-
-
-Open <br><Br>
-
-.center[
-.blue[<i class="fas fa-link"></i>  http://bit.ly/rmd-ssavic-2019]
-]
-
-<br>
-
-and save a permanent copy to your RStudio Cloud account for the R exercises.
-
-<br><Br>
-
-
-:::
 
 ---
 
