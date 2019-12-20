@@ -11,3 +11,5 @@ Markdown.
   - **Who**: Participants are expected to have basic knowledge of R. To
     get the most of the workshop, is is desirable that you know LaTeX or
     HTML/CSS although not necessary.
+
+License: [CC BY-SA](https://creativecommons.org/licenses/by-sa/3.0/au/)
